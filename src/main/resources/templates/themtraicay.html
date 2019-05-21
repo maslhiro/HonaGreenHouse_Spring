@@ -124,225 +124,225 @@
     </ul>
 
     <div id="content-wrapper">
-            <!-- Page Content -->
-            <div class="container-fluid">
+        <!-- Page Content -->
+        <div class="container-fluid">
 
-                <!-- Breadcrumbs-->
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="#">Thêm sản Phẩm</a>
-                    </li>
-                    <li class="breadcrumb-item active">Overview</li>
-                </ol>
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Thêm sản Phẩm</a>
+                </li>
+                <li class="breadcrumb-item active">Overview</li>
+            </ol>
 
-                <!-- Button Them Trai Cay-->
-                <div class="d-flex m-3 flex-row-reverse">
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalThemTC">Thêm trái cây</button>
-                </div>
-
-                <div  id="alertSuccest"></div>
-
-
-                <!-- DataTables -->
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fas fa-table"></i>
-                        Danh sách trái cây
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable">
-                                <thead>
-                                <tr>
-                                    <th>Mã</th>
-                                    <th>Tên trái cây</th>
-                                    <th>Loại trái cây</th>
-                                    <th>Xuất xứ</th>
-                                    <th>Số lượng tồn</th>
-                                    <th>Đơn vị tính</th>
-                                    <th>Đơn giá</th>
-                                    <th>#</th>
-                                    <th>#</th>
-
-                                </tr>
-                                </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>Mã</th>
-                                    <th>Tên trái cây</th>
-                                    <th>Loại trái cây</th>
-                                    <th>Xuất xứ</th>
-                                    <th>Số lượng tồn</th>
-                                    <th>Đơn vị tính</th>
-                                    <th>Đơn giá</th>
-                                    <th>#</th>
-                                    <th>#</th>
-
-                                </tr>
-                                </tfoot>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- The Modal Them Trai Cay -->
-                <div class="modal fade" id="modalThemTC">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Thêm Trái Cây</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                <div id="alertError" ></div>
-                                <div class="d-flex">
-                                    <div class="p-1 flex-fill">
-                                        <div class="form-group">
-                                            <label for="usr">Tên trái cây: (*)</label>
-                                            <input type="text" class="form-control" id="txtTenTraiCay"  >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="pwd">Xuất xứ:</label>
-                                            <input type="text" class="form-control" id="txtXuatXu"  >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="pwd">Số lượng nhập: (*)</label>
-                                            <input type="text" class="form-control" id="txtSoLuongNhap"  >
-                                        </div>
-
-                                    </div>
-                                    <div class="p-1 flex-fill">
-
-                                        <div class="form-group">
-                                            <label for="pwd">Đơn giá: (*)</label>
-                                            <input type="text" class="form-control" id="txtDonGia"   >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="pwd">Đơn vị tính: (*)</label>
-                                            <input type="text" class="form-control" id="txtDonViTinh"   >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="sel1">Loại trái cây:</label>
-                                            <select class="form-control" id="selLoaiTraiCay"   tabindex="0">
-                                                <option>LTC01 - Trái cây miền bắc</option>
-                                                <option>LTC02 - Trái cây miền trung</option>
-                                                <option>LTC03 - Trái cây miền nam</option>
-                                                <option>LTC04 - Trái cây nhập khẩu</option>
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="comment">Mô tả:</label>
-                                    <textarea class="form-control" rows="5" id="txtMoTa" ></textarea>
-                                </div>
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button  class="btn btn-dark" id="btnSubmit" onclick="btnSubmit_Click">Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- The Modal Xoa Trai Cay -->
-                <div class="modal fade" id="modalXoaTC">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Xoá Trái Cây</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                Bạn có chăc chắn muốn xoá
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button  class="btn btn-dark" id="btnSubmit" onclick="btnSubmit_Click">Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- The Modal Sua Trai Cay -->
-                <div class="modal fade" id="modalSuaTC">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Sửa Trái Cây</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                <div id="alertError" ></div>
-                                <div class="d-flex">
-                                    <div class="p-1 flex-fill">
-                                        <div class="form-group">
-                                            <label for="usr">Tên trái cây: (*)</label>
-                                            <input type="text" class="form-control" id="txtTenTraiCay"  >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="pwd">Xuất xứ:</label>
-                                            <input type="text" class="form-control" id="txtXuatXu"  >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="pwd">Số lượng nhập: (*)</label>
-                                            <input type="text" class="form-control" id="txtSoLuongNhap"  >
-                                        </div>
-
-                                    </div>
-                                    <div class="p-1 flex-fill">
-
-                                        <div class="form-group">
-                                            <label for="pwd">Đơn giá: (*)</label>
-                                            <input type="text" class="form-control" id="txtDonGia"   >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="pwd">Đơn vị tính: (*)</label>
-                                            <input type="text" class="form-control" id="txtDonViTinh"   >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="sel1">Loại trái cây:</label>
-                                            <select class="form-control" id="selLoaiTraiCay"   tabindex="0">
-                                                <option>LTC01 - Trái cây miền bắc</option>
-                                                <option>LTC02 - Trái cây miền trung</option>
-                                                <option>LTC03 - Trái cây miền nam</option>
-                                                <option>LTC04 - Trái cây nhập khẩu</option>
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="comment">Mô tả:</label>
-                                    <textarea class="form-control" rows="5" id="txtMoTa" ></textarea>
-                                </div>
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button  class="btn btn-dark" id="btnSubmit" onclick="btnSubmit_Click">Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <!-- Button Them Trai Cay-->
+            <div class="d-flex m-3 flex-row-reverse">
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalThemTC">Thêm trái cây</button>
             </div>
+
+            <div  id="alertSuccest"></div>
+
+
+            <!-- DataTables -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    Danh sách trái cây
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable">
+                            <thead>
+                            <tr>
+                                <th>Mã</th>
+                                <th>Tên trái cây</th>
+                                <th>Loại trái cây</th>
+                                <th>Xuất xứ</th>
+                                <th>Số lượng tồn</th>
+                                <th>Đơn vị tính</th>
+                                <th>Đơn giá</th>
+                                <th>#</th>
+                                <th>#</th>
+
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th>Mã</th>
+                                <th>Tên trái cây</th>
+                                <th>Loại trái cây</th>
+                                <th>Xuất xứ</th>
+                                <th>Số lượng tồn</th>
+                                <th>Đơn vị tính</th>
+                                <th>Đơn giá</th>
+                                <th>#</th>
+                                <th>#</th>
+
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Modal Them Trai Cay -->
+            <div class="modal fade" id="modalThemTC">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Thêm Trái Cây</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div id="alertError" ></div>
+                            <div class="d-flex">
+                                <div class="p-1 flex-fill">
+                                    <div class="form-group">
+                                        <label for="usr">Tên trái cây: (*)</label>
+                                        <input type="text" class="form-control" id="txtTenTraiCay"  >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Xuất xứ:</label>
+                                        <input type="text" class="form-control" id="txtXuatXu"  >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Số lượng nhập: (*)</label>
+                                        <input type="text" class="form-control" id="txtSoLuongNhap"  >
+                                    </div>
+
+                                </div>
+                                <div class="p-1 flex-fill">
+
+                                    <div class="form-group">
+                                        <label for="pwd">Đơn giá: (*)</label>
+                                        <input type="text" class="form-control" id="txtDonGia"   >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Đơn vị tính: (*)</label>
+                                        <input type="text" class="form-control" id="txtDonViTinh"   >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sel1">Loại trái cây:</label>
+                                        <select class="form-control" id="selLoaiTraiCay"   tabindex="0">
+                                            <option value="LTC01">LTC01 - Trái cây miền bắc</option>
+                                            <option value="LTC02">LTC02 - Trái cây miền trung</option>
+                                            <option value="LTC03">LTC03 - Trái cây miền nam</option>
+                                            <option value="LTC04">LTC04 - Trái cây nhập khẩu</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Mô tả:</label>
+                                <textarea class="form-control" rows="5" id="txtMoTa" ></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button  class="btn btn-dark" id="btnSubmit" onclick="btnSubmit_Click">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Modal Xoa Trai Cay -->
+            <div class="modal fade" id="modalXoaTC">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Xoá Trái Cây</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Bạn có chăc chắn muốn xoá
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button  class="btn btn-dark" id="btnSubmit" onclick="btnSubmit_Click">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Modal Sua Trai Cay -->
+            <div class="modal fade" id="modalSuaTC">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Sửa Trái Cây</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div id="alertError" ></div>
+                            <div class="d-flex">
+                                <div class="p-1 flex-fill">
+                                    <div class="form-group">
+                                        <label for="usr">Tên trái cây: (*)</label>
+                                        <input type="text" class="form-control" id="txtTenTraiCay"  >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Xuất xứ:</label>
+                                        <input type="text" class="form-control" id="txtXuatXu"  >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Số lượng nhập: (*)</label>
+                                        <input type="text" class="form-control" id="txtSoLuongNhap"  >
+                                    </div>
+
+                                </div>
+                                <div class="p-1 flex-fill">
+
+                                    <div class="form-group">
+                                        <label for="pwd">Đơn giá: (*)</label>
+                                        <input type="text" class="form-control" id="txtDonGia"   >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Đơn vị tính: (*)</label>
+                                        <input type="text" class="form-control" id="txtDonViTinh"   >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sel1">Loại trái cây:</label>
+                                        <select class="form-control" id="selLoaiTraiCay01" >
+                                            <option value="LTC01">LTC01 - Trái cây miền bắc</option>
+                                            <option value="LTC02">LTC02 - Trái cây miền trung</option>
+                                            <option value="LTC03">LTC03 - Trái cây miền nam</option>
+                                            <option value="LTC04">LTC04 - Trái cây nhập khẩu</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Mô tả:</label>
+                                <textarea class="form-control" rows="5" id="txtMoTa" ></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button  class="btn btn-dark" id="btnSubmit" onclick="btnSubmit_Click">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
             <div class="container my-auto">
@@ -398,13 +398,14 @@
 
 <script type="text/javascript" >
     var table;
+
     function loadTable() {
         table = $('#dataTable').DataTable({
             processing: true,
             paging: false,
             searching: false,
             ajax: {
-                url: '/api/traicay',
+                url: '/api/GetListTraiCay',
                 dataSrc: ''
             },
             columns: [
@@ -429,8 +430,19 @@
             let data = table.row($(this).parents('tr')).data();
             $('#modalSuaTC').on('show.bs.modal', function (event) {
                 var modal = $(this)
+                modal.find('.modal-body #txtTenTraiCay').val(data.tenTraiCay)
+                modal.find('.modal-body #txtXuatXu').val(data.xuatXu)
+                modal.find('.modal-body #txtSoLuongNhap').val(data.soLuong)
+                modal.find('.modal-body #txtMoTa').val(data.moTa)
+                modal.find('.modal-body #txtDonGia').val(data.donGia)
+                modal.find('.modal-body #txtDonViTinh').val(data.donViTinh)
+
                 modal.find('.modal-title').text('Sửa trái cây mã ' + data.maTraiCay)
             })
+
+
+            let loaiTC = data.loaiTraiCay.toString().trim();
+            $("#selLoaiTraiCay01 option[value='" + loaiTC + "']").attr("selected","selected");
         });
 
         $('#dataTable tbody').on('click', '#btnXoa', function () {

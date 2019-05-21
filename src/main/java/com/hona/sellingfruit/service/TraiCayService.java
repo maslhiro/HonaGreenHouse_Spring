@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TraiCayService {
     public List<TraiCay> getAllTraiCayList();
+
+    public TraiCay getTraiCayById(String maTraiCay);
 }

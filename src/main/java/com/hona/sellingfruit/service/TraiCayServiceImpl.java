@@ -18,4 +18,9 @@ public class TraiCayServiceImpl implements TraiCayService {
         return traiCayRepository.findAll();
     }
 
+    @Override
+    public TraiCay getTraiCayById(String maTraiCay){
+        return traiCayRepository.findById(maTraiCay).get();
+
+    }
 }
