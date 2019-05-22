@@ -28,3 +28,5 @@ blog/bin/
 hs_err_pid*
 .idea/workspace.xml
 .idea/workspace.xml
+.idea/misc.xml
+sellingfruit.iml

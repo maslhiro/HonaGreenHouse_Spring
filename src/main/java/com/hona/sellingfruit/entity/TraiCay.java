@@ -40,7 +40,7 @@ public class TraiCay {
     @Column(name = "Count")
     private Integer count;
 
-    @Column(name = "IsDeleted")
+    @Column(name = "Is_Deleted")
     private Integer isDeleted;
 
     public TraiCay() {
