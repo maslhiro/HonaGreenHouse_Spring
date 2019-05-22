@@ -441,10 +441,8 @@
             })
 
 
-            var make = data.loaiTraiCay.toString().trim();
-            console.log(data.loaiTraiCay)
-
-            $("#selLoaiTraiCay01 option[value='" + make + "']").attr("selected","selected");
+            let loaiTC = data.loaiTraiCay.toString().trim();
+            $("#selLoaiTraiCay01 option[value='" + loaiTC + "']").attr("selected","selected");
         });
 
         $('#dataTable tbody').on('click', '#btnXoa', function () {

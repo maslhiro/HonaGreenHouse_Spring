@@ -37,10 +37,16 @@ public class TraiCay {
     @Column(name = "Don_Gia")
     private Integer donGia;
 
+    @Column(name = "Count")
+    private Integer count;
+
+    @Column(name = "IsDeleted")
+    private Integer isDeleted;
+
     public TraiCay() {
     }
 
-    public TraiCay(String maTraiCay, String tenTraiCay, String loaiTraiCay, Integer soLuong, String donViTinh, String xuatXu, String moTa, String urlAnh, Integer donGia) {
+    public TraiCay(String maTraiCay, String tenTraiCay, String loaiTraiCay, Integer soLuong, String donViTinh, String xuatXu, String moTa, String urlAnh, Integer donGia, Integer count, Integer isDeleted) {
         this.maTraiCay = maTraiCay;
         this.tenTraiCay = tenTraiCay;
         this.loaiTraiCay = loaiTraiCay;
@@ -50,6 +56,8 @@ public class TraiCay {
         this.moTa = moTa;
         this.urlAnh = urlAnh;
         this.donGia = donGia;
+        this.count = count;
+        this.isDeleted = isDeleted;
     }
 
     public String getMaTraiCay() {
@@ -122,5 +130,21 @@ public class TraiCay {
 
     public void setDonGia(Integer donGia) {
         this.donGia = donGia;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public Integer getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
     }
 }

@@ -15,12 +15,11 @@ public class TraiCayServiceImpl implements TraiCayService {
 
     @Override
     public List<TraiCay> getAllTraiCayList(){
-        return traiCayRepository.findAll();
+        return traiCayRepository.findAllByIsDelete(0);
     }
 
     @Override
     public TraiCay getTraiCayById(String maTraiCay){
         return traiCayRepository.findById(maTraiCay).get();
-
     }
 }
