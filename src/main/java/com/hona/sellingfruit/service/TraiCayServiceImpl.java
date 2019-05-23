@@ -15,7 +15,7 @@ public class TraiCayServiceImpl implements TraiCayService {
 
     @Override
     public List<TraiCay> getAllTraiCayList(){
-        return traiCayRepository.findAllByIsDelete(0);
+        return traiCayRepository.findAllByIsDeleted(0);
     }
 
     @Override
