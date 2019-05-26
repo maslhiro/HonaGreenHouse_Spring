@@ -14,6 +14,11 @@ public class LoaiTraiCayServiceImpl implements LoaiTraiCayService{
 
     @Override
     public List<LoaiTraiCay> getAllLoaiTraiCayList(){
-        return loaiTraiCayRepository.findAll();
+        return loaiTraiCayRepository.findAllByIsDeleted(0);
+    }
+
+    @Override
+    public  LoaiTraiCay getLoaiTraiCayById(String maLoai){
+        return loaiTraiCayRepository.getLoaiTraiCayByMaLoaiTraiCay(maLoai);
     }
 }

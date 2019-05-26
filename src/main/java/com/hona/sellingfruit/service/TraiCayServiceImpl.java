@@ -22,4 +22,17 @@ public class TraiCayServiceImpl implements TraiCayService {
     public TraiCay getTraiCayById(String maTraiCay){
         return traiCayRepository.findById(maTraiCay).get();
     }
+
+    @Override
+    public int insertTraiCay(TraiCay traiCay){
+        try {
+            traiCayRepository.saveAndFlush(traiCay);
+            return  0;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return  1;
+        }
+    }
 }

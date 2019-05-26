@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface TraiCayRepository  extends JpaRepository<TraiCay, String> {
     List<TraiCay> findAllByIsDeleted(int isDelete);
+
 }

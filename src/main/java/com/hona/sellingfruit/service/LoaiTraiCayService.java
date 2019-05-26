@@ -5,4 +5,7 @@ import java.util.List;
 
 public interface LoaiTraiCayService {
     public List<LoaiTraiCay> getAllLoaiTraiCayList();
+
+
+    public LoaiTraiCay getLoaiTraiCayById(String maLoai);
 }

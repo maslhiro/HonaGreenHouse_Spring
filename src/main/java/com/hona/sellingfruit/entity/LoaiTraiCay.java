@@ -16,12 +16,16 @@ public class LoaiTraiCay {
     @Column(name = "Ten_Loai_Trai_Cay")
     private String tenLoaiTraiCay;
 
-    public LoaiTraiCay(String maLoaiTraiCay, String tenLoaiTraiCay) {
-        this.maLoaiTraiCay = maLoaiTraiCay;
-        this.tenLoaiTraiCay = tenLoaiTraiCay;
-    }
+    @Column(name = "Is_Deleted")
+    private Integer isDeleted;
 
     public LoaiTraiCay() {
+    }
+
+    public LoaiTraiCay(String maLoaiTraiCay, String tenLoaiTraiCay, Integer isDeleted) {
+        this.maLoaiTraiCay = maLoaiTraiCay;
+        this.tenLoaiTraiCay = tenLoaiTraiCay;
+        this.isDeleted = isDeleted;
     }
 
     public String getMaLoaiTraiCay() {
@@ -38,5 +42,13 @@ public class LoaiTraiCay {
 
     public void setTenLoaiTraiCay(String tenLoaiTraiCay) {
         this.tenLoaiTraiCay = tenLoaiTraiCay;
+    }
+
+    public Integer getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
     }
 }

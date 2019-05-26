@@ -8,4 +8,6 @@ public interface TraiCayService {
     public List<TraiCay> getAllTraiCayList();
 
     public TraiCay getTraiCayById(String maTraiCay);
+
+    public int insertTraiCay(TraiCay traiCay);
 }

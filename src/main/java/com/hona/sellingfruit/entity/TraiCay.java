@@ -1,9 +1,6 @@
 package com.hona.sellingfruit.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "trai_cay")
@@ -16,8 +13,9 @@ public class TraiCay {
     @Column(name = "Ten_Trai_Cay")
     private String tenTraiCay;
 
-    @Column(name = "Loai_ID")
-    private String loaiTraiCay;
+    @JoinColumn(name = "Loai_ID")
+    @ManyToOne(targetEntity = LoaiTraiCay.class,fetch = FetchType.LAZY)
+    private LoaiTraiCay loaiTraiCay;
 
     @Column(name = "So_Luong")
     private Integer soLuong;
@@ -46,7 +44,7 @@ public class TraiCay {
     public TraiCay() {
     }
 
-    public TraiCay(String maTraiCay, String tenTraiCay, String loaiTraiCay, Integer soLuong, String donViTinh, String xuatXu, String moTa, String urlAnh, Integer donGia, Integer count, Integer isDeleted) {
+    public TraiCay(String maTraiCay, String tenTraiCay, LoaiTraiCay loaiTraiCay, Integer soLuong, String donViTinh, String xuatXu, String moTa, String urlAnh, Integer donGia, Integer count, Integer isDeleted) {
         this.maTraiCay = maTraiCay;
         this.tenTraiCay = tenTraiCay;
         this.loaiTraiCay = loaiTraiCay;
@@ -76,11 +74,11 @@ public class TraiCay {
         this.tenTraiCay = tenTraiCay;
     }
 
-    public String getLoaiTraiCay() {
+    public LoaiTraiCay getLoaiTraiCay() {
         return loaiTraiCay;
     }
 
-    public void setLoaiTraiCay(String loaiTraiCay) {
+    public void setLoaiTraiCay(LoaiTraiCay loaiTraiCay) {
         this.loaiTraiCay = loaiTraiCay;
     }
 
