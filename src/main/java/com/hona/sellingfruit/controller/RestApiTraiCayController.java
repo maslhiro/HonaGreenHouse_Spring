@@ -1,5 +1,6 @@
 package com.hona.sellingfruit.controller;
 
+import com.hona.sellingfruit.entity.LoaiTraiCay;
 import com.hona.sellingfruit.entity.TraiCay;
 import com.hona.sellingfruit.service.LoaiTraiCayService;
 import com.hona.sellingfruit.service.TraiCayService;
@@ -30,43 +31,78 @@ public class RestApiTraiCayController {
     }
 
     @RequestMapping(path="/InsertTraiCay", method= RequestMethod.POST)
-    public String insertTraiCay(@RequestBody String strTraiCay){
-        JSONObject traiCay = new JSONObject(strTraiCay);
+    public String insertTraiCay(@RequestBody String stringJSON){
+        JSONObject jsonObject = new JSONObject(stringJSON);
 
         // Kiem tra du lieu json co du ko ?
-        String check = checkInput(traiCay);
+        String check = checkInput((jsonObject));
 
         if(check != ""){
-            return  "Vui lòng nhập " +check;
+            return  "Vui lòng nhập" +check;
         }
 
-//        int addTraiCay = traiCayService.insertTraiCay();
+        TraiCay traiCay = jsonToEntity(jsonObject);
 
-        return  traiCay.toString();
+        Integer ma = Math.toIntExact(traiCayService.countAllTraiCay());
+        String maTraiCay = "TC" + String.format("%03d",ma);
+        traiCay.setMaTraiCay(maTraiCay);
+
+        Integer result = traiCayService.insertTraiCay(traiCay);
+        if(result == 1 )return  "Lỗi kết nối cơ sở dữ liệu";
+        return  "";
     }
 
+    @RequestMapping(path="/UpdateTraiCay", method= RequestMethod.POST)
+    public String updateTraiCay(@RequestBody String stringJSON){
+        JSONObject jsonObject = new JSONObject(stringJSON);
+
+        // Kiem tra du lieu json co du ko ?
+        String check = checkInput((jsonObject));
+
+        if(check != ""){
+            return  "Vui lòng nhập" +check;
+        }
+
+        TraiCay traiCay = jsonToEntity(jsonObject);
+
+        String maTraiCay = (String) jsonObject.get("maTraiCay");
+        traiCay.setMaTraiCay(maTraiCay);
+
+        Integer result = traiCayService.updateTraiCay(traiCay);
+        if(result == 1 )return  "Lỗi kết nối cơ sở dữ liệu";
+        return  "";
+    }
+
+    @RequestMapping(path="/DeleteTraiCayById", method= RequestMethod.GET)
+    public Integer deleteTraiCayById(@RequestParam(value="maTraiCay") String maTraiCay){
+        return traiCayService.deleteTraiCayById(maTraiCay);
+    }
 
     String checkInput(JSONObject traiCay){
         String result ="";
+        String tenTraiCay = (String) traiCay.get("tenTraiCay");
+        String strMaLoaiTraiCay = (String) traiCay.get("loaiTraiCay");
+        String donViTinh = (String) traiCay.get("donViTinh");
+        Integer soLuong = (Integer) traiCay.get("soLuong");
+        Integer donGia = (Integer) traiCay.get("donGia");
 
-        if(traiCay.get("tenTraiCay")=="")
+        if(tenTraiCay.isEmpty())
         {
             result += " Tên trái cây,";
         }
-        if((Integer)traiCay.get("soLuong")==0)
+        if(soLuong==0)
         {
             result += " Số lượng,";
         }
-        if((Integer)traiCay.get("donGia")==0)
+        if(donGia==0)
         {
             result += " Đơn giá,";
         }
-        if(traiCay.get("donViTinh")=="")
+        if(donViTinh.isEmpty())
         {
             result += " Đơn vị tính ";
         }
-
-        result = result.substring(0,result.length()-1);
+        if(!result.isEmpty()) result = result.substring(0,result.length()-1);
 
         return result;
 
@@ -74,16 +110,28 @@ public class RestApiTraiCayController {
 
     TraiCay jsonToEntity(JSONObject json){
 
+        if (json == null) return null;
+
         String tenTraiCay = (String) json.get("tenTraiCay");
-        String maTraiCay = (String) json.get("maTraiCay");
         String xuatXu = (String) json.get("xuatXu");
-        String moTa = (String) json.get("moTa");
-        String loaiTraiCay = (String) json.get("loaiTraiCay");
+        String strMaLoaiTraiCay = (String) json.get("loaiTraiCay");
         String donViTinh = (String) json.get("donViTinh");
         Integer soLuong = (Integer) json.get("soLuong");
         Integer donGia = (Integer) json.get("donGia");
 
+        TraiCay traiCay = new TraiCay();
+        LoaiTraiCay loaiTraiCay = loaiTraiCayService.getLoaiTraiCayById(strMaLoaiTraiCay);
 
-        return null;
+        traiCay.setTenTraiCay(tenTraiCay);
+        traiCay.setXuatXu(xuatXu);
+        traiCay.setLoaiTraiCay(loaiTraiCay);
+        traiCay.setDonViTinh(donViTinh);
+        traiCay.setSoLuong(soLuong);
+        traiCay.setDonGia(donGia);
+
+        traiCay.setCount(0);
+        traiCay.setIsDeleted(0);
+
+        return traiCay;
     }
 }

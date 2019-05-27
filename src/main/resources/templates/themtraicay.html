@@ -432,22 +432,22 @@
                     "maTraiCay": data.maTraiCay,
                     "tenTraiCay": $("#txtTenTraiCay01").val() ? $("#txtTenTraiCay01").val() : "",
                     "donViTinh": $("#txtDonViTinh01").val() ? $("#txtDonViTinh01").val() : "",
-                    "donGia": $("#txtDonGia01").val(),
-                    "soLuong": $("#txtSoLuongNhap01").val(),
+                    "donGia": parseInt($("#txtDonGia01").val()),
+                    "soLuong": parseInt($("#txtSoLuongNhap01").val()),
                     "xuatXu": $("#txtXuatXu01").val() ? $("#txtXuatXu01").val() : "",
                     "loaiTraiCay": $("#selLoaiTraiCay01").val()
                 }
                 console.log("JSON", traiCay)
                 $.ajax({
                     type: "POST",
-                    url: "/Api/TraiCay.ashx?DataType=4",
+                    url: "/Api/UpdateTraiCay",
                     data: JSON.stringify(traiCay),
                     dataType: 'json',
                     contentType: 'application/json',
                     success: function (result) {
                         // Lôi
-                        if (result.Status_Code) {
-                            $('#alertSua').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result.Status_Text + ` </div >`)
+                        if (result) {
+                            $('#alertSua').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result + ` </div >`)
                             $('#alertSua').show();
                             // ẩn alert sau 7s
                             $("#alertSua").delay(7000).slideUp(200, function () {
@@ -465,7 +465,7 @@
                             $("#txtXuatXu01").val("")
                             $("#selLoaiTraiCay01").val("LTC01")
 
-                            $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > ` + result.Status_Text + ` </div >`)
+                            $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Update trái cây thành công ! </div >`)
 
                             $('#alert').show();
                             // ẩn alert sau 7s
@@ -503,14 +503,14 @@
                 e.preventDefault();
                 $.ajax({
                     type: "GET",
-                    url: "/Api/TraiCay.ashx?DataType=2&MaTraiCay=" + data.maTraiCay,
+                    url: "/Api/DeleteTraiCay?maTraiCay=" + data.maTraiCay,
                     success: function (result) {
 
-                        if (result.Status_Code) {
-                            $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result.Status_Text + ` </div >`)
+                        if (result) {
+                            $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Lỗi kết nối cơ sở dữ liệu </div >`)
                         }
                         else {
-                            $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > ` + result.Status_Text + ` </div >`)
+                            $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Xóa trái cây thành công ! </div >`)
                         }
 
                         $('#alert').show();
@@ -539,22 +539,23 @@
         let traiCay = {
             "tenTraiCay": $("#txtTenTraiCay").val() ? $("#txtTenTraiCay").val() : "",
             "donViTinh": $("#txtDonViTinh").val() ? $("#txtDonViTinh").val() : "",
-            "donGia": $("#txtDonGia").val(),
-            "soLuong": $("#txtSoLuongNhap").val(),
+            "donGia": parseInt($("#txtDonGia").val()),
+            "soLuong": parseInt($("#txtSoLuongNhap").val()),
             "xuatXu": $("#txtXuatXu").val() ? $("#txtXuatXu").val() : "",
-            "loaiTraiCay": $("#selLoaiTraiCay").val()
+            "loaiTraiCay": $("#selLoaiTraiCay").val(),
         }
         console.log("JSON", traiCay)
         $.ajax({
             type: "POST",
-            url: "/Api/TraiCay.ashx?DataType=3",
+            url: "/Api/InsertTraiCay",
             data: JSON.stringify(traiCay),
             dataType: 'json',
             contentType: 'application/json',
             success: function (result) {
                 // Lôi
-                if (result.Status_Code) {
-                    $('#alertThem').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result.Status_Text + ` </div >`)
+                console.log("Suc",result)
+                if (result) {
+                    $('#alertThem').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result + ` </div >`)
                     $('#alertThem').show();
                     // ẩn alert sau 7s
                     $("#alertThem").delay(7000).slideUp(200, function () {
@@ -572,7 +573,7 @@
                     $("#txtXuatXu").val("")
                     $("#selLoaiTraiCay").val("LTC01")
 
-                    $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > ` + result.Status_Text + ` </div >`)
+                    $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Thêm trái cây thành công </div >`)
 
                     $('#alert').show();
                     // ẩn alert sau 7s

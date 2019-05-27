@@ -14,7 +14,7 @@ public class TraiCay {
     private String tenTraiCay;
 
     @JoinColumn(name = "Loai_ID")
-    @ManyToOne(targetEntity = LoaiTraiCay.class,fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = LoaiTraiCay.class)
     private LoaiTraiCay loaiTraiCay;
 
     @Column(name = "So_Luong")

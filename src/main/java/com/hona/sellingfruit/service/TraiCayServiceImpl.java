@@ -24,7 +24,7 @@ public class TraiCayServiceImpl implements TraiCayService {
     }
 
     @Override
-    public int insertTraiCay(TraiCay traiCay){
+    public Integer insertTraiCay(TraiCay traiCay){
         try {
             traiCayRepository.saveAndFlush(traiCay);
             return  0;
@@ -35,4 +35,37 @@ public class TraiCayServiceImpl implements TraiCayService {
             return  1;
         }
     }
+
+    @Override
+    public long countAllTraiCay(){
+        return traiCayRepository.count();
+    }
+
+    @Override
+    public Integer updateTraiCay(TraiCay traiCay){
+        try{
+            traiCayRepository.saveAndFlush(traiCay);
+            return 0;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return  1;        }
+    }
+
+    @Override
+    public Integer deleteTraiCayById(String maTraiCay){
+        try{
+            TraiCay traiCay = traiCayRepository.findById(maTraiCay).get();
+
+            traiCay.setIsDeleted(1);
+
+            traiCayRepository.saveAndFlush(traiCay);
+            return 0;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return 1;
+        }
+    }
+
 }

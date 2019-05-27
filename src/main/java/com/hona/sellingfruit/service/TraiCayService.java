@@ -9,5 +9,12 @@ public interface TraiCayService {
 
     public TraiCay getTraiCayById(String maTraiCay);
 
-    public int insertTraiCay(TraiCay traiCay);
+    public Integer insertTraiCay(TraiCay traiCay);
+
+    public long countAllTraiCay();
+
+    public Integer updateTraiCay(TraiCay traiCay);
+
+    public Integer deleteTraiCayById(String maTraiCay);
+
 }
