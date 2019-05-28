@@ -1,4 +1,4 @@
-package com.hona.sellingfruit.controller;
+package com.hona.sellingfruit.restcontroller;
 
 import com.hona.sellingfruit.entity.LoaiTraiCay;
 import com.hona.sellingfruit.service.LoaiTraiCayService;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/Api")
-public class RestApiLoaiTCController {
+public class LoaiTraiCayController {
     @Autowired
     private LoaiTraiCayService loaiTraiCayService;
 

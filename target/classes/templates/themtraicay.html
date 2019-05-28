@@ -442,7 +442,6 @@
                     type: "POST",
                     url: "/Api/UpdateTraiCay",
                     data: JSON.stringify(traiCay),
-                    dataType: 'json',
                     contentType: 'application/json',
                     success: function (result) {
                         // Lôi
@@ -549,7 +548,6 @@
             type: "POST",
             url: "/Api/InsertTraiCay",
             data: JSON.stringify(traiCay),
-            dataType: 'json',
             contentType: 'application/json',
             success: function (result) {
                 // Lôi
@@ -588,7 +586,7 @@
 
             },
             error: function (result) {
-                console.log(result)
+                console.log("Error",result)
                 $('#alertThem').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Có lỗi trong quá trình kết nối </div >`)
             }
         });

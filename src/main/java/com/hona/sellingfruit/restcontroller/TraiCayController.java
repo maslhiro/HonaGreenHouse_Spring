@@ -1,4 +1,4 @@
-package com.hona.sellingfruit.controller;
+package com.hona.sellingfruit.restcontroller;
 
 import com.hona.sellingfruit.entity.LoaiTraiCay;
 import com.hona.sellingfruit.entity.TraiCay;
@@ -6,6 +6,7 @@ import com.hona.sellingfruit.service.LoaiTraiCayService;
 import com.hona.sellingfruit.service.TraiCayService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,24 +14,25 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/Api")
-public class RestApiTraiCayController {
+public class TraiCayController {
     @Autowired
     private TraiCayService traiCayService;
 
     @Autowired
     private LoaiTraiCayService loaiTraiCayService;
 
-    @RequestMapping(path="/GetListTraiCay", method= RequestMethod.GET)
+    @GetMapping(path="/GetListTraiCay")
     public List<TraiCay> getAllTraiCay(){
         return traiCayService.getAllTraiCayList();
     }
 
-    @RequestMapping(path="/GetTraiCayById", method= RequestMethod.GET)
+    @GetMapping(path="/GetTraiCayById")
     public TraiCay getTraiCayById(@RequestParam(value="maTraiCay") String maTraiCay){
         return traiCayService.getTraiCayById(maTraiCay);
     }
 
-    @RequestMapping(path="/InsertTraiCay", method= RequestMethod.POST)
+    @PostMapping(path="/InsertTraiCay")
+    @ResponseStatus(HttpStatus.OK)
     public String insertTraiCay(@RequestBody String stringJSON){
         JSONObject jsonObject = new JSONObject(stringJSON);
 
@@ -52,7 +54,7 @@ public class RestApiTraiCayController {
         return  "";
     }
 
-    @RequestMapping(path="/UpdateTraiCay", method= RequestMethod.POST)
+    @PostMapping(path="/UpdateTraiCay")
     public String updateTraiCay(@RequestBody String stringJSON){
         JSONObject jsonObject = new JSONObject(stringJSON);
 
@@ -73,7 +75,8 @@ public class RestApiTraiCayController {
         return  "";
     }
 
-    @RequestMapping(path="/DeleteTraiCayById", method= RequestMethod.GET)
+    @GetMapping(path="/DeleteTraiCay")
+    @ResponseStatus(HttpStatus.OK)
     public Integer deleteTraiCayById(@RequestParam(value="maTraiCay") String maTraiCay){
         return traiCayService.deleteTraiCayById(maTraiCay);
     }
