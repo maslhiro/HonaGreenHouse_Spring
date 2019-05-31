@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/Api")
 public class UsersController {
-    @Autowired
-    UsersService usersService;
+
 
 }

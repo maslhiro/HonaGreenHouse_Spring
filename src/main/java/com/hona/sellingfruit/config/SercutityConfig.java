@@ -1,9 +1,7 @@
 package com.hona.sellingfruit.config;
 
 import com.hona.sellingfruit.service.AdminService;
-import com.hona.sellingfruit.service.UsersService;
 import com.hona.sellingfruit.untils.PassWordEncoder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,9 +15,6 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 @Configuration
 @EnableWebSecurity
 public class SercutityConfig extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    AdminService adminService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -65,7 +60,7 @@ public class SercutityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected UserDetailsService userDetailsService() {
-        return new UsersService();
+        return new AdminService();
     }
 
     @Bean

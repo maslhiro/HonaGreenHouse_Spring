@@ -13,7 +13,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "users")
-public class Users implements UserDetails {
+public class Users {
 
     @Id
     @Column(name = "Ma_Khach_Hang")
@@ -94,40 +94,40 @@ public class Users implements UserDetails {
         this.diaChi = diaChi;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        return authorities;
-    }
-
-    @Override
-    public String getPassword() {
-        return matKhau;
-    }
-
-    @Override
-    public String getUsername() {
-        return tenDangNhap;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        Collection<GrantedAuthority> authorities = new ArrayList<>();
+//        authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+//        return authorities;
+//    }
+//
+//    @Override
+//    public String getPassword() {
+//        return matKhau;
+//    }
+//
+//    @Override
+//    public String getUsername() {
+//        return tenDangNhap;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isEnabled() {
+//        return true;
+//    }
 }
