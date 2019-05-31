@@ -13,8 +13,4 @@ public class UsersController {
     @Autowired
     UsersService usersService;
 
-    @GetMapping(path="/getUsersByTenDangNhap")
-    public Users getUsersByTenDangNhap(@RequestParam(value="tenDangNhap") String tenDangNhap){
-        return usersService.findUsersByTenDangNhap(tenDangNhap);
-    }
 }
