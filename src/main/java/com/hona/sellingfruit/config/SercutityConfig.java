@@ -50,7 +50,6 @@ public class SercutityConfig extends WebSecurityConfigurerAdapter {
                 .tokenValiditySeconds(1 * 24 * 60 * 60); // 24h
     }
 
-
     // Token stored in Memory (Of Web Server).
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {

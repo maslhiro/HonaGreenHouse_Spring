@@ -32,8 +32,11 @@ public class TraiCay {
     @Column(name = "Url_Anh")
     private String urlAnh;
 
-    @Column(name = "Don_Gia")
-    private Integer donGia;
+    @Column(name = "Don_Gia_Xuat")
+    private Integer donGiaXuat;
+
+    @Column(name = "Don_Gia_Nhap")
+    private Integer donGiaNhap;
 
     @Column(name = "Count")
     private Integer count;
@@ -44,7 +47,7 @@ public class TraiCay {
     public TraiCay() {
     }
 
-    public TraiCay(String maTraiCay, String tenTraiCay, LoaiTraiCay loaiTraiCay, Integer soLuong, String donViTinh, String xuatXu, String moTa, String urlAnh, Integer donGia, Integer count, Integer isDeleted) {
+    public TraiCay(String maTraiCay, String tenTraiCay, LoaiTraiCay loaiTraiCay, Integer soLuong, String donViTinh, String xuatXu, String moTa, String urlAnh, Integer donGiaXuat, Integer donGiaNhap, Integer count, Integer isDeleted) {
         this.maTraiCay = maTraiCay;
         this.tenTraiCay = tenTraiCay;
         this.loaiTraiCay = loaiTraiCay;
@@ -53,7 +56,8 @@ public class TraiCay {
         this.xuatXu = xuatXu;
         this.moTa = moTa;
         this.urlAnh = urlAnh;
-        this.donGia = donGia;
+        this.donGiaXuat = donGiaXuat;
+        this.donGiaNhap = donGiaNhap;
         this.count = count;
         this.isDeleted = isDeleted;
     }
@@ -122,12 +126,20 @@ public class TraiCay {
         this.urlAnh = urlAnh;
     }
 
-    public Integer getDonGia() {
-        return donGia;
+    public Integer getDonGiaXuat() {
+        return donGiaXuat;
     }
 
-    public void setDonGia(Integer donGia) {
-        this.donGia = donGia;
+    public void setDonGiaXuat(Integer donGiaXuat) {
+        this.donGiaXuat = donGiaXuat;
+    }
+
+    public Integer getDonGiaNhap() {
+        return donGiaNhap;
+    }
+
+    public void setDonGiaNhap(Integer donGiaNhap) {
+        this.donGiaNhap = donGiaNhap;
     }
 
     public Integer getCount() {

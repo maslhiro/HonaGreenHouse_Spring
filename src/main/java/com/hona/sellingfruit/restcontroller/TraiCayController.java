@@ -39,7 +39,7 @@ public class TraiCayController {
         // Kiem tra du lieu json co du ko ?
         String check = checkInput((jsonObject));
 
-        if(check != ""){
+        if(!check.isEmpty()){
             return  "Vui lòng nhập" +check;
         }
 
@@ -48,7 +48,8 @@ public class TraiCayController {
         Integer ma = Math.toIntExact(traiCayService.countAllTraiCay());
         String maTraiCay = "TC" + String.format("%03d",ma);
         traiCay.setMaTraiCay(maTraiCay);
-
+        traiCay.setIsDeleted(0);
+        traiCay.setCount(0);
         Integer result = traiCayService.insertTraiCay(traiCay);
         if(result == 1 )return  "Lỗi kết nối cơ sở dữ liệu";
         return  "";
@@ -61,7 +62,7 @@ public class TraiCayController {
         // Kiem tra du lieu json co du ko ?
         String check = checkInput((jsonObject));
 
-        if(check != ""){
+        if(!check.isEmpty()){
             return  "Vui lòng nhập" +check;
         }
 
@@ -70,7 +71,29 @@ public class TraiCayController {
         String maTraiCay = (String) jsonObject.get("maTraiCay");
         traiCay.setMaTraiCay(maTraiCay);
 
+        TraiCay tc = traiCayService.getTraiCayById(maTraiCay);
+
+        traiCay.setMoTa(tc.getMoTa());
+        traiCay.setUrlAnh(tc.getUrlAnh());
+
         Integer result = traiCayService.updateTraiCay(traiCay);
+        if(result == 1 )return  "Lỗi kết nối cơ sở dữ liệu";
+        return  "";
+    }
+
+    @PostMapping(path="/UpdateChiTietTraiCay")
+    public String updateChiTietTraiCay(@RequestBody String stringJSON){
+        JSONObject jsonObject = new JSONObject(stringJSON);
+
+        String moTa = (String) jsonObject.get("moTa");
+        String urlAnh = (String) jsonObject.get("urlAnh");
+        String maTraiCay = (String) jsonObject.get("maTraiCay");
+        TraiCay tc = traiCayService.getTraiCayById(maTraiCay);
+
+        tc.setUrlAnh(urlAnh);
+        tc.setMoTa(moTa);
+
+        Integer result = traiCayService.updateTraiCay(tc);
         if(result == 1 )return  "Lỗi kết nối cơ sở dữ liệu";
         return  "";
     }
@@ -84,10 +107,10 @@ public class TraiCayController {
     String checkInput(JSONObject traiCay){
         String result ="";
         String tenTraiCay = (String) traiCay.get("tenTraiCay");
-        String strMaLoaiTraiCay = (String) traiCay.get("loaiTraiCay");
         String donViTinh = (String) traiCay.get("donViTinh");
         Integer soLuong = (Integer) traiCay.get("soLuong");
-        Integer donGia = (Integer) traiCay.get("donGia");
+        Integer donGiaXuat = (Integer) traiCay.get("donGiaXuat");
+        Integer donGiaNhap = (Integer) traiCay.get("donGiaNhap");
 
         if(tenTraiCay.isEmpty())
         {
@@ -97,9 +120,13 @@ public class TraiCayController {
         {
             result += " Số lượng,";
         }
-        if(donGia==0)
+        if(donGiaNhap==0)
         {
-            result += " Đơn giá,";
+            result += " Đơn giá nhập,";
+        }
+        if(donGiaXuat==0)
+        {
+            result += " Đơn giá xuất,";
         }
         if(donViTinh.isEmpty())
         {
@@ -120,7 +147,8 @@ public class TraiCayController {
         String strMaLoaiTraiCay = (String) json.get("loaiTraiCay");
         String donViTinh = (String) json.get("donViTinh");
         Integer soLuong = (Integer) json.get("soLuong");
-        Integer donGia = (Integer) json.get("donGia");
+        Integer donGiaNhap = (Integer) json.get("donGiaNhap");
+        Integer donGiaXuat = (Integer) json.get("donGiaXuat");
 
         TraiCay traiCay = new TraiCay();
         LoaiTraiCay loaiTraiCay = loaiTraiCayService.getLoaiTraiCayById(strMaLoaiTraiCay);
@@ -130,7 +158,9 @@ public class TraiCayController {
         traiCay.setLoaiTraiCay(loaiTraiCay);
         traiCay.setDonViTinh(donViTinh);
         traiCay.setSoLuong(soLuong);
-        traiCay.setDonGia(donGia);
+        traiCay.setDonGiaNhap(donGiaNhap);
+        traiCay.setDonGiaXuat(donGiaXuat);
+
 
         traiCay.setCount(0);
         traiCay.setIsDeleted(0);

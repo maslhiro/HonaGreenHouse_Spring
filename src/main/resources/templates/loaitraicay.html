@@ -4,7 +4,7 @@
 
 <html lang="en">
 <head>
-    <title></title>
+    <title>Loại trái cây</title>
 
     <!-- Custom fonts for this template-->
     <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -75,8 +75,8 @@
                 <span>Quản lí kho</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a class="dropdown-item" href="#">Thêm loại trái cây</a>
-                <a class="dropdown-item" href="#">Thêm trái cây</a>
+                <a class="dropdown-item" href="/Admin/LoaiTraiCay">Thêm loại trái cây</a>
+                <a class="dropdown-item" href="/Admin/TraiCay">Thêm trái cây</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -85,10 +85,10 @@
                 <span>Quản lí đơn hàng</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a class="dropdown-item" href="#">Đơn hàng tiếp nhập</a>
+                <a class="dropdown-item" href="#">Đơn hàng tiếp nhận</a>
                 <div class="dropdown-divider"></div>
 
-                <a class="dropdown-item" href="#">Xác nhập đơn hàng</a>
+                <a class="dropdown-item" href="#">Xác nhận đơn hàng</a>
             </div>
         </li>
 
@@ -121,14 +121,14 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#">Thêm trái cây</a>
+                    <a href="#">Thêm loại trái cây</a>
                 </li>
                 <li class="breadcrumb-item active">Overview</li>
             </ol>
 
-            <!-- Button Them Trai Cay-->
+            <!-- Button Them Loại Trai Cay-->
             <div class="d-flex m-3 flex-row-reverse">
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalThemTC">Thêm trái cây</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalThemLTC">Thêm loại trái cây</button>
             </div>
 
             <div id="alert"></div>
@@ -137,7 +137,7 @@
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table"></i>
-                    Danh sách trái cây
+                    Danh sách loại trái cây
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -145,13 +145,7 @@
                             <thead>
                             <tr>
                                 <th>Mã</th>
-                                <th>Tên trái cây</th>
-                                <th>Mã loại trái cây</th>
-                                <th>Loại trái cây</th>
-                                <th>Xuất xứ</th>
-                                <th>Số lượng tồn</th>
-                                <th>Đơn vị tính</th>
-                                <th>Đơn giá</th>
+                                <th>Tên loại trái cây</th>
                                 <th>#</th>
                                 <th>#</th>
 
@@ -160,13 +154,7 @@
                             <tfoot>
                             <tr>
                                 <th>Mã</th>
-                                <th>Tên trái cây</th>
-                                <th>Mã loại trái cây</th>
-                                <th>Loại trái cây</th>
-                                <th>Xuất xứ</th>
-                                <th>Số lượng tồn</th>
-                                <th>Đơn vị tính</th>
-                                <th>Đơn giá</th>
+                                <th>Tên loại trái cây</th>
                                 <th>#</th>
                                 <th>#</th>
 
@@ -179,14 +167,14 @@
                 </div>
             </div>
 
-            <!-- The Modal Them Trai Cay -->
-            <div class="modal fade" id="modalThemTC">
+            <!-- The Modal Them Loai Trai Cay -->
+            <div class="modal fade" id="modalThemLTC">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Thêm Trái Cây</h4>
+                            <h4 class="modal-title">Thêm Loại Trái Cây</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
@@ -196,39 +184,9 @@
                             <div class="d-flex">
                                 <div class="p-1 flex-fill">
                                     <div class="form-group">
-                                        <label for="txtTenTraiCay">Tên trái cây: (*)</label>
-                                        <input type="text" class="form-control" id="txtTenTraiCay">
+                                        <label for="txtTenLoaiTraiCay">Tên loại trái cây: (*)</label>
+                                        <input type="text" class="form-control" id="txtTenLoaiTraiCay">
                                     </div>
-                                    <div class="form-group">
-                                        <label for = "txtXuatXu">Xuất xứ:</label>
-                                        <input type="text" class="form-control" id="txtXuatXu">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtSoLuongNhap" >Số lượng nhập: (*)</label>
-                                        <input type="number" class="form-control" id="txtSoLuongNhap" min="0" step="1" value="0">
-                                    </div>
-
-                                </div>
-                                <div class="p-1 flex-fill">
-
-                                    <div class="form-group">
-                                        <label for="txtDonGia">Đơn giá: (*)</label>
-                                        <input type="number" class="form-control" id="txtDonGia" min="0" step="1" value="0">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtDonViTinh">Đơn vị tính: (*)</label>
-                                        <input type="text" class="form-control" id="txtDonViTinh">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="selLoaiTraiCay">Loại trái cây:</label>
-                                        <select class="form-control" id="selLoaiTraiCay" tabindex="0">
-                                            <option value="LTC01">LTC01 - Trái cây miền bắc</option>
-                                            <option value="LTC02">LTC02 - Trái cây miền trung</option>
-                                            <option value="LTC03">LTC03 - Trái cây miền nam</option>
-                                            <option value="LTC04">LTC04 - Trái cây nhập khẩu</option>
-                                        </select>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -241,14 +199,14 @@
                     </div>
                 </div>
             </div>
-            <!-- The Modal Xoa Trai Cay -->
-            <div class="modal fade" id="modalXoaTC">
+            <!-- The Modal Xoa Loai Trai Cay -->
+            <div class="modal fade" id="modalXoaLTC">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Xoá Trái Cây</h4>
+                            <h4 class="modal-title">Xoá Loại Trái Cây</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <!-- Modal body -->
@@ -263,14 +221,14 @@
                     </div>
                 </div>
             </div>
-            <!-- The Modal Sua Trai Cay -->
-            <div class="modal fade" id="modalSuaTC">
+            <!-- The Modal Sua Loại Trai Cay -->
+            <div class="modal fade" id="modalSuaLTC">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Sửa Trái Cây</h4>
+                            <h4 class="modal-title">Sửa Loại Trái Cây</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
@@ -280,39 +238,9 @@
                             <div class="d-flex">
                                 <div class="p-1 flex-fill">
                                     <div class="form-group">
-                                        <label for="txtTenTraiCay01">Tên trái cây: (*)</label>
-                                        <input type="text" class="form-control" id="txtTenTraiCay01">
+                                        <label for="txtTenLoaiTraiCay01">Tên loại trái cây: (*)</label>
+                                        <input type="text" class="form-control" id="txtTenLoaiTraiCay01">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="txtXuatXu01" >Xuất xứ:</label>
-                                        <input type="text" class="form-control" id="txtXuatXu01">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtSoLuongNhap01" >Số lượng nhập: (*)</label>
-                                        <input type="number" class="form-control" id="txtSoLuongNhap01" min="0" step="1" value="0">
-                                    </div>
-
-                                </div>
-                                <div class="p-1 flex-fill">
-
-                                    <div class="form-group">
-                                        <label for="txtDonGia01" >Đơn giá: (*)</label>
-                                        <input type="number" class="form-control" id="txtDonGia01" min="0" step="1" value="0">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtDonViTinh01">Đơn vị tính: (*)</label>
-                                        <input type="text" class="form-control" id="txtDonViTinh01">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="selLoaiTraiCay01">Loại trái cây:</label>
-                                        <select class="form-control" id="selLoaiTraiCay01">
-                                            <option value="LTC01">LTC01 - Trái cây miền bắc</option>
-                                            <option value="LTC02">LTC02 - Trái cây miền trung</option>
-                                            <option value="LTC03">LTC03 - Trái cây miền nam</option>
-                                            <option value="LTC04">LTC04 - Trái cây nhập khẩu</option>
-                                        </select>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -326,7 +254,6 @@
             </div>
 
         </div>
-
 
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
@@ -377,31 +304,25 @@
 
     function loadTable() {
 
-        // Load dataTable qua Api trai cay
+        // Load dataTable qua Api loai trai cay
         table = $('#dataTable').DataTable({
             processing: true,
             paging: false,
             searching: false,
             ajax: {
-                url: '/Api/GetListTraiCay',
+                url: '/Api/GetListLoaiTraiCay',
                 dataSrc: ''
             },
             columns: [
-                { data: 'maTraiCay' },
-                { data: 'tenTraiCay' },
-                { data: 'loaiTraiCay.maLoaiTraiCay' },
-                { data: 'loaiTraiCay.tenLoaiTraiCay' },
-                { data: 'xuatXu' },
-                { data: 'soLuong' },
-                { data: 'donViTinh' },
-                { data: 'donGia' },
+                { data: 'maLoaiTraiCay' },
+                { data: 'tenLoaiTraiCay' },
                 {
                     "data": null,
-                    "defaultContent": `<button type="button" id="btnSua" class="btn btn-secondary" data-toggle="modal" data-target="#modalSuaTC">Sửa</button>`
+                    "defaultContent": `<button type="button" id="btnSua" class="btn btn-secondary" data-toggle="modal" data-target="#modalSuaLTC">Sửa</button>`
                 },
                 {
                     "data": null,
-                    "defaultContent": `<button type="button" id="btnXoa" class="btn btn-dark" data-toggle="modal" data-target="#modalXoaTC">Xoá</button>`
+                    "defaultContent": `<button type="button" id="btnXoa" class="btn btn-dark" data-toggle="modal" data-target="#modalXoaLTC">Xoá</button>`
                 }]
         });
 
@@ -410,38 +331,26 @@
             let data = table.row($(this).parents('tr')).data();
 
             // Load data vao modal Sua
-            $('#modalSuaTC').on('show.bs.modal', function (event) {
+            $('#modalSuaLTC').on('show.bs.modal', function (event) {
                 let modal = $(this)
-                modal.find('.modal-body #txtTenTraiCay01').val(data.tenTraiCay)
-                modal.find('.modal-body #txtXuatXu01').val(data.xuatXu)
-                modal.find('.modal-body #txtSoLuongNhap01').val(data.soLuong)
-                modal.find('.modal-body #txtDonGia01').val(data.donGia)
-                modal.find('.modal-body #txtDonViTinh01').val(data.donViTinh)
+                modal.find('.modal-body #txtTenLoaiTraiCay01').val(data.tenLoaiTraiCay)
 
-                modal.find('.modal-title').text('Sửa trái cây mã ' + data.maTraiCay)
+                modal.find('.modal-title').text('Sửa loại trái cây mã ' + data.maLoaiTraiCay)
             })
-
-            let loaiTC = data.loaiTraiCay.maLoaiTraiCay.toString().trim();
-            $("#selLoaiTraiCay01 option[value='" + loaiTC + "']").attr("selected", "selected");
 
             // Gan su kien submit cho modal Sua
             $("#btnSubmitSua").click(function (e) {
                 e.preventDefault();
 
-                let traiCay = {
-                    "maTraiCay": data.maTraiCay,
-                    "tenTraiCay": $("#txtTenTraiCay01").val() ? $("#txtTenTraiCay01").val() : "",
-                    "donViTinh": $("#txtDonViTinh01").val() ? $("#txtDonViTinh01").val() : "",
-                    "donGia": parseInt($("#txtDonGia01").val()),
-                    "soLuong": parseInt($("#txtSoLuongNhap01").val()),
-                    "xuatXu": $("#txtXuatXu01").val() ? $("#txtXuatXu01").val() : "",
-                    "loaiTraiCay": $("#selLoaiTraiCay01").val()
+                let loaiTraiCay = {
+                    "maLoaiTraiCay": data.maLoaiTraiCay,
+                    "tenLoaiTraiCay": $("#txtTenLoaiTraiCay01").val() ? $("#txtTenLoaiTraiCay01").val() : "",
                 }
-                console.log("JSON", traiCay)
+                console.log("JSON", loaiTraiCay)
                 $.ajax({
                     type: "POST",
-                    url: "/Api/UpdateTraiCay",
-                    data: JSON.stringify(traiCay),
+                    url: "/Api/UpdateLoaiTraiCay",
+                    data: JSON.stringify(loaiTraiCay),
                     contentType: 'application/json',
                     success: function (result) {
                         // Lôi
@@ -455,16 +364,11 @@
                         }
                         else {
                             // dong modal va xoa cac truong du lieu da nhap
-                            $("#modalSuaTC").modal('hide')
+                            $("#modalSuaLTC").modal('hide')
 
-                            $("#txtTenTraiCay01").val("")
-                            $("#txtDonViTinh01").val("")
-                            $("#txtDonGia01").val("")
-                            $("#txtSoLuongNhap01").val("")
-                            $("#txtXuatXu01").val("")
-                            $("#selLoaiTraiCay01").val("LTC01")
+                            $("#txtTenLoaiTraiCay01").val("")
 
-                            $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Update trái cây thành công ! </div >`)
+                            $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Update loại trái cây thành công  </div >`)
 
                             $('#alert').show();
                             // ẩn alert sau 7s
@@ -492,9 +396,9 @@
             let data = table.row($(this).parents('tr')).data();
 
             // hiển thị mã trái cây ở modal xoá
-            $('#modalXoaTC').on('show.bs.modal', function (event) {
+            $('#modalXoaLTC').on('show.bs.modal', function (event) {
                 let modal = $(this)
-                modal.find('.modal-title').text('Xoá trái cây mã ' + data.maTraiCay)
+                modal.find('.modal-title').text('Xoá loại trái cây mã ' + data.maLoaiTraiCay)
             })
 
             // gán sự kiện vào btn Xoa trong modal
@@ -502,14 +406,14 @@
                 e.preventDefault();
                 $.ajax({
                     type: "GET",
-                    url: "/Api/DeleteTraiCay?maTraiCay=" + data.maTraiCay,
+                    url: "/Api/DeleteLoaiTraiCay?maLoai=" + data.maLoaiTraiCay,
                     success: function (result) {
 
                         if (result) {
-                            $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Lỗi kết nối cơ sở dữ liệu </div >`)
+                            $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result + ` </div >`)
                         }
                         else {
-                            $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Xóa trái cây thành công ! </div >`)
+                            $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Xóa loại trái cây thành công </div >`)
                         }
 
                         $('#alert').show();
@@ -535,23 +439,17 @@
     function btnSubmitThem_OnClick(e) {
         e.preventDefault();
 
-        let traiCay = {
-            "tenTraiCay": $("#txtTenTraiCay").val() ? $("#txtTenTraiCay").val() : "",
-            "donViTinh": $("#txtDonViTinh").val() ? $("#txtDonViTinh").val() : "",
-            "donGia": parseInt($("#txtDonGia").val()),
-            "soLuong": parseInt($("#txtSoLuongNhap").val()),
-            "xuatXu": $("#txtXuatXu").val() ? $("#txtXuatXu").val() : "",
-            "loaiTraiCay": $("#selLoaiTraiCay").val(),
+        let loaiTraiCay = {
+            "tenLoaiTraiCay": $("#txtTenLoaiTraiCay").val() ? $("#txtTenLoaiTraiCay").val() : "",
         }
-        console.log("JSON", traiCay)
+        console.log("JSON", loaiTraiCay)
         $.ajax({
             type: "POST",
-            url: "/Api/InsertTraiCay",
-            data: JSON.stringify(traiCay),
+            url: "/Api/InsertLoaiTraiCay",
+            data: JSON.stringify(loaiTraiCay),
             contentType: 'application/json',
             success: function (result) {
-                // Lôi
-                console.log("Suc",result)
+                // Lỗi
                 if (result) {
                     $('#alertThem').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result + ` </div >`)
                     $('#alertThem').show();
@@ -562,14 +460,9 @@
                 }
                 else {
                     // dong modal va xoa cac truong du lieu da nhap
-                    $("#modalThemTC").modal('hide')
+                    $("#modalThemLTC").modal('hide')
 
-                    $("#txtTenTraiCay").val("")
-                    $("#txtDonViTinh").val("")
-                    $("#txtDonGia").val("")
-                    $("#txtSoLuongNhap").val("")
-                    $("#txtXuatXu").val("")
-                    $("#selLoaiTraiCay").val("LTC01")
+                    $("#txtTenLoaiTraiCay").val("")
 
                     $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Thêm trái cây thành công </div >`)
 
@@ -586,7 +479,7 @@
 
             },
             error: function (result) {
-                console.log("Error",result)
+                console.log(result)
                 $('#alertThem').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Có lỗi trong quá trình kết nối </div >`)
             }
         });
@@ -600,6 +493,5 @@
         })
     });
 </script>
-
 </body>
 </html>
