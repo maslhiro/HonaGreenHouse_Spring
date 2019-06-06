@@ -1,5 +1,6 @@
 package com.hona.sellingfruit.service;
 
+import com.hona.sellingfruit.entity.LoaiTraiCay;
 import com.hona.sellingfruit.entity.TraiCay;
 import com.hona.sellingfruit.repository.TraiCayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,4 +69,13 @@ public class TraiCayServiceImpl implements TraiCayService {
         }
     }
 
+    @Override
+    public List<TraiCay> getTraiCayBanChayList() {
+        return traiCayRepository.findAllByIsDeletedOrderByCountDesc(0);
+    }
+
+    @Override
+    public List<TraiCay> getTraiCayByLoaiList(LoaiTraiCay loaiTraiCay){
+        return traiCayRepository.findAllByIsDeletedAndLoaiTraiCay(0, loaiTraiCay);
+    };
 }
