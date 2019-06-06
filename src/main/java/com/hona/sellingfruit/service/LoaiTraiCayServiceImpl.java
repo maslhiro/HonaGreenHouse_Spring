@@ -21,4 +21,49 @@ public class LoaiTraiCayServiceImpl implements LoaiTraiCayService{
     public  LoaiTraiCay getLoaiTraiCayById(String maLoai){
         return loaiTraiCayRepository.getLoaiTraiCayByMaLoaiTraiCay(maLoai);
     }
+
+    @Override
+    public Integer insertLoaiTraiCay(LoaiTraiCay loaiTraiCay){
+        try {
+            loaiTraiCayRepository.saveAndFlush(loaiTraiCay);
+            return  0;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return  1;
+        }
+    }
+
+    @Override
+    public long countAllLoaiTraiCay(){
+        return loaiTraiCayRepository.count();
+    }
+
+    @Override
+    public Integer updateLoaiTraiCay(LoaiTraiCay loaiTraiCay){
+        try{
+            loaiTraiCayRepository.saveAndFlush(loaiTraiCay);
+            return 0;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return  1;        }
+    }
+
+    @Override
+    public Integer deleteLoaiTraiCayById(String maLoai){
+        try{
+            LoaiTraiCay loaiTraiCay = loaiTraiCayRepository.findById(maLoai).get();
+
+            loaiTraiCay.setIsDeleted(1);
+
+            loaiTraiCayRepository.saveAndFlush(loaiTraiCay);
+            return 0;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return 1;
+        }
+    }
 }
