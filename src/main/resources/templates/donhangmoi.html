@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- Custom fonts for this template-->
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link th:href="@{/vendor/datatables/dataTables.bootstrap4.css}" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link th:href="@{/css/sb-admin.css}" rel="stylesheet">
+
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body id="page-top">
+
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="#">Hona Green House</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Navbar Search -->
+    <!-- Da display none de ko hien thanh search-->
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <div class="input-group" style="display: none">
+            <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Navbar -->
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-circle fa-fw"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#">Activity Log</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            </div>
+        </li>
+    </ul>
+
+</nav>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="KhoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-boxes"></i>
+                <span>Quản lí kho</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="#">Thêm loại trái cây</a>
+                <a class="dropdown-item" href="#">Thêm trái cây</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="HDDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-shopping-cart"></i>
+                <span>Quản lí đơn hàng</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="/donhangmoi">Đơn hàng mới</a>
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="/donhangdaxuli">Đơn hàng đã xử lí</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="TKDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-shopping-cart"></i>
+                <span>Thống kê</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <h6 class="dropdown-header">Lập thống kê</h6>
+                <a class="dropdown-item" href="#">Thông kê đơn hàng</a>
+                <a class="dropdown-item" href="#">Thống kê nhập xuất</a>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-header">Xuất báo cáo</h6>
+                <a class="dropdown-item" href="#">Blank Page</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-users"></i>
+                <span>Quản lí tài khoản</span>
+            </a>
+        </li>
+    </ul>
+
+    <div id="content-wrapper">
+        <!-- /.container-fluid -->
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Đơn hàng mới</a>
+                </li>
+                <li class="breadcrumb-item active">Overview</li>
+            </ol>
+
+<!--        DON HANG MOI-->
+            <div id="alert"></div>
+
+            <!-- DataTables -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    Danh sách đơn hàng mới
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable">
+                            <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Ngày đặt</th>
+                                <th>Tổng tiền</th>
+                                <th>Tình trạng</th>
+                                <th>#</th>
+                                <th>#</th>
+                                <th>#</th>
+
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Ngày đặt</th>
+                                <th>Tổng tiền</th>
+                                <th>Tình trạng</th>
+                                <th>#</th>
+
+                                <th>#</th>
+                                <th>#</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Modal Huy Don Hang -->
+            <div class="modal fade" id="modalHuyDH">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Hủy Đơn Hàng</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Bạn có chăc chắn muốn hủy đơn hàng này ?
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button class="btn btn-dark" id="btnSubmitHuy" data-dismiss="modal">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Modal Xac nhan Don Hang -->
+            <div class="modal fade" id="modalXacNhanDH">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Xác Nhận Đơn Hàng</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Upload ảnh :</label>
+                                <input id="imageUpload" type="file" />
+                            </div>
+                            <div class="m-2">
+                                <img id="image" height="225px" width="225px" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" />
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button class="btn btn-dark" id="btnSubmit" data-dismiss="modal">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--        END DON HANG MOI-->
+        </div>
+
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © Hona Green House 2019</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+</div>
+</body>
+
+<!-- Core plugin JavaScript-->
+<script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+<!-- Custom scripts for all pages-->
+<script th:src="@{/js/sb-admin.min.js}"></script>
+
+<!-- Page level plugin JavaScript-->
+<script th:src="@{/vendor/datatables/jquery.dataTables.js}"></script>
+<script th:src="@{/vendor/datatables/dataTables.bootstrap4.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+
+<script type="text/javascript">
+    var table, imageBase64;
+
+    function loadTable() {
+
+        // Load dataTable qua Api don hang
+
+        table = $('#dataTable').DataTable({
+            processing: true,
+            paging: false,
+            searching: false,
+            ajax: {
+                url: '/Api/GetListDonHangMoi',
+                dataSrc: ''
+            },
+            columns: [
+                { data: 'maDonHang' },
+                { data: 'ngayDatString' },
+                { data: 'tongTien' },
+                { data: 'tinhTrangString' },
+                {
+                    "data": null,
+                    "defaultContent": `<button type="button" id="btnChiTiet" class="btn btn-secondary">Chi tiết ĐH</button>`
+                },
+                {
+                    "data": null,
+                    "defaultContent": `<button type="button" id="btnXacNhan" class="btn btn-primary" data-toggle="modal" data-target="#modalXacNhanDH">Xác nhận</button>`
+                },
+                {
+                    "data": null,
+                    "defaultContent": `<button type="button" id="btnHuy" class="btn btn-secondary" data-toggle="modal" data-target="#modalHuyDH">Hủy</button>`
+                }]
+        });
+
+        // $('#dataTable tbody').on('click', '#btnChiTiet', function () {
+        //     let data = table.row($(this).parents('tr')).data();
+        //     window.open('/Admin/ChiTietDonHang.aspx?MaDonHang=' + data.Ma_Don_Hang, '_blank');
+        // });
+        //
+        // // Gan su kien click btn Huy cho tung row
+        // $('#dataTable tbody').on('click', '#btnHuy', function () {
+        //     let data = table.row($(this).parents('tr')).data();
+        //
+        //     $('#modalHuyDH').on('show.bs.modal', function (event) {
+        //         var modal = $(this)
+        //         modal.find('.modal-title').text('Hủy đơn hàng mã ' + data.Ma_Don_Hang)
+        //     })
+        //
+        //     $('#btnSubmitHuy').click(function (e) {
+        //         e.preventDefault();
+        //         $.ajax({
+        //             type: "GET",
+        //             url: "/Api/DonHang.ashx?DataType=2&MaDonHang=" + data.Ma_Don_Hang,
+        //             success: function (result) {
+        //                 console.log(result)
+        //                 if (result.Status_Code) {
+        //                     $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result.Status_Text + ` </div >`)
+        //                 }
+        //                 else {
+        //                     $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > ` + result.Status_Text + ` </div >`)
+        //                 }
+        //
+        //                 $('#alert').show();
+        //
+        //                 // ẩn alert sau 7s
+        //                 $("#alert").delay(7000).slideUp(200, function () {
+        //                     $(this).alert('dispose');
+        //                 });
+        //
+        //                 // load lai dataTable
+        //                 table.ajax.reload();
+        //             },
+        //             error: function (result) {
+        //                 console.log(result)
+        //                 $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Có lỗi trong quá trình kết nối </div >`)
+        //             }
+        //         });
+        //     });
+        //
+        // });
+        //
+        // // Gan su kien click btn Xac nhan cho tung row
+        // $('#dataTable tbody').on('click', '#btnXacNhan', function () {
+        //     let data = table.row($(this).parents('tr')).data();
+        //
+        //     // hiển thị mã trái cây ở modal xoá
+        //     $('#modalXacNhanDH').on('show.bs.modal', function (event) {
+        //         var modal = $(this)
+        //         modal.find('.modal-title').text('Cập nhật bằng chứng thanh toán đơn hàng mã ' + data.Ma_Don_Hang)
+        //     })
+        //
+        //     // gán sự kiện vào btn Xoa trong modal
+        //     $('#btnSubmit').click(function (e) {
+        //         e.preventDefault();
+        //
+        //         let donHang = {
+        //             Bang_Chung_Thanh_Toan: imageBase64,
+        //             Ma_Don_Hang: data.Ma_Don_Hang
+        //         }
+        //
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "/Api/DonHang.ashx?DataType=3",
+        //             data: JSON.stringify(donHang),
+        //             success: function (result) {
+        //
+        //                 if (result.Status_Code) {
+        //                     $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result.Status_Text + ` </div >`)
+        //                 }
+        //                 else {
+        //                     $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > ` + result.Status_Text + ` </div >`)
+        //                 }
+        //
+        //                 $('#alert').show();
+        //
+        //                 // ẩn alert sau 7s
+        //                 $("#alert").delay(7000).slideUp(200, function () {
+        //                     $(this).alert('dispose');
+        //                 });
+        //
+        //                 // load lai dataTable
+        //                 table.ajax.reload();
+        //             },
+        //             error: function (result) {
+        //                 console.log(result)
+        //                 $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Có lỗi trong quá trình kết nối </div >`)
+        //             }
+        //         });
+        //     });
+        //
+        // });
+    }
+
+    function readFile() {
+        if (this.files && this.files[0]) {
+
+            var FR = new FileReader();
+
+            FR.addEventListener("load", function (e) {
+                $("#image").attr("src", e.target.result);
+                imageBase64 = e.target.result;
+                console.log(e.target.result);
+            });
+
+            FR.readAsDataURL(this.files[0]);
+        }
+    }
+
+    $("#imageUpload").change(readFile);
+
+    $(document).ready(function () {
+        loadTable()
+    });
+</script>
+</html>
