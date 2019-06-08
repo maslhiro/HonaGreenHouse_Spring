@@ -47,4 +47,9 @@ public class AdminController {
     public String voucher() {
         return "voucher";
     }
+
+    @RequestMapping("/ThongKeNhap")
+    public  String thongKeNhap(){
+        return "thongkenhap";
+    }
 }
