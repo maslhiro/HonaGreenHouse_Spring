@@ -43,4 +43,8 @@ public class AdminController {
         return mav;
     }
 
+    @RequestMapping("/Voucher")
+    public String voucher() {
+        return "voucher";
+    }
 }
