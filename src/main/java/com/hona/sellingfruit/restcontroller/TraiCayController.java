@@ -140,7 +140,7 @@ public class TraiCayController {
         traiCay.setLoaiTraiCay(loaiTraiCay);
         traiCay.setDonViTinh(donViTinh);
         traiCay.setSoLuong(soLuong);
-        traiCay.setDonGia(donGia);
+        traiCay.setDonGiaXuat(donGia);
 
         traiCay.setCount(0);
         traiCay.setIsDeleted(0);

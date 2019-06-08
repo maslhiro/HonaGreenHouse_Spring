@@ -156,35 +156,35 @@
                 <div class="row">
                     <div class="col-md-12 color-titel-fruite">
                         <h1>
-                            <label ID="lblTenTC" Text=""></label>
+                            <label id="lblTenTC" Text=""></label>
                         </h1>
                     </div>
                     <div class="col-md-12">
                         <h5>
-                            <label ID="lblDonGia"  Text=""></label>đ
+                            <label id="lblDonGia"  Text=""></label>đ
                         </h5>
                     </div>
                     <div class="col-md-12"><span>Đơn vị tính:
-                    <label ID="lblDonViTinh"  Text=""></label>
+                    <label id="lblDonViTinh"  Text=""></label>
                     </span></div>
 
                     <div class="col-md-12"><span>Xuất xứ:
-                    <label ID="lblXuatXu"  Text=""></label>
+                    <label id="lblXuatXu"  Text=""></label>
                     </span></div>
 
                     <div class="top-cart">
                         <!--                    <div class="col-md-12">-->
                         <!--                        <span>Tổng tiền: </span>-->
                         <!--                        <span id="total-cart">-->
-                        <!--                        <asp:Label ID="lblTongTien"  Text=""></asp:Label>đ-->
-                        <!--                        <label ID="lblTongTien"  Text=""></label>đ-->
+                        <!--                        <asp:Label id="lblTongTien"  Text=""></asp:Label>đ-->
+                        <!--                        <label id="lblTongTien"  Text=""></label>đ-->
                         <!--                    </span>-->
                     </div>
                     <div class="col-md-12 top-cart">
                         <span>Số lượng </span>
-                        <input ID="txbSoLuong"  type="number" step="1" min="1" value="1"
+                        <input id="txbSoLuong"  type="number" step="1" min="1" value="1"
                                   class="number-add-to-cart"/>
-                        <button ID="btnBuy" class="add-to-cart" OnClick="btnBuy_Click">MUA NGAY</button>
+                        <button id="btnBuy" class="add-to-cart" onclick="btnBuy_Click">MUA NGAY</button>
                     </div>
                 </div>
 
@@ -199,7 +199,7 @@
                 </span>
             <div class="panel entry-content" id="tab-description" style="display: block;">
                     <span>
-                        <label ID="lblMoTa"  Text="" style="margin-bottom: 0"></label>
+                        <label id="lblMoTa"  Text="" style="margin-bottom: 0"></label>
                     </span>
             </div>
         </div>
@@ -229,28 +229,28 @@
 <!--END FOOT-->
 </body>
 <script>
-    function getTraiCayByID(){
-        var url = new URL(window.location.href);
-        var id = url.searchParams.get("id");
-        console.log(id);
-
-        $.ajax({
-            type: "GET",
-            url: "/Api/GetTraiCayById?maTraiCay="+id,
-            success: function (traiCay) {
-                console.log(traiCay);
-                $('#lblTenTC').append(traiCay.tenTraiCay);
-                document.getElementById('img-fruite').src = traiCay.urlAnh;
-                $('#lblDonGia').append(traiCay.donGia);
-                $('#lblDonViTinh').append(traiCay.donViTinh);
-                $('#lblXuatXu').append(traiCay.xuatXu);
-                $('#lblMoTa').append(traiCay.moTa);
-            }
-        });
-    }
-
-    $(document).ready(function () {
-        getTraiCayByID()
-    });
+    // function getTraiCayByid(){
+    //     var url = new URL(window.location.href);
+    //     var id = url.searchParams.get("id");
+    //     console.log(id);
+    //
+    //     $.ajax({
+    //         type: "GET",
+    //         url: "/Api/GetTraiCayById?maTraiCay="+id,
+    //         success: function (traiCay) {
+    //             console.log(traiCay);
+    //             $('#lblTenTC').append(traiCay.tenTraiCay);
+    //             document.getElementById('img-fruite').src = traiCay.urlAnh;
+    //             $('#lblDonGia').append(traiCay.donGia);
+    //             $('#lblDonViTinh').append(traiCay.donViTinh);
+    //             $('#lblXuatXu').append(traiCay.xuatXu);
+    //             $('#lblMoTa').append(traiCay.moTa);
+    //         }
+    //     });
+    // }
+    //
+    // $(document).ready(function () {
+    //     getTraiCayByid()
+    // });
 </script>
 </html>
