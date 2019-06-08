@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" th:href="@{/css/master.css}" type="text/css"/>
+
+    <!-- Custom fonts for this template-->
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link th:href="@{/vendor/datatables/dataTables.bootstrap4.css}" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link th:href="@{/css/sb-admin.css}" rel="stylesheet">
+
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<style type="text/css">
+    .img-fruite {
+        height: 300px;
+        width: 100%;
+    }
+
+    .container-fruite {
+        margin-top: 50px;
+    }
+
+    .left-fruite {
+        margin-left: 0px;
+    }
+
+    .color-titel-fruite {
+        color: #8bc04e;
+    }
+
+    .notes-fruite {
+        height: auto;
+        width: 100%;
+    }
+
+    .add-to-cart {
+        background-color: #46aa48;
+        font-size: 14px !important;
+        color: white;
+        border-radius: 40px;
+        border-width: 0px;
+        border-style: solid;
+        border-color: #fff;
+        font-weight: bold;
+        font-family: 'PT Sans', Arial, Helvetica, sans-serif;
+        min-height: 32px;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 0 20px;
+        margin: 0;
+    }
+
+    .number-add-to-cart {
+        width: 60px;
+    }
+
+    .top-cart {
+        margin-top: 20px;
+    }
+
+    .top-caption {
+        margin-top: 40px;
+    }
+
+    .top-img {
+        margin-top: 13px;
+    }
+
+    .caption {
+        text-align: left;
+        font-size: 18px !important;
+        font-weight: bold !important;
+        font-family: "OpenSans-Bold" !important;
+        color: #fff !important;
+        background-color: #8BC04E !important;
+        padding: 10px 10px 10px 10px !important;
+        width: 100px !important;
+        position: relative;
+        text-transform: uppercase;
+    }
+
+    .entry-content {
+        float: left;
+        margin: 0px;
+        width: 100%;
+        border-top: none;
+        padding: 20px;
+        border: 1px solid #e7e6e6;
+        box-sizing: border-box;
+        color: #666666;
+        margin-top: 10px;
+    }
+</style>
+<!--HEAD-->
+<form id="form" >
+    <!--Header-->
+    <div class="header">
+        <div style="font-family: 'Coiny', cursive; color: white; text-align: center; align-self: center; font-size: x-large"
+             >Hona Green House
+        </div>
+        <div style="flex-direction: row; display: flex">
+
+            <button class="button_nav_gh" >
+                <i class="fas fa-shopping-cart fa-sm"></i>
+                <div>&nbsp;&nbsp;Giỏ hàng</div>
+            </button>
+        </div>
+
+    </div>
+
+    <!--Nav-->
+    <div style="display: block;" >
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/trangchu">Trang chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sản phẩm
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC01">Trái cây miền bắc</a>
+                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC02">Trái cây miền trung</a>
+                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC03">Trái cây miền nam</a>
+                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC04">Trái cây nhập khẩu</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/lienhe">Liên hệ</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--END HEAD-->
+    <div class="container container-fruite">
+        <div class="row">
+            <div class="col-md-5 top-img">
+                <img id="img-fruite"/>
+            </div>
+
+            <div class="col-md-7 left-fruite">
+
+                <div class="row">
+                    <div class="col-md-12 color-titel-fruite">
+                        <h1>
+                            <label id="lblTenTC" Text=""></label>
+                        </h1>
+                    </div>
+                    <div class="col-md-12">
+                        <h5>
+                            <label id="lblDonGia"  Text=""></label>đ
+                        </h5>
+                    </div>
+                    <div class="col-md-12"><span>Đơn vị tính:
+                    <label id="lblDonViTinh"  Text=""></label>
+                    </span></div>
+
+                    <div class="col-md-12"><span>Xuất xứ:
+                    <label id="lblXuatXu"  Text=""></label>
+                    </span></div>
+
+                    <div class="top-cart">
+                        <!--                    <div class="col-md-12">-->
+                        <!--                        <span>Tổng tiền: </span>-->
+                        <!--                        <span id="total-cart">-->
+                        <!--                        <asp:Label id="lblTongTien"  Text=""></asp:Label>đ-->
+                        <!--                        <label id="lblTongTien"  Text=""></label>đ-->
+                        <!--                    </span>-->
+                    </div>
+                    <div class="col-md-12 top-cart">
+                        <span>Số lượng </span>
+                        <input id="txbSoLuong"  type="number" step="1" min="1" value="1"
+                                  class="number-add-to-cart"/>
+                        <button id="btnBuy" class="add-to-cart" onclick="btnBuy_Click">MUA NGAY</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="col-md-12 top-caption">
+                <span class="caption">MÔ TẢ
+                    <br/>
+                </span>
+            <div class="panel entry-content" id="tab-description" style="display: block;">
+                    <span>
+                        <label id="lblMoTa"  Text="" style="margin-bottom: 0"></label>
+                    </span>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--FOOT-->
+    <!--Footer-->
+    <footer class="footer-distributed">
+        <div class="footer-right">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="footer-left">
+            <p class="footer-links">
+                <a href="/trangchu">Trang chủ</a>
+                ·
+                <a href="/danhmuc?loaiTraiCay=LTC01">Sản phẩm</a>
+                ·
+                <a href="/lienhe">Liên hệ</a>
+            </p>
+            <p>Hona Green House &copy; 2019</p>
+        </div>
+    </footer>
+</form>
+<!--END FOOT-->
+</body>
+<script>
+    // function getTraiCayByid(){
+    //     var url = new URL(window.location.href);
+    //     var id = url.searchParams.get("id");
+    //     console.log(id);
+    //
+    //     $.ajax({
+    //         type: "GET",
+    //         url: "/Api/GetTraiCayById?maTraiCay="+id,
+    //         success: function (traiCay) {
+    //             console.log(traiCay);
+    //             $('#lblTenTC').append(traiCay.tenTraiCay);
+    //             document.getElementById('img-fruite').src = traiCay.urlAnh;
+    //             $('#lblDonGia').append(traiCay.donGia);
+    //             $('#lblDonViTinh').append(traiCay.donViTinh);
+    //             $('#lblXuatXu').append(traiCay.xuatXu);
+    //             $('#lblMoTa').append(traiCay.moTa);
+    //         }
+    //     });
+    // }
+    //
+    // $(document).ready(function () {
+    //     getTraiCayByid()
+    // });
+</script>
+</html>

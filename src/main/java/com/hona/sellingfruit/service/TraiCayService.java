@@ -1,5 +1,6 @@
 package com.hona.sellingfruit.service;
 
+import com.hona.sellingfruit.entity.LoaiTraiCay;
 import com.hona.sellingfruit.entity.TraiCay;
 
 import java.util.List;
@@ -16,5 +17,9 @@ public interface TraiCayService {
      Integer updateTraiCay(TraiCay traiCay);
 
      Integer deleteTraiCayById(String maTraiCay);
+
+    public List<TraiCay> getTraiCayBanChayList();
+
+    public List<TraiCay> getTraiCayByLoaiList(LoaiTraiCay loaiTraiCay);
 
 }

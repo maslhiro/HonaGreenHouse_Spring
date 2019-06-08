@@ -31,6 +31,16 @@ public class TraiCayController {
         return traiCayService.getTraiCayById(maTraiCay);
     }
 
+    @GetMapping(path="/GetTraiCayBanChay")
+    public List<TraiCay> getTraiCayBanChay(){
+        return traiCayService.getTraiCayBanChayList();
+    }
+
+    @GetMapping(path="/GetTraiCayByLoai")
+    public List<TraiCay> getTraiCayByLoai(@RequestParam(value="loaiTraiCay") LoaiTraiCay loaiTraiCay){
+        return traiCayService.getTraiCayByLoaiList(loaiTraiCay);
+    }
+
     @PostMapping(path="/InsertTraiCay")
     @ResponseStatus(HttpStatus.OK)
     public String insertTraiCay(@RequestBody String stringJSON){
@@ -160,7 +170,6 @@ public class TraiCayController {
         traiCay.setSoLuong(soLuong);
         traiCay.setDonGiaNhap(donGiaNhap);
         traiCay.setDonGiaXuat(donGiaXuat);
-
 
         traiCay.setCount(0);
         traiCay.setIsDeleted(0);
