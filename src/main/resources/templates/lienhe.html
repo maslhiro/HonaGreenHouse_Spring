@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" th:href="@{/css/master.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/danhmuc.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/slider.css}" type="text/css"/>
+
+    <!-- Custom fonts for this template-->
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link th:href="@{/vendor/datatables/dataTables.bootstrap4.css}" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link th:href="@{/css/sb-admin.css}" rel="stylesheet">
+
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<style type="text/css">
+    .Contact {
+        margin: 1em 4em;
+    }
+
+    .Contact ul {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        justify-content: space-between;
+    }
+
+    .Contact li {
+        display: inline-block;
+        width: 280px;
+        margin: .5em;
+        text-align: center;
+    }
+
+    card_contact {
+        box-shadow: none;
+        border-top: 40px;
+    }
+
+    .content {
+        margin: 0.5em 0;
+        font-size: 24px;
+    }
+
+    .name {
+        font-size: 25px !important;
+    }
+
+    .Contact img {
+        border-radius: 100%;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+
+<!--HEAD-->
+<form id="form" >
+    <!--Header-->
+    <div class="header">
+        <div style="font-family: 'Coiny', cursive; color: white; text-align: center; align-self: center; font-size: x-large"
+             >Hona Green House
+        </div>
+        <div style="flex-direction: row; display: flex">
+
+            <button class="button_nav_gh" >
+                <i class="fas fa-shopping-cart fa-sm"></i>
+                <div>&nbsp;&nbsp;Giỏ hàng</div>
+            </button>
+        </div>
+
+    </div>
+
+    <!--Nav-->
+    <div style="display: block;" >
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/TrangChu">Trang chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sản phẩm
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/DanhMuc?IdLTC01">Trái cây miền bắc</a>
+                            <a class="dropdown-item" href="/DanhMuc?IdLTC02">Trái cây miền trung</a>
+                            <a class="dropdown-item" href="/DanhMuc?IdLTC03">Trái cây miền nam</a>
+                            <a class="dropdown-item" href="/DanhMuc?IdLTC04">Trái cây nhập khẩu</a>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/LienHe">Liên hệ</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--END HEAD-->
+    <div class="Contact">
+        <ul>
+            <li>
+                <div class="card_contact">
+                    <img src="https://scontent.fsgn5-4.fna.fbcdn.net/v/t1.15752-9/61556351_327025604659754_8934669046796779520_n.jpg?_nc_cat=102&_nc_oc=AQkmPp4s6oCpryzeEm4ptFtI2FMhyCAsu9ESbUgAcaTC0EIwMkrLm--qu77TraBnO6k&_nc_ht=scontent.fsgn5-4.fna&oh=dbf7670af610ffcf08ff85104ea54c7f&oe=5D9AA1C3"
+                         alt="Avatar">
+                    <div class="content">
+                        <div class="name"><b>Vinh Le Nhut</b></div>
+                        <div class="mssv">15521016</div>
+                        <div class="mess">Đồ án #devkl</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="card_contact">
+                    <img src="https://scontent.xx.fbcdn.net/v/t1.15752-0/p280x280/61705244_370872353543701_2708663529434513408_n.png?_nc_cat=101&_nc_oc=AQndfulbWCtf760R3ffNUgUOJhB11mDBG29yMbVm76qtVRG3Jyq4SFmn8FL7s1DV78cWBIEJGiiUBn5mLT9WvtLE&_nc_ad=z-m&_nc_cid=0&_nc_zor=9&_nc_ht=scontent.xx&oh=64c9c2eae317357532cff93fb25d50dc&oe=5D8A8002"
+                         alt="Avatar">
+                    <div class="content">
+                        <div class="name"><b>Tho Duong Phuoc Hai</b></div>
+                        <div class="mssv">15520851</div>
+                        <div class="mess">Dăm ba cái đồ án</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="card_contact">
+                    <img src="https://scontent.xx.fbcdn.net/v/t1.15752-0/p280x280/61522594_351407545579672_7242646060399591424_n.png?_nc_cat=101&_nc_oc=AQmSClt7qKoFmlCzGJdB7yLzPt-tDRNU4ErMLX4mpKvbHQ4JLuWf00kX5-swGpcUnivmGf-lXJnvL-5ZmNmDt2BP&_nc_ad=z-m&_nc_cid=0&_nc_zor=9&_nc_ht=scontent.xx&oh=bd4b4e04efef273ed3eadd8b9a7578ca&oe=5D8B381A"
+                         alt="Avatar">
+                    <div class="content">
+                        <div class="name"><b>Quoc Tran Minh</b></div>
+                        <div class="mssv">15520702</div>
+                        <div class="mess">Đồ án #nolaidevl</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--FOOT-->
+    <!--Footer-->
+    <footer class="footer-distributed">
+        <div class="footer-right">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="footer-left">
+            <p class="footer-links">
+                <a href="/TrangChu">Trang chủ</a>
+                ·
+                <a href="/DanhMuc?IdLTC01">Sản phẩm</a>
+                ·
+                <a href="/LienHe">Liên hệ</a>
+            </p>
+            <p>Hona Green House &copy; 2019</p>
+        </div>
+    </footer>
+</form>
+<!--END FOOT-->
+</body>
+</html>

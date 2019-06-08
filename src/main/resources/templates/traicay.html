@@ -75,8 +75,8 @@
                 <span>Quản lí kho</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a class="dropdown-item" href="#">Thêm loại trái cây</a>
-                <a class="dropdown-item" href="#">Thêm trái cây</a>
+                <a class="dropdown-item" href="/Admin/LoaiTraiCay">Thêm loại trái cây</a>
+                <a class="dropdown-item" href="/Admin/TraiCay">Thêm trái cây</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -85,10 +85,7 @@
                 <span>Quản lí đơn hàng</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a class="dropdown-item" href="#">Đơn hàng tiếp nhập</a>
-                <div class="dropdown-divider"></div>
-
-                <a class="dropdown-item" href="#">Xác nhập đơn hàng</a>
+                <a class="dropdown-item" href="#">Danh sách đơn hàng</a>
             </div>
         </li>
 
@@ -115,228 +112,228 @@
     </ul>
 
     <div id="content-wrapper">
-        <!-- /.container-fluid -->
         <div class="container-fluid">
 
-            <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="#">Thêm trái cây</a>
-                </li>
-                <li class="breadcrumb-item active">Overview</li>
-            </ol>
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Thêm trái cây</a>
+            </li>
+            <li class="breadcrumb-item active">Overview</li>
+        </ol>
 
-            <!-- Button Them Trai Cay-->
-            <div class="d-flex m-3 flex-row-reverse">
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalThemTC">Thêm trái cây</button>
-            </div>
-
-            <div id="alert"></div>
-
-            <!-- DataTables -->
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fas fa-table"></i>
-                    Danh sách trái cây
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable">
-                            <thead>
-                            <tr>
-                                <th>Mã</th>
-                                <th>Tên trái cây</th>
-                                <th>Mã loại trái cây</th>
-                                <th>Loại trái cây</th>
-                                <th>Xuất xứ</th>
-                                <th>Số lượng tồn</th>
-                                <th>Đơn vị tính</th>
-                                <th>Đơn giá</th>
-                                <th>#</th>
-                                <th>#</th>
-
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <tr>
-                                <th>Mã</th>
-                                <th>Tên trái cây</th>
-                                <th>Mã loại trái cây</th>
-                                <th>Loại trái cây</th>
-                                <th>Xuất xứ</th>
-                                <th>Số lượng tồn</th>
-                                <th>Đơn vị tính</th>
-                                <th>Đơn giá</th>
-                                <th>#</th>
-                                <th>#</th>
-
-                            </tr>
-                            </tfoot>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <!-- The Modal Them Trai Cay -->
-            <div class="modal fade" id="modalThemTC">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Thêm Trái Cây</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <div id="alertThem"></div>
-                            <div class="d-flex">
-                                <div class="p-1 flex-fill">
-                                    <div class="form-group">
-                                        <label for="txtTenTraiCay">Tên trái cây: (*)</label>
-                                        <input type="text" class="form-control" id="txtTenTraiCay">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for = "txtXuatXu">Xuất xứ:</label>
-                                        <input type="text" class="form-control" id="txtXuatXu">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtSoLuongNhap" >Số lượng nhập: (*)</label>
-                                        <input type="number" class="form-control" id="txtSoLuongNhap" min="0" step="1" value="0">
-                                    </div>
-
-                                </div>
-                                <div class="p-1 flex-fill">
-
-                                    <div class="form-group">
-                                        <label for="txtDonGia">Đơn giá: (*)</label>
-                                        <input type="number" class="form-control" id="txtDonGia" min="0" step="1" value="0">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtDonViTinh">Đơn vị tính: (*)</label>
-                                        <input type="text" class="form-control" id="txtDonViTinh">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="selLoaiTraiCay">Loại trái cây:</label>
-                                        <select class="form-control" id="selLoaiTraiCay" tabindex="0">
-                                            <option value="LTC01">LTC01 - Trái cây miền bắc</option>
-                                            <option value="LTC02">LTC02 - Trái cây miền trung</option>
-                                            <option value="LTC03">LTC03 - Trái cây miền nam</option>
-                                            <option value="LTC04">LTC04 - Trái cây nhập khẩu</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button class="btn btn-dark" id="btnSubmitThem">Submit</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!-- The Modal Xoa Trai Cay -->
-            <div class="modal fade" id="modalXoaTC">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Xoá Trái Cây</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            Bạn có chăc chắn muốn xoá ?
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button class="btn btn-dark" id="btnSubmitXoa" data-dismiss="modal">Submit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- The Modal Sua Trai Cay -->
-            <div class="modal fade" id="modalSuaTC">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Sửa Trái Cây</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <div id="alertSua"></div>
-                            <div class="d-flex">
-                                <div class="p-1 flex-fill">
-                                    <div class="form-group">
-                                        <label for="txtTenTraiCay01">Tên trái cây: (*)</label>
-                                        <input type="text" class="form-control" id="txtTenTraiCay01">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtXuatXu01" >Xuất xứ:</label>
-                                        <input type="text" class="form-control" id="txtXuatXu01">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtSoLuongNhap01" >Số lượng nhập: (*)</label>
-                                        <input type="number" class="form-control" id="txtSoLuongNhap01" min="0" step="1" value="0">
-                                    </div>
-
-                                </div>
-                                <div class="p-1 flex-fill">
-
-                                    <div class="form-group">
-                                        <label for="txtDonGia01" >Đơn giá: (*)</label>
-                                        <input type="number" class="form-control" id="txtDonGia01" min="0" step="1" value="0">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtDonViTinh01">Đơn vị tính: (*)</label>
-                                        <input type="text" class="form-control" id="txtDonViTinh01">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="selLoaiTraiCay01">Loại trái cây:</label>
-                                        <select class="form-control" id="selLoaiTraiCay01">
-                                            <option value="LTC01">LTC01 - Trái cây miền bắc</option>
-                                            <option value="LTC02">LTC02 - Trái cây miền trung</option>
-                                            <option value="LTC03">LTC03 - Trái cây miền nam</option>
-                                            <option value="LTC04">LTC04 - Trái cây nhập khẩu</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button class="btn btn-dark" id="btnSubmitSua">Submit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <!-- Button Them Trai Cay-->
+        <div class="d-flex m-3 flex-row-reverse">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalThemTC">Thêm trái cây</button>
         </div>
 
+        <div id="alert"></div>
 
-        <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright © Hona Green House 2019</span>
+        <!-- DataTables -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Danh sách trái cây
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable">
+                        <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Tên TC</th>
+                            <th>Loại TC</th>
+                            <th>Xuất xứ</th>
+                            <th>SL tồn</th>
+                            <th>ĐVT</th>
+                            <th>ĐGiá nhập</th>
+                            <th>ĐGiá xuất</th>
+                            <th>#</th>
+                            <th>#</th>
+                            <th>#</th>
+
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Tên TC</th>
+                            <th>Loại TC</th>
+                            <th>Xuất xứ</th>
+                            <th>SL tồn</th>
+                            <th>ĐVT</th>
+                            <th>ĐGiá nhập</th>
+                            <th>ĐGiá xuất</th>
+                            <th>#</th>
+                            <th>#</th>
+                            <th>#</th>
+
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </footer>
+        </div>
 
+        <!-- The Modal Them Trai Cay -->
+        <div class="modal fade" id="modalThemTC">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Thêm Trái Cây</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div id="alertThem"></div>
+                        <div class="d-flex">
+                            <div class="p-1 flex-fill">
+                                <div class="form-group">
+                                    <label for="txtTenTraiCay">Tên trái cây: (*)</label>
+                                    <input type="text" class="form-control" id="txtTenTraiCay">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtXuatXu">Xuất xứ:</label>
+                                    <input type="text" class="form-control" id="txtXuatXu">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtSoLuongNhap">Số lượng nhập: (*)</label>
+                                    <input type="number" class="form-control" id="txtSoLuongNhap" min="0" step="1" value="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="selLoaiTraiCay">Loại trái cây:</label>
+                                    <select class="form-control" id="selLoaiTraiCay" tabindex="0">
+                                        <option value="LTC01">LTC01 - Trái cây miền bắc</option>
+                                        <option value="LTC02">LTC02 - Trái cây miền trung</option>
+                                        <option value="LTC03">LTC03 - Trái cây miền nam</option>
+                                        <option value="LTC04">LTC04 - Trái cây nhập khẩu</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="p-1 flex-fill">
+
+                                <div class="form-group">
+                                    <label for="txtDonGiaNhap">Đơn giá nhập: (*)</label>
+                                    <input type="number" class="form-control" id="txtDonGiaNhap" min="0" step="1" value="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtDonGiaXuat">Đơn giá xuất: (*)</label>
+                                    <input type="number" class="form-control" id="txtDonGiaXuat" min="0" step="1" value="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtDonViTinh">Đơn vị tính: (*)</label>
+                                    <input type="text" class="form-control" id="txtDonViTinh">
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button class="btn btn-dark" id="btnSubmitThem">Submit</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- The Modal Xoa Trai Cay -->
+        <div class="modal fade" id="modalXoaTC">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Xoá Trái Cây</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Bạn có chăc chắn muốn xoá ?
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button class="btn btn-dark" id="btnSubmitXoa" data-dismiss="modal">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal Sua Trai Cay -->
+        <div class="modal fade" id="modalSuaTC">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Sửa Trái Cây</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div id="alertSua"></div>
+                        <div class="d-flex">
+                            <div class="p-1 flex-fill">
+                                <div class="form-group">
+                                    <label for="txtTenTraiCay01">Tên trái cây: (*)</label>
+                                    <input type="text" class="form-control" id="txtTenTraiCay01">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtXuatXu01">Xuất xứ:</label>
+                                    <input type="text" class="form-control" id="txtXuatXu01">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtSoLuongNhap01">Số lượng nhập: (*)</label>
+                                    <input type="number" class="form-control" id="txtSoLuongNhap01" min="0" step="1" value="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="selLoaiTraiCay01">Loại trái cây:</label>
+                                    <select class="form-control" id="selLoaiTraiCay01">
+                                        <option value="LTC01">LTC01 - Trái cây miền bắc</option>
+                                        <option value="LTC02">LTC02 - Trái cây miền trung</option>
+                                        <option value="LTC03">LTC03 - Trái cây miền nam</option>
+                                        <option value="LTC04">LTC04 - Trái cây nhập khẩu</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="p-1 flex-fill">
+
+                                <div class="form-group">
+                                    <label for="txtDonGiaNhap01">Đơn giá nhập: (*)</label>
+                                    <input type="number" class="form-control" id="txtDonGiaNhap01" min="0" step="1" value="0">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txtDonGiaXuat01">Đơn giá xuất: (*)</label>
+                                    <input type="number" class="form-control" id="txtDonGiaXuat01" min="0" step="1" value="0">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txtDonViTinh01">Đơn vị tính: (*)</label>
+                                    <input type="text" class="form-control" id="txtDonViTinh01">
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button class="btn btn-dark" id="btnSubmitSua">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
     </div>
     <!-- /.content-wrapper -->
 
@@ -377,11 +374,11 @@
 
     function loadTable() {
 
-        // Load dataTable qua Api trai cay
+        // Load dataTable qua Api trai cay  
         table = $('#dataTable').DataTable({
             processing: true,
-            paging: false,
-            searching: false,
+            paging: true,
+            searching: true,
             ajax: {
                 url: '/Api/GetListTraiCay',
                 dataSrc: ''
@@ -389,12 +386,17 @@
             columns: [
                 { data: 'maTraiCay' },
                 { data: 'tenTraiCay' },
-                { data: 'loaiTraiCay.maLoaiTraiCay' },
+                //{ data: 'loaiTraiCay' },
                 { data: 'loaiTraiCay.tenLoaiTraiCay' },
                 { data: 'xuatXu' },
                 { data: 'soLuong' },
                 { data: 'donViTinh' },
-                { data: 'donGia' },
+                { data: 'donGiaNhap' },
+                { data: 'donGiaXuat' },
+                {
+                    "data": null,
+                    "defaultContent": `<button type="button" id="btnChiTietTC" class="btn btn-primary">Chi tiết</button>`
+                },
                 {
                     "data": null,
                     "defaultContent": `<button type="button" id="btnSua" class="btn btn-secondary" data-toggle="modal" data-target="#modalSuaTC">Sửa</button>`
@@ -415,13 +417,14 @@
                 modal.find('.modal-body #txtTenTraiCay01').val(data.tenTraiCay)
                 modal.find('.modal-body #txtXuatXu01').val(data.xuatXu)
                 modal.find('.modal-body #txtSoLuongNhap01').val(data.soLuong)
-                modal.find('.modal-body #txtDonGia01').val(data.donGia)
+                modal.find('.modal-body #txtDonGiaXuat01').val(data.donGiaXuat)
+                modal.find('.modal-body #txtDonGiaNhap01').val(data.donGiaNhap)
                 modal.find('.modal-body #txtDonViTinh01').val(data.donViTinh)
 
                 modal.find('.modal-title').text('Sửa trái cây mã ' + data.maTraiCay)
             })
 
-            let loaiTC = data.loaiTraiCay.maLoaiTraiCay.toString().trim();
+            let loaiTC = data.loaiTraiCay.toString().trim();
             $("#selLoaiTraiCay01 option[value='" + loaiTC + "']").attr("selected", "selected");
 
             // Gan su kien submit cho modal Sua
@@ -432,7 +435,8 @@
                     "maTraiCay": data.maTraiCay,
                     "tenTraiCay": $("#txtTenTraiCay01").val() ? $("#txtTenTraiCay01").val() : "",
                     "donViTinh": $("#txtDonViTinh01").val() ? $("#txtDonViTinh01").val() : "",
-                    "donGia": parseInt($("#txtDonGia01").val()),
+                    "donGiaXuat": parseInt($("#txtDonGiaXuat01").val()),
+                    "donGiaNhap": parseInt($("#txtDonGiaNhap01").val()),
                     "soLuong": parseInt($("#txtSoLuongNhap01").val()),
                     "xuatXu": $("#txtXuatXu01").val() ? $("#txtXuatXu01").val() : "",
                     "loaiTraiCay": $("#selLoaiTraiCay01").val()
@@ -444,7 +448,7 @@
                     data: JSON.stringify(traiCay),
                     contentType: 'application/json',
                     success: function (result) {
-                        // Lôi
+                        // Lôi 
                         if (result) {
                             $('#alertSua').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result + ` </div >`)
                             $('#alertSua').show();
@@ -459,12 +463,13 @@
 
                             $("#txtTenTraiCay01").val("")
                             $("#txtDonViTinh01").val("")
-                            $("#txtDonGia01").val("")
+                            $("#txtDonGiaNhap01").val("")
+                            $("#txtDonGiaXuat01").val("")
                             $("#txtSoLuongNhap01").val("")
                             $("#txtXuatXu01").val("")
                             $("#selLoaiTraiCay01").val("LTC01")
 
-                            $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Update trái cây thành công ! </div >`)
+                            $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Update trái cây thành công </div >`);
 
                             $('#alert').show();
                             // ẩn alert sau 7s
@@ -493,11 +498,11 @@
 
             // hiển thị mã trái cây ở modal xoá
             $('#modalXoaTC').on('show.bs.modal', function (event) {
-                let modal = $(this)
+                var modal = $(this)
                 modal.find('.modal-title').text('Xoá trái cây mã ' + data.maTraiCay)
             })
 
-            // gán sự kiện vào btn Xoa trong modal
+            // gán sự kiện vào btn Xoa trong modal 
             $('#btnSubmitXoa').click(function (e) {
                 e.preventDefault();
                 $.ajax({
@@ -506,10 +511,10 @@
                     success: function (result) {
 
                         if (result) {
-                            $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Lỗi kết nối cơ sở dữ liệu </div >`)
+                            $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result + ` </div >`)
                         }
                         else {
-                            $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Xóa trái cây thành công ! </div >`)
+                            $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Xóa trái cây thành công </div >`)
                         }
 
                         $('#alert').show();
@@ -530,6 +535,11 @@
             });
 
         });
+
+        $('#dataTable tbody').on('click', '#btnChiTietTC', function () {
+            let data = table.row($(this).parents('tr')).data();
+            window.open('/Admin/ChiTietTraiCay?Id=' + data.maTraiCay,'_blank');
+        });
     }
 
     function btnSubmitThem_OnClick(e) {
@@ -538,10 +548,11 @@
         let traiCay = {
             "tenTraiCay": $("#txtTenTraiCay").val() ? $("#txtTenTraiCay").val() : "",
             "donViTinh": $("#txtDonViTinh").val() ? $("#txtDonViTinh").val() : "",
-            "donGia": parseInt($("#txtDonGia").val()),
+            "donGiaNhap": parseInt($("#txtDonGiaNhap").val()),
+            "donGiaXuat": parseInt($("#txtDonGiaXuat").val()),
             "soLuong": parseInt($("#txtSoLuongNhap").val()),
             "xuatXu": $("#txtXuatXu").val() ? $("#txtXuatXu").val() : "",
-            "loaiTraiCay": $("#selLoaiTraiCay").val(),
+            "loaiTraiCay": $("#selLoaiTraiCay").val()
         }
         console.log("JSON", traiCay)
         $.ajax({
@@ -550,8 +561,7 @@
             data: JSON.stringify(traiCay),
             contentType: 'application/json',
             success: function (result) {
-                // Lôi
-                console.log("Suc",result)
+                // Lôi 
                 if (result) {
                     $('#alertThem').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result + ` </div >`)
                     $('#alertThem').show();
@@ -566,7 +576,8 @@
 
                     $("#txtTenTraiCay").val("")
                     $("#txtDonViTinh").val("")
-                    $("#txtDonGia").val("")
+                    $("#txtDonGiaNhap").val("")
+                    $("#txtDonGiaXuat").val("")
                     $("#txtSoLuongNhap").val("")
                     $("#txtXuatXu").val("")
                     $("#selLoaiTraiCay").val("LTC01")
@@ -586,7 +597,7 @@
 
             },
             error: function (result) {
-                console.log("Error",result)
+                console.log(result)
                 $('#alertThem').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Có lỗi trong quá trình kết nối </div >`)
             }
         });

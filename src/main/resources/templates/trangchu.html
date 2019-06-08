@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" th:href="@{/css/master.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/danhmuc.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/slider.css}" type="text/css"/>
+
+    <!-- Custom fonts for this template-->
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link th:href="@{/vendor/datatables/dataTables.bootstrap4.css}" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link th:href="@{/css/sb-admin.css}" rel="stylesheet">
+
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+
+<!--HEAD-->
+<form id="form" >
+    <!--Header-->
+    <div class="header">
+        <div style="font-family: 'Coiny', cursive; color: white; text-align: center; align-self: center; font-size: x-large"
+             >Hona Green House
+        </div>
+        <div style="flex-direction: row; display: flex">
+
+            <button class="button_nav_gh" >
+                <i class="fas fa-shopping-cart fa-sm"></i>
+                <div>&nbsp;&nbsp;Giỏ hàng</div>
+            </button>
+        </div>
+    </div>
+
+    <!--Nav-->
+    <div style="display: block;" >
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/TrangChu">Trang chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sản phẩm
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC01">Trái cây miền bắc</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC02">Trái cây miền trung</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC03">Trái cây miền nam</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC04">Trái cây nhập khẩu</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/LienHe">Liên hệ</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--END HEAD-->
+    <div style="display: flex; flex: 1; align-items: center; justify-content: center; margin-top: 10px; flex-direction: column">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img th:src="@{/img/slider01.jpg}" style="width:100%;">
+            </div>
+
+            <div class="mySlides fade">
+                <img th:src="@{/img/slider02.jpg}" style="width:100%;">
+            </div>
+
+            <div class="mySlides fade">
+                <img th:src="@{/img/slider03.jpg}" style="width:100%;">
+            </div>
+        </div>
+        <br>
+
+        <div style="text-align: center">
+            <span class="dot" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </div>
+    <div class="Category">
+        <a href="/DanhMuc?Id=LTC01">
+            <div class="card">
+                <img th:src="@{/img/trai-cay-mien-nam.jpg}" alt="Avatar">
+                <div class="content">
+                    <span class="category_name"><b>TRÁI CÂY MIỀN NAM</b></span>
+                </div>
+            </div>
+        </a>
+
+        <a href="/DanhMuc?Id=LTC02">
+            <div class="card">
+                <img th:src="@{/img/trai-cay-dac-san-mien-bac.jpg}" alt="Avatar">
+                <div class="content">
+                    <span class="category_name"><b>TRÁI CÂY MIỀN BẮC</b></span>
+                </div>
+            </div>
+        </a>
+
+        <a href="/DanhMuc?Id=LTC03">
+            <div class="card">
+                <img th:src="@{/img/trai-cay-mien-trung.jpg}" alt="Avatar">
+                <div class="content">
+                    <span class="category_name"><b>TRÁI CÂY MIỀN TRUNG</b></span>
+                </div>
+            </div>
+        </a>
+
+        <a href="/DanhMuc?Id=LTC04">
+            <div class="card">
+                <img th:src="@{/img/trai-cay-nhap-khau.jpg}" alt="Avatar">
+                <div class="content">
+                    <span class="category_name"><b>TRÁI CÂY NHẬP KHẨU</b></span>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="Selling_Products">
+        <div class="selling_title">
+            <span>SẢN PHẨM BÁN CHẠY</span>
+        </div>
+        <div class="list_products">
+            <ul id="ul_list_tc" >
+            </ul>
+        </div>
+<!--        <div class="see_more">-->
+<!--            <button class="button_see_more" id="button_see_more">XEM THÊM</button>-->
+<!--        </div>-->
+        <div class="see_more">
+            <a href="/DanhMuc?Id=banChay">
+                <input class="button_see_more" id="button_see_more" type="button" value="XEM THÊM" />
+            </a>
+        </div>
+    </div>
+
+    <!--FOOT-->
+    <!--Footer-->
+    <footer class="footer-distributed">
+        <div class="footer-right">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="footer-left">
+            <p class="footer-links">
+                <a href="/TrangChu">Trang chủ</a>
+                ·
+                <a href="/DanhMuc?Id=LTC01">Sản phẩm</a>
+                ·
+                <a href="/LienHe">Liên hệ</a>
+            </p>
+            <p>Hona Green House &copy; 2019</p>
+        </div>
+    </footer>
+</form>
+<!--END FOOT-->
+
+<script type="text/javascript">
+    function getTraiCayBanChay() {
+        $.ajax({
+            type: "GET",
+            url: "/Api/GetTraiCayBanChay",
+            success: function (traiCay) {
+                for (let i = 0; i < traiCay.length; i++){
+                    if (i == 20)
+                        break;
+
+                    var ul = document.getElementById("ul_list_tc");
+                    var li = document.createElement("li");
+                    li.innerHTML = "<a href='TraiCay?Id=" + traiCay[i].maTraiCay + "'><div class='card'><img src='" + traiCay[i].urlAnh + "' alt='Avatar'><div class='content'><div class='product_name'><b>" + traiCay[i].tenTraiCay + "</b></div><div class='product_unit'>ĐƠN VI TÍNH : " + traiCay[i].donViTinh + "</div><div class='product_price'>" + traiCay[i].donGia + " ₫</div></div></div></a>";
+                    ul.appendChild(li);
+                }
+                console.log(traiCay);
+            },
+            error: function (traiCay) {
+                console.log("Error");
+            }
+        });
+
+    }
+
+    $(document).ready(function () {
+        // document.getElementById("button_see_more").onclick = function () {
+        //     // location.href = "/DanhMuc?Id=banChay";
+        //     Response.redirect("/DanhMuc?Id=banChay");
+        // };
+
+        getTraiCayBanChay()
+    });
+</script>
+<script th:src="@{/js/slider.js}" type="text/javascript"></script>
+</body>
+</html>
