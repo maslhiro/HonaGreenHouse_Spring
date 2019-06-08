@@ -43,4 +43,13 @@ public class AdminController {
         return mav;
     }
 
+    @RequestMapping("/Voucher")
+    public String voucher() {
+        return "voucher";
+    }
+
+    @RequestMapping("/ThongKeNhap")
+    public  String thongKeNhap(){
+        return "thongkenhap";
+    }
 }

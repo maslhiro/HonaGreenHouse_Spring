@@ -17,4 +17,5 @@ public interface VoucherService{
 
     public Integer updateVoucher(Voucher voucher);
 
+    public Integer huyVoucher(String autoID);
 }

@@ -57,4 +57,21 @@ public class VoucherServiceImpl implements VoucherService {
             return  1;        }
     }
 
+    @Override
+    public Integer huyVoucher(String autoID){
+        try {
+            Voucher voucher =  voucherRepository.findById(autoID).get();
+            voucher.setTrangThai(1);
+
+            voucherRepository.saveAndFlush(voucher);
+            return 0;
+        }catch (Exception ex)
+        {
+            System.out.println(ex);
+            return 1;
+        }
+
+    }
+
+
 }

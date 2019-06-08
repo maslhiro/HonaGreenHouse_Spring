@@ -49,9 +49,6 @@
                 <i class="fas fa-user-circle fa-fw"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Settings</a>
-                <a class="dropdown-item" href="#">Activity Log</a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </div>
         </li>
@@ -75,8 +72,8 @@
                 <span>Quản lí kho</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a class="dropdown-item" href="#">Thêm loại trái cây</a>
-                <a class="dropdown-item" href="#">Thêm trái cây</a>
+                <a class="dropdown-item" href="/Admin/LoaiTraiCay">Thêm loại trái cây</a>
+                <a class="dropdown-item" href="/Admin/TraiCay">Thêm trái cây</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -98,18 +95,14 @@
                 <span>Thống kê</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <h6 class="dropdown-header">Lập thống kê</h6>
-                <a class="dropdown-item" href="#">Thông kê đơn hàng</a>
-                <a class="dropdown-item" href="#">Thống kê nhập xuất</a>
-                <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">Xuất báo cáo</h6>
-                <a class="dropdown-item" href="#">Blank Page</a>
+                <a class="dropdown-item" href="/Admin/ThongKeNhap">Thông kê nhập</a>
+                <a class="dropdown-item" href="#">Thống kê xuất</a>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/Admin/Voucher">
                 <i class="fas fa-fw fa-users"></i>
-                <span>Quản lí tài khoản</span>
+                <span>Quản lí voucher</span>
             </a>
         </li>
     </ul>
@@ -144,26 +137,30 @@
                         <table class="table table-bordered" id="dataTable">
                             <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>Id</th>
                                 <th>Mã voucher</th>
-                                <th>Phần trăm giảm</th>
+                                <th>% giảm</th>
                                 <th>Đã dùng</th>
                                 <th>Được dùng tối đa</th>
                                 <th>Số tiền giảm tối đa</th>
                                 <th>Trạng thái</th>
                                 <th>#</th>
+                                <th>#</th>
+
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
-                                <th>ID</th>
+                                <th>Id</th>
                                 <th>Mã voucher</th>
-                                <th>Phần trăm giảm</th>
+                                <th>% giảm</th>
                                 <th>Đã dùng</th>
                                 <th>Được dùng tối đa</th>
                                 <th>Số tiền giảm tối đa</th>
                                 <th>Trạng thái</th>
                                 <th>#</th>
+                                <th>#</th>
+
                             </tr>
                             </tfoot>
                             <tbody>
@@ -213,11 +210,6 @@
                                         <label for="txtSoLanSuDungToiDa" >Số lần sử dụng tối đa: (*)</label>
                                         <input  type="number" class="form-control" id="txtSoLanSuDungToiDa" min="0" step="1" value="0">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="txtTrangThai" >Trạng thái:</label>
-                                        <input type="number" readonly="true" class="form-control" id="txtTrangThai"  min="0" max="1" value="1">
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -270,10 +262,6 @@
                                         <label for="txtSoLanSuDungToiDa01" >Số lần sử dụng tối đa: (*)</label>
                                         <input type="number" class="form-control" id="txtSoLanSuDungToiDa01" min="0" step="1">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="txtTrangThai01" >Trạng thái: (*)</label>
-                                        <input type="number" class="form-control" id="txtTrangThai01"  min="0" max="1" value="0">
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -285,6 +273,30 @@
                 </div>
             </div>
 
+            <!-- The Modal Huy Voucher -->
+            <div class="modal fade" id="modalHuyVoucher">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Hủy voucher</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Bạn có chắc chắn muốn hủy voucher này ?
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button class="btn btn-dark" id="btnSubmitHuy">Submit</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -340,8 +352,8 @@
         // Load dataTable qua Api Voucher
         table = $('#dataTable').DataTable({
             processing: true,
-            paging: false,
-            searching: false,
+            paging: true,
+            searching: true,
             ajax: {
                 url: '/Api/GetListVoucher',
                 dataSrc: ''
@@ -353,10 +365,27 @@
                 { data: 'soLanSuDung' },
                 { data: 'soLanSuDungToiDa' },
                 { data: 'tienGiamToiDa' },
-                { data: 'trangThai' },
+                {
+                    data: "trangThai",
+                    render: function (data, type, row) {
+                        if(data){
+                            return 'Hết hiệu lực'
+                        };
+                        return  'Còn hiệu lực'
+                    }
+                },
                 {
                     "data": null,
                     "defaultContent": `<button type="button" id="btnSua" class="btn btn-secondary" data-toggle="modal" data-target="#modalSuaVoucher">Chi tiết</button>`
+                },
+                {
+                    data: "trangThai",
+                    render:  function (data, type, row) {
+                        if(!data){
+                            return `<button type="button" id="btnHuy" class="btn btn-primary" data-toggle="modal" data-target="#modalHuyVoucher">Hủy</button>`
+                        }
+                        return `<button type="button" id="btnHuy" class="btn btn-primary" data-toggle="modal" data-target="#modalHuyVoucher" disabled>Hủy</button>`
+                    }
                 },
                ],
             order : [0,"desc"]
@@ -374,7 +403,6 @@
                 $("#txtMaGiamGia01").val("0")
                 $("#txtPhanTramGiam01").val("0")
                 $("#txtTienGiamToiDa01").val("0")
-                $("#txtTrangThai01").val("0")
                 $("#txtSoLanSuDung01").val("0")
                 $("#txtSoLanSuDungToiDa01").val("0")
 
@@ -383,7 +411,6 @@
                 modal.find('.modal-body #txtTienGiamToiDa01').val(data.tienGiamToiDa)
                 modal.find('.modal-body #txtSoLanSuDung01').val(data.soLanSuDung)
                 modal.find('.modal-body #txtSoLanSuDungToiDa01').val(data.soLanSuDungToiDa)
-                modal.find('.modal-body #txtTrangThai01').val(data.trangThai)
             })
 
             // Gan su kien submit cho modal Sua
@@ -394,7 +421,6 @@
                     "maGiamGia": data.maGiamGia,
                     "phanTramGiam": parseInt($("#txtPhanTramGiam01").val()),
                     "tienGiamToiDa": parseInt($("#txtTienGiamToiDa01").val()),
-                    "trangThai": parseInt($("#txtTrangThai01").val()),
                     "soLanSuDung": parseInt($("#txtSoLanSuDung01").val()),
                     "soLanSuDungToiDa": parseInt($("#txtSoLanSuDungToiDa01").val()),
                 }
@@ -420,7 +446,6 @@
                             $("#txtMaGiamGia01").val("")
                             $("#txtPhanTramGiam01").val("")
                             $("#txtTienGiamToiDa01").val("")
-                            $("#txtTrangThai01").val("")
                             $("#txtSoLanSuDung01").val("")
                             $("#txtSoLanSuDungToiDa01").val("")
                             $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Update Voucher thành công ! </div >`)
@@ -446,6 +471,60 @@
 
         });
 
+        // Gan su kien click btn Huy cho tung row
+        $('#dataTable tbody').on('click', '#btnHuy', function () {
+            let data = table.row($(this).parents('tr')).data();
+
+            // Load data vao modal Huy
+            $('#modalHuyVoucher').on('show.bs.modal', function (event) {
+                let modal = $(this)
+
+                $("#modalHuyVoucher").modal('hide')
+
+                modal.find('.modal-title').text('Hủy voucher id ' + data.autoID)
+            })
+
+            // Gan su kien submit cho modal Sua
+            $("#btnSubmitHuy").click(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: "GET",
+                    url: "/Api/HuyVoucher?Id="+data.autoID,
+                    contentType: 'application/json',
+                    success: function (result) {
+                        // Lôi
+                        if (result) {
+                            $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result + ` </div >`)
+                            $('#alert').show();
+                            // ẩn alert sau 7s
+                            $("#alert").delay(7000).slideUp(200, function () {
+                                $(this).alert('dispose');
+                            });
+                        }
+                        else {
+                            $("#modalHuyVoucher").modal('hide')
+
+                            $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Update Voucher thành công ! </div >`)
+
+                            $('#alert').show();
+                            // ẩn alert sau 7s
+                            $("#alert").delay(7000).slideUp(200, function () {
+                                $(this).alert('dispose');
+                            });
+
+                            // load lai dataTable
+                            table.ajax.reload();
+                        }
+                    },
+                    error: function (result) {
+                        console.log(result)
+                        $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Có lỗi trong quá trình kết nối </div >`)
+                    }
+                });
+            })
+
+        });
     }
 
     function btnSubmitThem_OnClick(e) {
@@ -455,7 +534,6 @@
             "maGiamGia": $("#txtMaGiamGia").val() ? $("#txtMaGiamGia").val() : "",
             "phanTramGiam": parseInt($("#txtPhanTramGiam").val()),
             "tienGiamToiDa": parseInt($("#txtTienGiamToiDa").val()),
-            "trangThai": parseInt($("#txtTrangThai").val()),
             "soLanSuDung": parseInt($("#txtSoLanSuDung").val()),
             "soLanSuDungToiDa": parseInt($("#txtSoLanSuDungToiDa").val()),
         }
@@ -482,7 +560,6 @@
                     $("#txtMaGiamGia").val("")
                     $("#txtPhanTramGiam").val("0")
                     $("#txtTienGiamToiDa").val("0")
-                    $("#txtTrangThai").val("0")
                     $("#txtSoLanSuDung").val("0")
                     $("#txtSoLanSuDungToiDa").val("0")
                     $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > Tạo voucher thành công </div >`)

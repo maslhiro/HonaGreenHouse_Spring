@@ -29,17 +29,10 @@ public class Voucher {
     @Column(name = "Trang_Thai")
     private Integer trangThai;
 
-    @Column(name = "Ngay_Bat_Dau")
-    private Date ngayBatDau;
-
-    @Column(name = "Ngay_Ket_Thuc")
-    private Date ngayKetThuc;
-
-
     public Voucher() {
     }
 
-    public Voucher(String autoID, String maGiamGia, Integer phanTramGiam, Integer soLanSuDung, Integer soLanSuDungToiDa, Integer tienGiamToiDa, Integer trangThai, Date ngayBatDau, Date ngayKetThuc) {
+    public Voucher(String autoID, String maGiamGia, Integer phanTramGiam, Integer soLanSuDung, Integer soLanSuDungToiDa, Integer tienGiamToiDa, Integer trangThai) {
         this.autoID = autoID;
         this.maGiamGia = maGiamGia;
         this.phanTramGiam = phanTramGiam;
@@ -47,7 +40,7 @@ public class Voucher {
         this.soLanSuDungToiDa = soLanSuDungToiDa;
         this.tienGiamToiDa = tienGiamToiDa;
         this.trangThai = trangThai;
-        }
+    }
 
     public String getAutoID() {
         return autoID;
@@ -104,7 +97,6 @@ public class Voucher {
     public void setTrangThai(Integer trangThai) {
         this.trangThai = trangThai;
     }
-
 }
 
 

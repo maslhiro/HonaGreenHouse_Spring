@@ -18,8 +18,8 @@ public interface TraiCayService {
 
      Integer deleteTraiCayById(String maTraiCay);
 
-    public List<TraiCay> getTraiCayBanChayList();
+     List<TraiCay> getTraiCayBanChayList();
 
-    public List<TraiCay> getTraiCayByLoaiList(LoaiTraiCay loaiTraiCay);
+     List<TraiCay> getTraiCayByLoaiList(LoaiTraiCay loaiTraiCay);
 
 }
