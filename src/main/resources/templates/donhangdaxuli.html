@@ -179,6 +179,18 @@
 
 </div>
 </body>
+
+<!-- Core plugin JavaScript-->
+<script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+<!-- Custom scripts for all pages-->
+<script th:src="@{/js/sb-admin.min.js}"></script>
+
+<!-- Page level plugin JavaScript-->
+<script th:src="@{/vendor/datatables/jquery.dataTables.js}"></script>
+<script th:src="@{/vendor/datatables/dataTables.bootstrap4.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+
 <script type="text/javascript">
     var table;
 
@@ -188,17 +200,32 @@
 
         table = $('#dataTable').DataTable({
             processing: true,
-            paging: true,
-            searching: true,
+            paging: false,
+            searching: false,
             ajax: {
-                url: '/Api/DonHang.ashx?DataType=4',
-                dataSrc: 'Data'
+                url: '/Api/GetListDonHangDaXacNhan',
+                dataSrc: ''
             },
             columns: [
-                { data: 'Ma_Don_Hang' },
-                { data: 'Ngay_Dat' },
-                { data: 'Tong_Tien' },
-                { data: 'Tinh_Trang_Text' },
+                { data: 'maDonHang' },
+                { data: function(data){
+                    var date = new Date(data.ngayDat);
+                    var ngay = (date.getDate().toString().length > 1) ? date.getDate() : ('0' + date.getDate())
+                    var thang = ((date.getMonth() + 1).toString().length > 1) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))
+                    var nam = date.getFullYear()
+                    return ngay + '/' + thang + '/' +  nam;
+                }},
+                { data: 'tongTien' },
+                {data: function(data){
+                    switch (data.tinhTrang) {
+                        case 0:
+                            return "Chờ xác nhận"
+                        case 1:
+                            return "Hủy"
+                        case 2:
+                            return "Thành công"
+                    }
+                }},
                 {
                     "data": null,
                     "defaultContent": `<button type="button" id="btnChiTiet" class="btn btn-secondary">Chi tiết ĐH</button>`
@@ -207,7 +234,7 @@
 
         $('#dataTable tbody').on('click', '#btnChiTiet', function () {
             let data = table.row($(this).parents('tr')).data();
-            window.open('/Admin/ChiTietDonHang.aspx?MaDonHang=' + data.Ma_Don_Hang, '_blank');
+            window.open('/chitietdonhang?maDonHang=' + data.maDonHang);
         });
 
     }

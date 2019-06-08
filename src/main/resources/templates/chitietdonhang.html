@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- Custom fonts for this template-->
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link th:href="@{/vendor/datatables/dataTables.bootstrap4.css}" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link th:href="@{/css/sb-admin.css}" rel="stylesheet">
+
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body id="page-top">
+
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="#">Hona Green House</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Navbar Search -->
+    <!-- Da display none de ko hien thanh search-->
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <div class="input-group" style="display: none">
+            <input type="text" class="form-control" placeholder="Search for..." aria-label="Search"
+                   aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Navbar -->
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-circle fa-fw"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#">Activity Log</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            </div>
+        </li>
+    </ul>
+
+</nav>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="KhoDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-boxes"></i>
+                <span>Quản lí kho</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="#">Thêm loại trái cây</a>
+                <a class="dropdown-item" href="#">Thêm trái cây</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="HDDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-shopping-cart"></i>
+                <span>Quản lí đơn hàng</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="/donhangmoi">Đơn hàng mới</a>
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="/donhangdaxuli">Đơn hàng đã xử lí</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="TKDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-shopping-cart"></i>
+                <span>Thống kê</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <h6 class="dropdown-header">Lập thống kê</h6>
+                <a class="dropdown-item" href="#">Thông kê đơn hàng</a>
+                <a class="dropdown-item" href="#">Thống kê nhập xuất</a>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-header">Xuất báo cáo</h6>
+                <a class="dropdown-item" href="#">Blank Page</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-users"></i>
+                <span>Quản lí tài khoản</span>
+            </a>
+        </li>
+    </ul>
+
+    <div id="content-wrapper">
+        <!-- /.container-fluid -->
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Chi tiết trái cây</a>
+                </li>
+                <li class="breadcrumb-item active">Overview</li>
+            </ol>
+
+            <!--        CHI TIET DON HANG-->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    Chi tiết giao hàng
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="txtHoTen">Họ tên : </label>
+                        <input type="text" class="form-control" id="txtHoTen" readonly >
+                    </div>
+                    <div class="form-group">
+                        <label for="txtSoDienThoai">Số điện thoại : </label>
+                        <input type="text" class="form-control" id="txtSoDienThoai" readonly >
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDiaChiNhan">Địa chỉ nhận : </label>
+                        <input type="text" class="form-control" id="txtDiaChiNhan" readonly >
+                    </div>
+                    <div class="form-group">
+                        <label for="txtGhiChu">Ghi Chú : </label>
+                        <textarea class="form-control" rows="5" id="txtGhiChu" readonly ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Bằng chứng thanh toán :</label>
+                    </div>
+                    <img id="image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" style="width: 300px; height: 300px" />
+
+                </div>
+
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    Chi tiết giao hàng
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable">
+                            <thead>
+                            <tr>
+                                <th>Mã chi tiết DH</th>
+                                <th>Tên trái cây</th>
+                                <th>Xuất xứ</th>
+                                <th>SL</th>
+                                <th>ĐG</th>
+                                <th>Tổng tiền</th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th>Mã chi tiết DH</th>
+                                <th>Tên trái cây</th>
+                                <th>Xuất xứ</th>
+                                <th>SL</th>
+                                <th>ĐG</th>
+                                <th>Tổng tiền</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--        END CHI TIET DON HANG-->
+        </div>
+
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © Hona Green House 2019</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+</div>
+</body>
+
+<!-- Core plugin JavaScript-->
+<script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+<!-- Custom scripts for all pages-->
+<script th:src="@{/js/sb-admin.min.js}"></script>
+
+<!-- Page level plugin JavaScript-->
+<script th:src="@{/vendor/datatables/jquery.dataTables.js}"></script>
+<script th:src="@{/vendor/datatables/dataTables.bootstrap4.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+
+<script type="text/javascript">
+    let table;
+
+    function loadTable() {
+
+        // Load dataTable qua Api don hang
+        let url = new URL(window.location.href);
+        let maDonHang = url.searchParams.get("maDonHang");
+            table = $('#dataTable').DataTable({
+            processing: true,
+            paging: false,
+            searching: false,
+            ajax: {
+                url: '/Api/GetChiTietDonHangByID?maDonHang=' + maDonHang,
+                dataSrc: ''
+            },
+            columns: [
+                {data: 'maChiTietDH'},
+                {data: 'traiCay.tenTraiCay'},
+                {data: 'traiCay.xuatXu'},
+                {data: 'soLuongXuat'},
+                {data: 'donGiaXuat'},
+                {data: function (data) {
+                        return data.donGiaXuat * data.soLuongXuat;
+                    }}
+                ]
+        });
+
+        $.ajax({
+            type: "GET",
+            url: '/Api/GetDonHangById?maDonHang=' + maDonHang,
+            success: function (result){
+                console.log(result);
+                if(result) {
+                    document.getElementById("txtHoTen").setAttribute("value", result.hoTen);
+                    document.getElementById("txtSoDienThoai").setAttribute("value", result.soDienThoai);
+                    document.getElementById("txtDiaChiNhan").setAttribute("value", result.diaChiNhan);
+                    document.getElementById("txtGhiChu").setAttribute("value", result.ghiChu);
+                    document.getElementById("image").setAttribute("src", result.bangChungThanhToan);
+                }
+            }           
+        });       
+
+
+        // Gan su kien click btn Chi tiet cho tung row
+        // $('#dataTable tbody').on('click', '#btnChiTiet', function () {
+        //     let data = table.row($(this).parents('tr')).data();
+        //
+        //     // Load data vao modal Sua
+        //     $('#modalChiTietDH').on('show.bs.modal', function (event) {
+        //         var modal = $(this)
+        //         modal.find('.modal-body #txtNgayDat01').val(data.Ngay_Dat)
+        //         modal.find('.modal-body #txtTinhTrang01').val(data.Trinh_Trang_String)
+        //         modal.find('.modal-body #txtBangChungThanhToan01').val(data.Bang_Chung_Thanh_Toan)
+        //
+        //         modal.find('.modal-title').text('Sửa đơn hàng ' + data.Ma_Don_Hang)
+        //     })
+        //
+        //     let hTTT = data.Hinh_Thuc_Thanh_Toan_String.toString().trim();
+        //     $("#selHTTT01 option[value='" + hTTT + "']").attr("selected", "selected");
+        //
+        //     //selTinhTrang01
+        //     let tinhTrang = data.Trinh_Trang_String.toString().trim();
+        //     $("#selTinhTrang01 option[value='" + tinhTrang + "']").attr("selected", "selected");
+        //
+        //     // Gan su kien submit cho modal Chi Tiet
+        //     $("#btnSubmitChiTiet").click(function (e) {
+        //         e.preventDefault();
+        //
+        //         let chiTietDH = null;
+        //         chiTietDH = {
+        //             "Ma_Don_Hang": data.Ma_Don_Hang.trim(),
+        //             "Ngay_Dat": $("#txtNgayDat01").val() ? $("#txtNgayDat01").val() : "",
+        //             "Hinh_Thuc_Thanh_Toan_String": $("#selHTTT01").val(),
+        //             "Bang_Chung_Thanh_Toan": $("#txtBangChungThanhToan01").val(),
+        //             "Trinh_Trang_String": $("#selTinhTrang01").val(),
+        //         }
+        //         console.log("JSON", chiTietDH)
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "/Api/DonHang.ashx?DataType=5",
+        //             data: JSON.stringify(chiTietDH),
+        //             dataType: 'json',
+        //             contentType: 'application/json',
+        //             success: function (result) {
+        //                 // Lôi
+        //                 if (result.Status_Code) {
+        //                     $('#alertChiTietDH').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result.Status_Text + ` </div >`)
+        //                     $('#alertChiTietDH').show();
+        //                     // ẩn alert sau 7s
+        //                     $("#alertChiTietDH").delay(7000).slideUp(200, function () {
+        //                         $(this).alert('dispose');
+        //                     });
+        //                 } else {
+        //                     // dong modal va xoa cac truong du lieu da nhap
+        //                     $("#modalChiTietDH").modal('hide')
+        //
+        //                     $("#txtNgayDat01").val("")
+        //                     $("#selHTTT01").val("0")
+        //                     $("#selTinhTrang01").val("0")
+        //                     $("#txtBangChungThanhToan01").val("")
+        //
+        //                     $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > ` + result.Status_Text + ` </div >`)
+        //
+        //                     $('#alert').show();
+        //                     // ẩn alert sau 7s
+        //                     $("#alert").delay(7000).slideUp(200, function () {
+        //                         $(this).alert('dispose');
+        //                     });
+        //
+        //                     // load lai dataTable
+        //                     table.ajax.reload();
+        //                 }
+        //
+        //
+        //             },
+        //             error: function (result) {
+        //                 console.log(result)
+        //                 $('#alertThem').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Có lỗi trong quá trình kết nối </div >`)
+        //             }
+        //         });
+        //     })
+        //
+        // });
+    }
+
+    $(document).ready(function () {
+        loadTable()
+    });
+</script>
+</html>

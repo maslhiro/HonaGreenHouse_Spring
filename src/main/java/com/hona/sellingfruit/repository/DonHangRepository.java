@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface DonHangRepository extends JpaRepository<DonHang, String> {
     List<DonHang> getAllByTinhTrang(int tinhTrang);
+    List<DonHang> getAllByTinhTrangIsNot(int tinhTrang);
+    DonHang getByMaDonHang(String maDonHang);
 }

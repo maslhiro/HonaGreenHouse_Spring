@@ -21,4 +21,9 @@ public class HomeController {
     public String donhangdaxuli(){
         return "donhangdaxuli";
     }
+
+    @RequestMapping("/chitietdonhang")
+    public String chitietdonhang(){
+        return "chitietdonhang";
+    }
 }

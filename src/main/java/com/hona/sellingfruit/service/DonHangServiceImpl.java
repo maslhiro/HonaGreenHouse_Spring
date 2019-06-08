@@ -5,7 +5,6 @@ import com.hona.sellingfruit.repository.DonHangRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,46 +14,45 @@ public class DonHangServiceImpl implements DonHangService{
 
     @Override
     public List<DonHang> getListDonHangByTinhTrang(int tinhTrang){
-        List<DonHang> listDonHang = null;
-        List<DonHang> listDonHang_temp = donHangRepository.getAllByTinhTrang(tinhTrang);
-        DonHang donHang;
-
-        for (DonHang i:listDonHang_temp
-             ) {
-            donHang = new DonHang();
-
-            donHang.setMaDonHang(i.getMaDonHang());
-            donHang.setNgayDatString(i.getNgayDat().toString());
-            donHang.setBangChungThanhToan(i.getBangChungThanhToan());
-            donHang.setTinhTrangString(ConvertTinhTrang(i.getTinhTrang()));
-
-            donHang.setTongTien(i.getTongTien());
-            donHang.setHoTen(i.getHoTen());
-            donHang.setDiaChiNhan(i.getDiaChiNhan());
-            donHang.setSoDienThoai(i.getSoDienThoai());
-            donHang.setGhiChu(i.getGhiChu());
-
-            listDonHang.add(donHang);
-        }
-
-        return listDonHang;
+        return donHangRepository.getAllByTinhTrang(tinhTrang);
     }
 
-    public String ConvertTinhTrang(int tinhTrang){
-        String tinhTrangString="";
+    public List<DonHang> getListDonHangByTinhTrangIsNot(int tinhTrang){
+        return donHangRepository.getAllByTinhTrangIsNot(tinhTrang);
+    }
 
-        switch (tinhTrang){
-            case 0:
-                tinhTrangString = "Chờ xác nhận";
-                break;
-            case 1:
-                tinhTrangString = "Hủy";
-                break;
-            case 2:
-                tinhTrangString = "Thành công";
-                break;
+    public Integer huyDonHangById(String maDonHang){
+        try{
+            DonHang donHang = donHangRepository.findById(maDonHang).get();
+
+            donHang.setTinhTrang(1);
+
+            donHangRepository.saveAndFlush(donHang);
+            return 0;
         }
+        catch (Exception e){
+            System.out.println(e);
+            return 1;
+        }
+    }
 
-        return tinhTrangString;
+    public Integer xacNhanDonHangById(String maDonHang, String bangChungThanhToan){
+        try{
+            DonHang donHang = donHangRepository.findById(maDonHang).get();
+
+            donHang.setTinhTrang(2);
+            donHang.setBangChungThanhToan(bangChungThanhToan);
+
+            donHangRepository.saveAndFlush(donHang);
+            return 0;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return 1;
+        }
+    }
+
+    public DonHang getDonHangById(String maDonHang){
+        return donHangRepository.getByMaDonHang(maDonHang);
     }
 }

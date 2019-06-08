@@ -265,9 +265,24 @@
             },
             columns: [
                 { data: 'maDonHang' },
-                { data: 'ngayDatString' },
+                { data: function(data){
+                    var date = new Date(data.ngayDat);
+                    var ngay = (date.getDate().toString().length > 1) ? date.getDate() : ('0' + date.getDate())
+                    var thang = ((date.getMonth() + 1).toString().length > 1) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))
+                    var nam = date.getFullYear()
+                    return ngay + '/' + thang + '/' +  nam;
+                }},
                 { data: 'tongTien' },
-                { data: 'tinhTrangString' },
+                { data: function(data){
+                    switch (data.tinhTrang) {
+                        case 0:
+                            return "Chờ xác nhận"
+                        case 1:
+                            return "Hủy"
+                        case 2:
+                            return "Thành công"
+                    }
+                }},
                 {
                     "data": null,
                     "defaultContent": `<button type="button" id="btnChiTiet" class="btn btn-secondary">Chi tiết ĐH</button>`
@@ -282,103 +297,104 @@
                 }]
         });
 
-        // $('#dataTable tbody').on('click', '#btnChiTiet', function () {
-        //     let data = table.row($(this).parents('tr')).data();
-        //     window.open('/Admin/ChiTietDonHang.aspx?MaDonHang=' + data.Ma_Don_Hang, '_blank');
-        // });
-        //
-        // // Gan su kien click btn Huy cho tung row
-        // $('#dataTable tbody').on('click', '#btnHuy', function () {
-        //     let data = table.row($(this).parents('tr')).data();
-        //
-        //     $('#modalHuyDH').on('show.bs.modal', function (event) {
-        //         var modal = $(this)
-        //         modal.find('.modal-title').text('Hủy đơn hàng mã ' + data.Ma_Don_Hang)
-        //     })
-        //
-        //     $('#btnSubmitHuy').click(function (e) {
-        //         e.preventDefault();
-        //         $.ajax({
-        //             type: "GET",
-        //             url: "/Api/DonHang.ashx?DataType=2&MaDonHang=" + data.Ma_Don_Hang,
-        //             success: function (result) {
-        //                 console.log(result)
-        //                 if (result.Status_Code) {
-        //                     $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result.Status_Text + ` </div >`)
-        //                 }
-        //                 else {
-        //                     $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > ` + result.Status_Text + ` </div >`)
-        //                 }
-        //
-        //                 $('#alert').show();
-        //
-        //                 // ẩn alert sau 7s
-        //                 $("#alert").delay(7000).slideUp(200, function () {
-        //                     $(this).alert('dispose');
-        //                 });
-        //
-        //                 // load lai dataTable
-        //                 table.ajax.reload();
-        //             },
-        //             error: function (result) {
-        //                 console.log(result)
-        //                 $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Có lỗi trong quá trình kết nối </div >`)
-        //             }
-        //         });
-        //     });
-        //
-        // });
-        //
-        // // Gan su kien click btn Xac nhan cho tung row
-        // $('#dataTable tbody').on('click', '#btnXacNhan', function () {
-        //     let data = table.row($(this).parents('tr')).data();
-        //
-        //     // hiển thị mã trái cây ở modal xoá
-        //     $('#modalXacNhanDH').on('show.bs.modal', function (event) {
-        //         var modal = $(this)
-        //         modal.find('.modal-title').text('Cập nhật bằng chứng thanh toán đơn hàng mã ' + data.Ma_Don_Hang)
-        //     })
-        //
-        //     // gán sự kiện vào btn Xoa trong modal
-        //     $('#btnSubmit').click(function (e) {
-        //         e.preventDefault();
-        //
-        //         let donHang = {
-        //             Bang_Chung_Thanh_Toan: imageBase64,
-        //             Ma_Don_Hang: data.Ma_Don_Hang
-        //         }
-        //
-        //         $.ajax({
-        //             type: "POST",
-        //             url: "/Api/DonHang.ashx?DataType=3",
-        //             data: JSON.stringify(donHang),
-        //             success: function (result) {
-        //
-        //                 if (result.Status_Code) {
-        //                     $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result.Status_Text + ` </div >`)
-        //                 }
-        //                 else {
-        //                     $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > ` + result.Status_Text + ` </div >`)
-        //                 }
-        //
-        //                 $('#alert').show();
-        //
-        //                 // ẩn alert sau 7s
-        //                 $("#alert").delay(7000).slideUp(200, function () {
-        //                     $(this).alert('dispose');
-        //                 });
-        //
-        //                 // load lai dataTable
-        //                 table.ajax.reload();
-        //             },
-        //             error: function (result) {
-        //                 console.log(result)
-        //                 $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Có lỗi trong quá trình kết nối </div >`)
-        //             }
-        //         });
-        //     });
-        //
-        // });
+        $('#dataTable tbody').on('click', '#btnChiTiet', function () {
+            let data = table.row($(this).parents('tr')).data();
+            window.open('/chitietdonhang?maDonHang=' + data.maDonHang);
+        });
+
+        // Gan su kien click btn Huy cho tung row
+        $('#dataTable tbody').on('click', '#btnHuy', function () {
+            let data = table.row($(this).parents('tr')).data();
+
+            $('#modalHuyDH').on('show.bs.modal', function (event) {
+                var modal = $(this)
+                modal.find('.modal-title').text('Hủy đơn hàng mã ' + data.Ma_Don_Hang)
+            })
+
+            $('#btnSubmitHuy').click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "GET",
+                    url: "/Api/HuyDonHangById?maDonHang=" + data.maDonHang,
+                    success: function (result) {
+                        console.log(result)
+                        // if (result.Status_Code) {
+                        //     $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result.Status_Text + ` </div >`)
+                        // }
+                        // else {
+                        //     $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > ` + result.Status_Text + ` </div >`)
+                        // }
+                        $('#alert').empty().append(`<div class='alert alert-success'> <strong> Thành công!</strong > </div >`)
+                        $('#alert').show();
+
+                        // ẩn alert sau 7s
+                        $("#alert").delay(7000).slideUp(200, function () {
+                            $(this).alert('dispose');
+                        });
+
+                        // load lai dataTable
+                        table.ajax.reload();
+                    },
+                    error: function (result) {
+                        console.log(result)
+                        $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Có lỗi trong quá trình kết nối </div >`)
+                    }
+                });
+            });
+
+        });
+
+        // Gan su kien click btn Xac nhan cho tung row
+        $('#dataTable tbody').on('click', '#btnXacNhan', function () {
+            let data = table.row($(this).parents('tr')).data();
+
+            // hiển thị mã trái cây ở modal xoá
+            $('#modalXacNhanDH').on('show.bs.modal', function (event) {
+                var modal = $(this)
+                modal.find('.modal-title').text('Cập nhật bằng chứng thanh toán đơn hàng mã ' + data.maDonHang)
+            })
+
+            // gán sự kiện vào btn Xoa trong modal
+            $('#btnSubmit').click(function (e) {
+                e.preventDefault();
+
+                let donHang = {
+                    "bangChungThanhToan": imageBase64,
+                    "maDonHang":  data.maDonHang
+                }
+                console.log(donHang)
+                $.ajax({
+                    type: "POST",
+                    url: "/Api/XacNhanDonHangById",
+                    data: JSON.stringify(donHang),
+                    contentType: 'application/json',
+                    success: function (result) {
+                        console.log(result)
+                        // if (result.Status_Code) {
+                        //     $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result.Status_Text + ` </div >`)
+                        // }
+                        // else {
+                        //     $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > ` + result.Status_Text + ` </div >`)
+                        // }
+                        $('#alert').empty().append(`<div class='alert alert-success'> <strong> Thành công!</strong > </div >`)
+                        $('#alert').show();
+
+                        // ẩn alert sau 7s
+                        $("#alert").delay(7000).slideUp(200, function () {
+                            $(this).alert('dispose');
+                        });
+
+                        // load lai dataTable
+                        table.ajax.reload();
+                    },
+                    error: function (result) {
+                        console.log(result)
+                        $('#alert').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Có lỗi trong quá trình kết nối </div >`)
+                    }
+                });
+            });
+
+        });
     }
 
     function readFile() {

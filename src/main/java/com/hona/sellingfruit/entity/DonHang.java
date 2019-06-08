@@ -41,10 +41,6 @@ public class DonHang {
     @Column(name = "Ma_Voucher")
     private String maVoucher;
 
-    private String ngayDatString;
-    private String tinhTrangString;
-
-
     public DonHang(){}
 
     public DonHang(String maDonHang, Date ngayDat, String bangChungThanhToan, Integer tinhTrang, Float tongTien, String hoTen, String soDienThoai, String diaChiNhan, String ghiChu, String maVoucher, String ngayDatString, String tinhTrangString) {
@@ -58,8 +54,6 @@ public class DonHang {
         this.diaChiNhan = diaChiNhan;
         this.ghiChu = ghiChu;
         this.maVoucher = maVoucher;
-        this.ngayDatString = ngayDatString;
-        this.tinhTrangString = tinhTrangString;
     }
 
     public String getMaDonHang() {
@@ -140,21 +134,5 @@ public class DonHang {
 
     public void setMaVoucher(String maVoucher) {
         this.maVoucher = maVoucher;
-    }
-
-    public String getNgayDatString() {
-        return ngayDatString;
-    }
-
-    public void setNgayDatString(String ngayDatString) {
-        this.ngayDatString = ngayDatString;
-    }
-
-    public String getTinhTrangString() {
-        return tinhTrangString;
-    }
-
-    public void setTinhTrangString(String tinhTrangString) {
-        this.tinhTrangString = tinhTrangString;
     }
 }
