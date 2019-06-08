@@ -2,6 +2,7 @@ package com.hona.sellingfruit.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
@@ -10,5 +11,16 @@ public class HomeController {
     public String index() {
         return "themtraicay";
     }
+
+    @RequestMapping("/test")
+    public String test() {
+        return "themtraicay";
+    }
+
+    @RequestMapping("/voucher")
+    public String voucher() {
+        return "voucher";
+    }
+
 
 }
