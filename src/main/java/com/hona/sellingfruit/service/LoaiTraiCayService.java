@@ -4,8 +4,15 @@ import com.hona.sellingfruit.entity.LoaiTraiCay;
 import java.util.List;
 
 public interface LoaiTraiCayService {
-    public List<LoaiTraiCay> getAllLoaiTraiCayList();
+     List<LoaiTraiCay> getAllLoaiTraiCayList();
 
+     Integer insertLoaiTraiCay(LoaiTraiCay loaiTraiCay);
 
-    public LoaiTraiCay getLoaiTraiCayById(String maLoai);
+     long countAllLoaiTraiCay();
+
+     Integer updateLoaiTraiCay(LoaiTraiCay loaiTraiCay);
+
+     Integer deleteLoaiTraiCayById(String maLoai);
+
+     LoaiTraiCay getLoaiTraiCayById(String maLoai);
 }

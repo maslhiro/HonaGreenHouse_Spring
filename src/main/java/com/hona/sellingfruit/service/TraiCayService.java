@@ -6,17 +6,17 @@ import com.hona.sellingfruit.entity.TraiCay;
 import java.util.List;
 
 public interface TraiCayService {
-    public List<TraiCay> getAllTraiCayList();
+     List<TraiCay> getAllTraiCayList();
 
-    public TraiCay getTraiCayById(String maTraiCay);
+     TraiCay getTraiCayById(String maTraiCay);
 
-    public Integer insertTraiCay(TraiCay traiCay);
+     Integer insertTraiCay(TraiCay traiCay);
 
-    public long countAllTraiCay();
+     long countAllTraiCay();
 
-    public Integer updateTraiCay(TraiCay traiCay);
+     Integer updateTraiCay(TraiCay traiCay);
 
-    public Integer deleteTraiCayById(String maTraiCay);
+     Integer deleteTraiCayById(String maTraiCay);
 
     public List<TraiCay> getTraiCayBanChayList();
 
