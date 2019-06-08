@@ -52,4 +52,19 @@ public class AdminController {
     public  String thongKeNhap(){
         return "thongkenhap";
     }
+
+    @RequestMapping("/DonHangMoi")
+    public  String donHangMoi(){
+        return "donhangmoi";
+    }
+
+    @RequestMapping("/DonHangDaXuLi")
+    public  String donHangDaXuLi(){
+        return "donhangdaxuli";
+    }
+
+    @RequestMapping("/ChiTietDonHang")
+    public  String chiTietDonHang(){
+        return "chitietdonhang";
+    }
 }

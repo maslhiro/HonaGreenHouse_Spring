@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Chi tiết đơn hàng</title>
     <!-- Custom fonts for this template-->
     <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
 
@@ -49,9 +49,6 @@
                 <i class="fas fa-user-circle fa-fw"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Settings</a>
-                <a class="dropdown-item" href="#">Activity Log</a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </div>
         </li>
@@ -76,8 +73,8 @@
                 <span>Quản lí kho</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a class="dropdown-item" href="#">Thêm loại trái cây</a>
-                <a class="dropdown-item" href="#">Thêm trái cây</a>
+                <a class="dropdown-item" href="/Admin/LoaiTraiCay">Thêm loại trái cây</a>
+                <a class="dropdown-item" href="/Admin/TraiCay">Thêm trái cây</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -87,10 +84,10 @@
                 <span>Quản lí đơn hàng</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a class="dropdown-item" href="/donhangmoi">Đơn hàng mới</a>
+                <a class="dropdown-item" href="/Admin/DonHangMoi">Đơn hàng mới</a>
                 <div class="dropdown-divider"></div>
 
-                <a class="dropdown-item" href="/donhangdaxuli">Đơn hàng đã xử lí</a>
+                <a class="dropdown-item" href="/Admin/DonHangDaXuLi">Đơn hàng đã xử lí</a>
             </div>
         </li>
 
@@ -102,17 +99,14 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                 <h6 class="dropdown-header">Lập thống kê</h6>
-                <a class="dropdown-item" href="#">Thông kê đơn hàng</a>
-                <a class="dropdown-item" href="#">Thống kê nhập xuất</a>
-                <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">Xuất báo cáo</h6>
-                <a class="dropdown-item" href="#">Blank Page</a>
+                <a class="dropdown-item" href="/Admin/ThongKeNhap">Thông kê nhập</a>
+                <a class="dropdown-item" href="#">Thống kê xuất</a>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/Admin/Voucher">
                 <i class="fas fa-fw fa-users"></i>
-                <span>Quản lí tài khoản</span>
+                <span>Quản lí voucher</span>
             </a>
         </li>
     </ul>
@@ -124,7 +118,7 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#">Chi tiết trái cây</a>
+                    <a href="#">Chi tiết đơn hàng</a>
                 </li>
                 <li class="breadcrumb-item active">Overview</li>
             </ol>
@@ -232,8 +226,11 @@
 
         // Load dataTable qua Api don hang
         let url = new URL(window.location.href);
-        let maDonHang = url.searchParams.get("maDonHang");
-            table = $('#dataTable').DataTable({
+        let maDonHang = url.searchParams.get("Id");
+
+        $("")
+
+        let table = $('#dataTable').DataTable({
             processing: true,
             paging: false,
             searching: false,
@@ -267,88 +264,6 @@
                 }
             }           
         });       
-
-
-        // Gan su kien click btn Chi tiet cho tung row
-        // $('#dataTable tbody').on('click', '#btnChiTiet', function () {
-        //     let data = table.row($(this).parents('tr')).data();
-        //
-        //     // Load data vao modal Sua
-        //     $('#modalChiTietDH').on('show.bs.modal', function (event) {
-        //         var modal = $(this)
-        //         modal.find('.modal-body #txtNgayDat01').val(data.Ngay_Dat)
-        //         modal.find('.modal-body #txtTinhTrang01').val(data.Trinh_Trang_String)
-        //         modal.find('.modal-body #txtBangChungThanhToan01').val(data.Bang_Chung_Thanh_Toan)
-        //
-        //         modal.find('.modal-title').text('Sửa đơn hàng ' + data.Ma_Don_Hang)
-        //     })
-        //
-        //     let hTTT = data.Hinh_Thuc_Thanh_Toan_String.toString().trim();
-        //     $("#selHTTT01 option[value='" + hTTT + "']").attr("selected", "selected");
-        //
-        //     //selTinhTrang01
-        //     let tinhTrang = data.Trinh_Trang_String.toString().trim();
-        //     $("#selTinhTrang01 option[value='" + tinhTrang + "']").attr("selected", "selected");
-        //
-        //     // Gan su kien submit cho modal Chi Tiet
-        //     $("#btnSubmitChiTiet").click(function (e) {
-        //         e.preventDefault();
-        //
-        //         let chiTietDH = null;
-        //         chiTietDH = {
-        //             "Ma_Don_Hang": data.Ma_Don_Hang.trim(),
-        //             "Ngay_Dat": $("#txtNgayDat01").val() ? $("#txtNgayDat01").val() : "",
-        //             "Hinh_Thuc_Thanh_Toan_String": $("#selHTTT01").val(),
-        //             "Bang_Chung_Thanh_Toan": $("#txtBangChungThanhToan01").val(),
-        //             "Trinh_Trang_String": $("#selTinhTrang01").val(),
-        //         }
-        //         console.log("JSON", chiTietDH)
-        //         $.ajax({
-        //             type: "POST",
-        //             url: "/Api/DonHang.ashx?DataType=5",
-        //             data: JSON.stringify(chiTietDH),
-        //             dataType: 'json',
-        //             contentType: 'application/json',
-        //             success: function (result) {
-        //                 // Lôi
-        //                 if (result.Status_Code) {
-        //                     $('#alertChiTietDH').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > ` + result.Status_Text + ` </div >`)
-        //                     $('#alertChiTietDH').show();
-        //                     // ẩn alert sau 7s
-        //                     $("#alertChiTietDH").delay(7000).slideUp(200, function () {
-        //                         $(this).alert('dispose');
-        //                     });
-        //                 } else {
-        //                     // dong modal va xoa cac truong du lieu da nhap
-        //                     $("#modalChiTietDH").modal('hide')
-        //
-        //                     $("#txtNgayDat01").val("")
-        //                     $("#selHTTT01").val("0")
-        //                     $("#selTinhTrang01").val("0")
-        //                     $("#txtBangChungThanhToan01").val("")
-        //
-        //                     $('#alert').empty().append(`<div class='alert alert-success'> <strong> Success!</strong > ` + result.Status_Text + ` </div >`)
-        //
-        //                     $('#alert').show();
-        //                     // ẩn alert sau 7s
-        //                     $("#alert").delay(7000).slideUp(200, function () {
-        //                         $(this).alert('dispose');
-        //                     });
-        //
-        //                     // load lai dataTable
-        //                     table.ajax.reload();
-        //                 }
-        //
-        //
-        //             },
-        //             error: function (result) {
-        //                 console.log(result)
-        //                 $('#alertThem').empty().append(`<div class='alert alert-danger'> <strong> Warning!</strong > Có lỗi trong quá trình kết nối </div >`)
-        //             }
-        //         });
-        //     })
-        //
-        // });
     }
 
     $(document).ready(function () {
