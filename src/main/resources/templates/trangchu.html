@@ -46,21 +46,21 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/trangchu">Trang chủ</a>
+                        <a class="nav-link" href="/TrangChu">Trang chủ</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Sản phẩm
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC01">Trái cây miền bắc</a>
-                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC02">Trái cây miền trung</a>
-                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC03">Trái cây miền nam</a>
-                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC04">Trái cây nhập khẩu</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC01">Trái cây miền bắc</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC02">Trái cây miền trung</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC03">Trái cây miền nam</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC04">Trái cây nhập khẩu</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/lienhe">Liên hệ</a>
+                        <a class="nav-link" href="/LienHe">Liên hệ</a>
                     </li>
                 </ul>
             </div>
@@ -90,7 +90,7 @@
         </div>
     </div>
     <div class="Category">
-        <a href="/danhmuc?loaiTraiCay=LTC01">
+        <a href="/DanhMuc?Id=LTC01">
             <div class="card">
                 <img th:src="@{/img/trai-cay-mien-nam.jpg}" alt="Avatar">
                 <div class="content">
@@ -99,7 +99,7 @@
             </div>
         </a>
 
-        <a href="/danhmuc?loaiTraiCay=LTC02">
+        <a href="/DanhMuc?Id=LTC02">
             <div class="card">
                 <img th:src="@{/img/trai-cay-dac-san-mien-bac.jpg}" alt="Avatar">
                 <div class="content">
@@ -108,7 +108,7 @@
             </div>
         </a>
 
-        <a href="/danhmuc?loaiTraiCay=LTC03">
+        <a href="/DanhMuc?Id=LTC03">
             <div class="card">
                 <img th:src="@{/img/trai-cay-mien-trung.jpg}" alt="Avatar">
                 <div class="content">
@@ -117,7 +117,7 @@
             </div>
         </a>
 
-        <a href="/danhmuc?loaiTraiCay=LTC04">
+        <a href="/DanhMuc?Id=LTC04">
             <div class="card">
                 <img th:src="@{/img/trai-cay-nhap-khau.jpg}" alt="Avatar">
                 <div class="content">
@@ -139,7 +139,7 @@
 <!--            <button class="button_see_more" id="button_see_more">XEM THÊM</button>-->
 <!--        </div>-->
         <div class="see_more">
-            <a href="/danhmuc?loaiTraiCay=banChay">
+            <a href="/DanhMuc?Id=banChay">
                 <input class="button_see_more" id="button_see_more" type="button" value="XEM THÊM" />
             </a>
         </div>
@@ -156,11 +156,11 @@
         </div>
         <div class="footer-left">
             <p class="footer-links">
-                <a href="/trangchu">Trang chủ</a>
+                <a href="/TrangChu">Trang chủ</a>
                 ·
-                <a href="/danhmuc?loaiTraiCay=LTC01">Sản phẩm</a>
+                <a href="/DanhMuc?Id=LTC01">Sản phẩm</a>
                 ·
-                <a href="/lienhe">Liên hệ</a>
+                <a href="/LienHe">Liên hệ</a>
             </p>
             <p>Hona Green House &copy; 2019</p>
         </div>
@@ -180,7 +180,7 @@
 
                     var ul = document.getElementById("ul_list_tc");
                     var li = document.createElement("li");
-                    li.innerHTML = "<a href='traicay?id=" + traiCay[i].maTraiCay + "'><div class='card'><img src='" + traiCay[i].urlAnh + "' alt='Avatar'><div class='content'><div class='product_name'><b>" + traiCay[i].tenTraiCay + "</b></div><div class='product_unit'>ĐƠN VI TÍNH : " + traiCay[i].donViTinh + "</div><div class='product_price'>" + traiCay[i].donGia + " ₫</div></div></div></a>";
+                    li.innerHTML = "<a href='TraiCay?Id=" + traiCay[i].maTraiCay + "'><div class='card'><img src='" + traiCay[i].urlAnh + "' alt='Avatar'><div class='content'><div class='product_name'><b>" + traiCay[i].tenTraiCay + "</b></div><div class='product_unit'>ĐƠN VI TÍNH : " + traiCay[i].donViTinh + "</div><div class='product_price'>" + traiCay[i].donGia + " ₫</div></div></div></a>";
                     ul.appendChild(li);
                 }
                 console.log(traiCay);
@@ -194,8 +194,8 @@
 
     $(document).ready(function () {
         // document.getElementById("button_see_more").onclick = function () {
-        //     // location.href = "/danhmuc?loaiTraiCay=banChay";
-        //     Response.redirect("/danhmuc?loaiTraiCay=banChay");
+        //     // location.href = "/DanhMuc?Id=banChay";
+        //     Response.redirect("/DanhMuc?Id=banChay");
         // };
 
         getTraiCayBanChay()

@@ -46,21 +46,21 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/trangchu">Trang chủ</a>
+                        <a class="nav-link" href="/TrangChu">Trang chủ</a>
                     </li>
                     <li class="nav-item dropdown  active">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Sản phẩm
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC01">Trái cây miền bắc</a>
-                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC02">Trái cây miền trung</a>
-                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC03">Trái cây miền nam</a>
-                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC04">Trái cây nhập khẩu</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC01">Trái cây miền bắc</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC02">Trái cây miền trung</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC03">Trái cây miền nam</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC04">Trái cây nhập khẩu</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/lienhe">Liên hệ</a>
+                        <a class="nav-link" href="/LienHe">Liên hệ</a>
                     </li>
                 </ul>
             </div>
@@ -87,11 +87,11 @@
         </div>
         <div class="footer-left">
             <p class="footer-links">
-                <a href="/trangchu">Trang chủ</a>
+                <a href="/TrangChu">Trang chủ</a>
                 ·
-                <a href="/danhmuc?loaiTraiCay=LTC01">Sản phẩm</a>
+                <a href="/DanhMuc?Id=LTC01">Sản phẩm</a>
                 ·
-                <a href="/lienhe">Liên hệ</a>
+                <a href="/LienHe">Liên hệ</a>
             </p>
             <p>Hona Green House &copy; 2019</p>
         </div>
@@ -103,7 +103,7 @@
 <script>
     function getDanhMuc(){
         var url = new URL(window.location.href);
-        var loaiTraiCay = url.searchParams.get("loaiTraiCay");
+        var loaiTraiCay = url.searchParams.get("Id");
         console.log(loaiTraiCay);
         var danhMuc = "";
 
@@ -117,7 +117,7 @@
                     for (let i = 0; i < traiCay.length; i++){
                         var ul = document.getElementById("ul_list_tc");
                         var li = document.createElement("li");
-                        li.innerHTML = "<a href='traicay?id=" + traiCay[i].maTraiCay + "'><div class='card'><img src='" + traiCay[i].urlAnh + "' alt='Avatar'><div class='content'><div class='product_name'><b>" + traiCay[i].tenTraiCay + "</b></div><div class='product_unit'>ĐƠN VI TÍNH : " + traiCay[i].donViTinh + "</div><div class='product_price'>" + traiCay[i].donGia + " ₫</div></div></div></a>";
+                        li.innerHTML = "<a href='TraiCay?Id=" + traiCay[i].maTraiCay + "'><div class='card'><img src='" + traiCay[i].urlAnh + "' alt='Avatar'><div class='content'><div class='product_name'><b>" + traiCay[i].tenTraiCay + "</b></div><div class='product_unit'>ĐƠN VI TÍNH : " + traiCay[i].donViTinh + "</div><div class='product_price'>" + traiCay[i].donGia + " ₫</div></div></div></a>";
                         ul.appendChild(li);
                     }
                     console.log(traiCay);
@@ -153,7 +153,7 @@
                     for (let i = 0; i < traiCay.length; i++){
                         var ul = document.getElementById("ul_list_tc");
                         var li = document.createElement("li");
-                        li.innerHTML = "<a href='traicay?id=" + traiCay[i].maTraiCay + "'><div class='card'><img src='" + traiCay[i].urlAnh + "' alt='Avatar'><div class='content'><div class='product_name'><b>" + traiCay[i].tenTraiCay + "</b></div><div class='product_unit'>ĐƠN VI TÍNH : " + traiCay[i].donViTinh + "</div><div class='product_price'>" + traiCay[i].donGia + " ₫</div></div></div></a>";
+                        li.innerHTML = "<a href='TraiCay?Id=" + traiCay[i].maTraiCay + "'><div class='card'><img src='" + traiCay[i].urlAnh + "' alt='Avatar'><div class='content'><div class='product_name'><b>" + traiCay[i].tenTraiCay + "</b></div><div class='product_unit'>ĐƠN VI TÍNH : " + traiCay[i].donViTinh + "</div><div class='product_price'>" + traiCay[i].donGia + " ₫</div></div></div></a>";
                         ul.appendChild(li);
                     }
                 }

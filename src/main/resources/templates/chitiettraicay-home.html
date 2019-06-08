@@ -131,14 +131,14 @@
                             Sản phẩm
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC01">Trái cây miền bắc</a>
-                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC02">Trái cây miền trung</a>
-                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC03">Trái cây miền nam</a>
-                            <a class="dropdown-item" href="/danhmuc?loaiTraiCay=LTC04">Trái cây nhập khẩu</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC01">Trái cây miền bắc</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC02">Trái cây miền trung</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC03">Trái cây miền nam</a>
+                            <a class="dropdown-item" href="/DanhMuc?Id=LTC04">Trái cây nhập khẩu</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/lienhe">Liên hệ</a>
+                        <a class="nav-link" href="/LienHe">Liên hệ</a>
                     </li>
                 </ul>
             </div>
@@ -148,7 +148,7 @@
     <div class="container container-fruite">
         <div class="row">
             <div class="col-md-5 top-img">
-                <img id="img-fruite"/>
+                <img id="img-fruite" th:width="300px" th:height="300px" th:src="${traiCay.urlAnh}"/>
             </div>
 
             <div class="col-md-7 left-fruite">
@@ -156,20 +156,20 @@
                 <div class="row">
                     <div class="col-md-12 color-titel-fruite">
                         <h1>
-                            <label id="lblTenTC" Text=""></label>
+                            <label id="lblTenTC" th:text="${traiCay.tenTraiCay}"></label>
                         </h1>
                     </div>
                     <div class="col-md-12">
                         <h5>
-                            <label id="lblDonGia"  Text=""></label>đ
+                            <label id="lblDonGia"  th:text="${traiCay.donGiaXuat}"></label>đ
                         </h5>
                     </div>
                     <div class="col-md-12"><span>Đơn vị tính:
-                    <label id="lblDonViTinh"  Text=""></label>
+                    <label id="lblDonViTinh"  th:text="${traiCay.donViTinh}"></label>
                     </span></div>
 
                     <div class="col-md-12"><span>Xuất xứ:
-                    <label id="lblXuatXu"  Text=""></label>
+                    <label id="lblXuatXu"  th:text="${traiCay.xuatXu}"></label>
                     </span></div>
 
                     <div class="top-cart">
@@ -182,9 +182,9 @@
                     </div>
                     <div class="col-md-12 top-cart">
                         <span>Số lượng </span>
-                        <input id="txbSoLuong"  type="number" step="1" min="1" value="1"
+                        <input id="txbSoLuong"  type="number" step="1" min="1" value="1" th:max="${traiCay.soLuong}"
                                   class="number-add-to-cart"/>
-                        <button id="btnBuy" class="add-to-cart" onclick="btnBuy_Click">MUA NGAY</button>
+                        <button id="btnBuy" class="add-to-cart" onclick="btnBuy_Click()">MUA NGAY</button>
                     </div>
                 </div>
 
@@ -199,7 +199,7 @@
                 </span>
             <div class="panel entry-content" id="tab-description" style="display: block;">
                     <span>
-                        <label id="lblMoTa"  Text="" style="margin-bottom: 0"></label>
+                        <label id="lblMoTa"  th:text="${traiCay.moTa}" style="margin-bottom: 0"></label>
                     </span>
             </div>
         </div>
@@ -218,9 +218,9 @@
             <p class="footer-links">
                 <a href="/trangchu">Trang chủ</a>
                 ·
-                <a href="/danhmuc?loaiTraiCay=LTC01">Sản phẩm</a>
+                <a href="/DanhMuc?Id=LTC01">Sản phẩm</a>
                 ·
-                <a href="/lienhe">Liên hệ</a>
+                <a href="/LienHe">Liên hệ</a>
             </p>
             <p>Hona Green House &copy; 2019</p>
         </div>
