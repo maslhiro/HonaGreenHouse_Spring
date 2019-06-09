@@ -178,7 +178,7 @@
                         <span>Số lượng </span>
                         <input id="txbSoLuong"  type="number" step="1" min="1" value="1" th:max="${traiCay.soLuong}"
                                   class="number-add-to-cart"/>
-                        <button id="btnBuy" class="add-to-cart" onclick="btnBuy_Click()">MUA NGAY</button>
+                        <input type="button" class="add-to-cart" value="MUA" />
                     </div>
                 </div>
 
@@ -246,6 +246,26 @@
     // $(document).ready(function () {
     //     getTraiCayByid()
     // });
+
+    $(document).ready(function () {
+        $(".add-to-cart").click(function () {
+            var url = new URL(window.location.href);
+            var maTraiCay = url.searchParams.get("Id");
+            var soLuong = document.getElementById("txbSoLuong").value;
+            console.log(maTraiCay);
+            console.log(soLuong);
+            var href = "/shoppingCart/addProduct/"+maTraiCay+"/"+soLuong;
+            window.location.href = href;
+            // $.ajax({
+            //     type: "GET",
+            //     url: "/shoppingCart/addProduct/"+maTraiCay+"/"+soLuong,
+            //     success: function () {
+            //         location.replace("/shoppingCart")
+            //     }
+            // })
+
+        })
+    });
 
    </script>
 </html>

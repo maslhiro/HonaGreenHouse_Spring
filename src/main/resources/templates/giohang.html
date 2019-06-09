@@ -21,35 +21,36 @@
 <body>
 <style type="text/css">
 
-    .button-cart{
+    .button-cart {
         margin-left: -15px;
         margin-top: 10px;
     }
-    .cart-container{
+
+    .cart-container {
         border-top: solid 1px;
         border-bottom: solid 1px;
-        border-color:lightgray;
+        border-color: lightgray;
     }
 
-    .cart-header-container{
-        margin-left:0px;
-        margin-right:0px;
-        padding:4px;
-        border-top:solid 1px;
+    .cart-header-container {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 4px;
+        border-top: solid 1px;
         border-color: lightgray;
         text-align: center;
         font-weight: bold;
     }
 
 
-    .cart-detail{
+    .cart-detail {
         margin: 4px;
         background-color: #f9f9f9;
     }
 
-    .content-header{
-        text-align:center;
-        font-weight:bold;
+    .content-header {
+        text-align: center;
+        font-weight: bold;
     }
 
     .img-fruit {
@@ -61,7 +62,7 @@
         width: 50px;
     }
 
-    .total-box{
+    .total-box {
         display: flex;
         justify-content: flex-end;
         padding-right: 10px;
@@ -71,9 +72,11 @@
         height: auto;
         width: 100%;
     }
-    .margin-bottom-label{
+
+    .margin-bottom-label {
         margin-bottom: 0.05rem !important;
     }
+
     .btn-check-out {
         background-color: #46aa48;
         font-size: 14px !important;
@@ -92,15 +95,15 @@
     }
 </style>
 <!--HEAD-->
-<form id="form" >
+<form id="form">
     <!--Header-->
     <div class="header">
         <div style="font-family: 'Coiny', cursive; color: white; text-align: center; align-self: center; font-size: x-large"
-             >Hona Green House
+        >Hona Green House
         </div>
         <div style="flex-direction: row; display: flex">
 
-            <button class="button_nav_gh" >
+            <button class="button_nav_gh">
                 <i class="fas fa-shopping-cart fa-sm"></i>
                 <div>&nbsp;&nbsp;Giỏ hàng</div>
             </button>
@@ -109,7 +112,7 @@
     </div>
 
     <!--Nav-->
-    <div style="display: block;" >
+    <div style="display: block;">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
@@ -117,7 +120,8 @@
                         <a class="nav-link" href="/trangchu">Trang chủ</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
                             Sản phẩm
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -137,18 +141,18 @@
     <!--END HEAD-->
     <div class="container">
         <div class="row">
-            <div class="col-md-7" >
+            <div class="col-md-7">
                 <div>
                     <div class="content-header">
                         <span>DANH SÁCH SẢN PHẨM</span>
                     </div>
 
-                    <span id="txtGioHangTrong" >Hiện tại không có sản phẩm trong giỏ hàng</span>
+                    <!--                    <span id="txtGioHangTrong">Hiện tại không có sản phẩm trong giỏ hàng</span>-->
 
 
                     <!-- Help Phần đổ data vào và chỉnh giao diện chỗ này t chưa chạy lên dc nên chưa fix giao diện ở đây được.-->
 
-                    <div id="divGioHang" >
+                    <div id="divGioHang">
                         <div class="row cart-header-container">
                             <div class="col-md-2 align-self-center">
                             </div>
@@ -163,7 +167,8 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="row">
-                                    <div class="col-md-7 align-self-center" style="padding-left:0px; padding-right:0px;">
+                                    <div class="col-md-7 align-self-center"
+                                         style="padding-left:0px; padding-right:0px;">
                                         <span>Cập nhật</span>
                                     </div>
                                     <div class="col-md-3 align-self-center">
@@ -173,91 +178,125 @@
                             </div>
                         </div>
 
-                        <div id="divDataGioHang"  class="cart-container">
+                        <div id="divDataGioHang" class="cart-container">
+                        </div>
+
+                        <div class="row cart-header-container" style="font-weight: unset;" th:each="sp : ${sanPham}">
+                            <div class="col-md-2 align-self-center">
+                                <span><label id="lblMaTraiCay" style="display: none;" th:text="${sp.value[maTraiCay]}"></label></span>
+                            </div>
+                            <div class="col-md-3 align-self-center">
+                                <span><label id="lblTenTraiCay" th:text="${sp.value[tenTraiCay]}"></label></span>
+                            </div>
+                            <div class="col-md-2 align-self-center">
+                                <span><label id="lblGiaTraiCay" th:text="${sp.value[giaTraiCay]}"></label></span>
+                            </div>
+                            <div class="col-md-2 align-self-center">
+                                <input id="txbSoLuong" type="number" step="1" min="1" th:value="${sp.value[soLuong]}"
+                                       max="100" class="number-add-to-cart">
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="col-md-7 align-self-center"
+                                         style="padding-left:0px; padding-right:0px;">
+                                        <input type="submit" name="action" class="update" value="Cập nhật" />
+                                    </div>
+                                    <div class="col-md-3 align-self-center">
+                                        <input type="submit" name="action" class="delete" value="Xóa" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="total-box">
                             <strong>Tổng cộng: &nbsp</strong>
-                            <strong id="txtTongCong" ></strong>
+                            <label id="lblTongCong" th:text="${tongTien}"></label>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-5">
-                <div class="row">
-                    <div class="col-md-12 content-header">
-                        <span>THÔNG TIN NGƯỜI MUA/NHẬN HÀNG</span>
-                    </div>
-                    <div class="col-md-12 font-weight-bold">
-                        <label id="lbTenNguoiNhan" class="margin-bottom-label">Tên</label>
-                    </div>
-                    <div class="col-md-12 ">
-                        <input type="text" ID="txbTenNguoiNhan" required="required" placeholder="Tên người nhận" class="w-100"></input>
-                    </div>
+            <div class="" style="margin: auto auto;">
+                <span>Voucher: <input type="text" id="txtVoucher"/></span>
+                <input type="submit" name="action" class="voucher" value="Xác nhận" />
+            </div>
 
-                    <div class="col-md-12 font-weight-bold mt-2">
-                        <label id="lbDienThoaiLienLac" class="margin-bottom-label"> Điện thoại liên lạc</label>
-                    </div>
-
-                    <div class="col-md-12 w-100 ">
-                        <input type="text" ID="txbSDT" required="required" placeholder="Số điện thoại" class="w-100"></input>
-                    </div>
-                    <div class="col-md-12  font-weight-bold mt-2">
-                        <label ID="lbDiaChiNhanHang" class="margin-bottom-label" >Địa chỉ  nhận hàng</label>
-                    </div>
-                    <div class="col-md-12">
-                        <input type="text" ID="txbDiaChiNhanHang" required="required" placeholder="Địa chỉ nhận hàng"  class="w-100" ></input>
-                    </div>
-                    <div class="col-md-12  font-weight-bold mt-2">
-                        <label ID="lbGhiChu" class="margin-bottom-label" >Ghi chú</label>
-                    </div>
-                    <div class="col-md-12 ">
-                        <input type="text" ID="txbGhiChu" placeholder="Ghi chú" class="w-100"></input>
-                    </div>
+            <div class="row">
+                <div class="col-md-12 content-header">
+                    <span>THÔNG TIN NGƯỜI MUA/NHẬN HÀNG</span>
                 </div>
-                <div class="col-md-12 col-md-offset-5 button-cart">
-                    <button ID="btnCheckOut" class="btn-check-out" OnClick="btnCheckOut()" >ĐẶT HÀNG </button>
+                <div class="col-md-12 font-weight-bold">
+                    <label id="lbTenNguoiNhan" class="margin-bottom-label">Tên</label>
+                </div>
+                <div class="col-md-12 ">
+                    <input type="text" ID="txbTenNguoiNhan" required="required" placeholder="Tên người nhận"
+                           class="w-100"></input>
+                </div>
+
+                <div class="col-md-12 font-weight-bold mt-2">
+                    <label id="lbDienThoaiLienLac" class="margin-bottom-label"> Điện thoại liên lạc</label>
+                </div>
+
+                <div class="col-md-12 w-100 ">
+                    <input type="text" ID="txbSDT" required="required" placeholder="Số điện thoại"
+                           class="w-100"></input>
+                </div>
+                <div class="col-md-12  font-weight-bold mt-2">
+                    <label ID="lbDiaChiNhanHang" class="margin-bottom-label">Địa chỉ nhận hàng</label>
+                </div>
+                <div class="col-md-12">
+                    <input type="text" ID="txbDiaChiNhanHang" required="required" placeholder="Địa chỉ nhận hàng"
+                           class="w-100"></input>
+                </div>
+                <div class="col-md-12  font-weight-bold mt-2">
+                    <label ID="lbGhiChu" class="margin-bottom-label">Ghi chú</label>
+                </div>
+                <div class="col-md-12 ">
+                    <input type="text" ID="txbGhiChu" placeholder="Ghi chú" class="w-100"></input>
                 </div>
             </div>
+            <div class="col-md-12 col-md-offset-5 button-cart">
+                <button ID="btnCheckOut" class="btn-check-out" OnClick="btnCheckOut()">ĐẶT HÀNG</button>
+            </div>
         </div>
+    </div>
 
-        <div class="modal" id="modalDatHang">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+    <div class="modal" id="modalDatHang">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
 
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Đặt hàng thành công!</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <div>
-                            <span> Vui lòng chuyển khoản đúng số tiền: </span>
-                            <span style="color:red">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Đặt hàng thành công!</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div>
+                        <span> Vui lòng chuyển khoản đúng số tiền: </span>
+                        <span style="color:red">
                            //<%= txtTongCong.InnerText %>
                            <br>
                        </span>
-                            <span> Đến STK: 0381000587738 <br> Ngân hàng thương mại cổ phần Ngoại thương Việt Nam (Vietcombank) <br />
-                                Chủ tài khoản: Dương Phước Hải Thọ <br /> Chi nhánh Thủ Đức <br /> Với nội dung:  
+                        <span> Đến STK: 0381000587738 <br> Ngân hàng thương mại cổ phần Ngoại thương Việt Nam (Vietcombank) <br/>
+                                Chủ tài khoản: Dương Phước Hải Thọ <br/> Chi nhánh Thủ Đức <br/> Với nội dung:
                          </span>
-                            <span style="color:red">
+                        <span style="color:red">
                           <%= MaDonHangThanhToan %>
                            <br>
                        </span>
-                        </div>
-
-
                     </div>
 
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button class="btn btn-dark" id="btnSubmitDatHang" data-dismiss="modal">OK</button>
-                    </div>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-dark" id="btnSubmitDatHang" data-dismiss="modal">OK</button>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     </div>
     <!--FOOT-->
@@ -284,6 +323,43 @@
 <!--END FOOT-->
 </body>
 <script>
+    $( document ).ready(function() {
+        $(".delete").click(function() {
+            var row = $(this).closest(".cart-header-container");
+            var maTraiCay = row.find("#lblMaTraiCay").text();
+            var soLuong = row.find("#txbSoLuong").val();
+            console.log(maTraiCay);
+            console.log(soLuong);
+            $.ajax({
+                type: "GET",
+                url: "/shoppingCart/removeProduct/"+maTraiCay,
+                success: function () {
+                    location.replace("/shoppingCart")
+                }
+            })
+        });
 
+        $(".update").click(function() {
+            var row = $(this).closest(".cart-header-container");
+            var maTraiCay = row.find("#lblMaTraiCay").text();
+            var soLuong = row.find("#txbSoLuong").val();
+            console.log(maTraiCay);
+            console.log(soLuong);
+            $.ajax({
+                type: "GET",
+                url: "/shoppingCart/updateProduct/"+maTraiCay+"/"+soLuong,
+                success: function () {
+                    location.replace("/shoppingCart")
+                }
+            })
+        });
+
+        $(".voucher").click(function() {
+            var voucher = document.getElementById("txtVoucher").value;
+            var tongTien = document.getElementById("lblTongCong").value;
+            console.log(tongTien);
+
+        });
+    });
 </script>
 </html>

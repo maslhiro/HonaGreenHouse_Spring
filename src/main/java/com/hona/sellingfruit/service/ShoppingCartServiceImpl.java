@@ -37,22 +37,43 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
 
     @Override
-    public void addTraiCay(TraiCay traiCay) {
-        if (traiCays.containsKey(traiCay)) {
-            traiCays.replace(traiCay, traiCays.get(traiCay) + 1);
+    public void addTraiCay(TraiCay traiCay, String numberProduct) {
+        int soLuong = Integer.parseInt(numberProduct);
+        if(traiCays.size() == 0){
+            traiCays.put(traiCay, soLuong);
         } else {
-            traiCays.put(traiCay, 1);
+            for (Map.Entry<TraiCay, Integer> entry : traiCays.entrySet()) {
+                TraiCay tc = entry.getKey();
+                Integer i = entry.getValue();
+                if (traiCay.getMaTraiCay().equals(tc.getMaTraiCay()) == true) {
+                    traiCays.put(tc, i + soLuong);
+                } else {
+                    traiCays.put(traiCay, soLuong);
+                }
+            }
         }
     }
 
 
     @Override
     public void removeTraiCay(TraiCay traiCay) {
-        if (traiCays.containsKey(traiCay)) {
-            if (traiCays.get(traiCay) > 1)
-                traiCays.replace(traiCay, traiCays.get(traiCay) - 1);
-            else if (traiCays.get(traiCay) == 1) {
-                traiCays.remove(traiCay);
+        if (traiCays != null) {
+            for (Map.Entry<TraiCay, Integer> entry : traiCays.entrySet()) {
+                TraiCay tc = entry.getKey();
+                if (traiCay.getMaTraiCay().equals(tc.getMaTraiCay()) == true) {
+                    traiCays.remove(tc);
+                }
+            }
+        }
+    }
+
+    public void updateTraiCay(TraiCay traiCay, String numberProduct){
+        if (traiCays != null) {
+            for (Map.Entry<TraiCay, Integer> entry : traiCays.entrySet()) {
+                TraiCay tc = entry.getKey();
+                if (traiCay.getMaTraiCay().equals(tc.getMaTraiCay()) == true) {
+                    traiCays.put(tc, Integer.parseInt(numberProduct));
+                }
             }
         }
     }

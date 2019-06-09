@@ -8,7 +8,7 @@ import java.util.Map;
 
 public interface ShoppingCartService {
 
-    void addTraiCay(TraiCay traiCay);
+    void addTraiCay(TraiCay traiCay, String numberProduct);
 
     void removeTraiCay(TraiCay traiCay);
 
@@ -17,4 +17,6 @@ public interface ShoppingCartService {
     void checkout() throws NotEnoughProductsInStockException;
 
     BigDecimal getTotal();
+
+    void updateTraiCay(TraiCay traiCay, String numberProduct);
 }
