@@ -15,6 +15,5 @@ public interface ThongKeNhapRepository  extends JpaRepository<ThongKeNhap,String
     List<ThongKeNhap> findAllByThoiGianBetween(Date fromDate, Date toDate);
 
     @Query(value = "SELECT SUM(Tong_Tien_Nhap)FROM LOG_NHAP_TC",nativeQuery = true)
-
     double sumTongTienNhap();
 }

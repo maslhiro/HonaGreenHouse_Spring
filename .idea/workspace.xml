@@ -2,20 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bdbb4ef-4c2f-4adb-8c41-b3309d6d7e8d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sellingfruit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/sellingfruit.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/chitietdonhang.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/chitietdonhang.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/chitiettraicay.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/chitiettraicay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/donhangdaxuli.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/donhangdaxuli.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/donhangmoi.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/donhangmoi.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/loaitraicay.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/loaitraicay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/thongkenhap.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/thongkenhap.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/traicay.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/traicay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/voucher.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/voucher.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/entity/ChiTietDonHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/entity/ChiTietDonHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/ChiTietDonHangRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/ChiTietDonHangRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/DonHangRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/DonHangRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/ThongKeNhapRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/ThongKeNhapRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/restcontroller/DonHangController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/restcontroller/DonHangController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/DonHangService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/DonHangService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/DonHangServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/DonHangServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/thongkexuat.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/thongkexuat.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,26 +26,66 @@
     <option name="delegatedBuild" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/chitiettraicay.html">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/ChiTietDonHangRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="85" column="67" selection-start-line="85" selection-start-column="67" selection-end-line="85" selection-end-column="67" />
+            <state relative-caret-position="119">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/lienhe.html">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/ThongKeNhapRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="14" column="24" selection-start-line="14" selection-end-line="15" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/loaitraicay.html">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/DonHangRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="94" column="16" lean-forward="true" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
+            <state relative-caret-position="255">
+              <caret line="20" column="94" selection-start-line="20" selection-start-column="94" selection-end-line="20" selection-end-column="94" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/DonHangServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="68" column="56" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="56" />
+              <folding>
+                <element signature="e#635#636#0" expanded="true" />
+                <element signature="e#683#684#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/restcontroller/DonHangController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="25" selection-start-line="25" selection-end-line="28" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#826#827#0" expanded="true" />
+                <element signature="e#872#873#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/donhangdaxuli.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3213">
+              <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -57,56 +93,39 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/donhangmoi.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="-697">
               <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/voucher.html">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/AdminRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+            <state relative-caret-position="68">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/chitiettraicay-home.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/danhmuc.html">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/controller/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1632" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/donhangdaxuli.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/chitietdonhang.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+            <state relative-caret-position="211">
+              <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+              <folding>
+                <element signature="e#1728#1729#0" expanded="true" />
+                <element signature="e#1766#1767#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/thongkenhap.html">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/thongkexuat.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-391">
-              <caret line="89" column="67" selection-start-line="89" selection-start-column="67" selection-end-line="89" selection-end-column="67" />
+            <state relative-caret-position="1181">
+              <caret line="152" column="44" selection-start-line="152" selection-start-column="44" selection-end-line="152" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -116,6 +135,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>chitietdonhang</find>
+      <find>public</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -125,15 +145,23 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/controller/AdminController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/traicay.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/loaitraicay.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/chitiettraicay.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/thongkenhap.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/donhangmoi.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/donhangdaxuli.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/voucher.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/chitietdonhang.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/entity/ChiTietDonHang.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/ThongKeNhapRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/ChiTietDonHangRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/DonHangService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/thongkenhap.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/controller/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/thongkexuat.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/restcontroller/DonHangController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/DonHangRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/DonHangServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -144,7 +172,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="540" />
     <option name="y" value="27" />
     <option name="width" value="783" />
@@ -155,6 +183,52 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="HonaGreenHouse_Spring" type="58d84e3e:PackageViewProjectNode" />
+              <item name="sellingfruit" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="HonaGreenHouse_Spring" type="58d84e3e:PackageViewProjectNode" />
+              <item name="sellingfruit" type="616d4139:PackageViewModuleNode" />
+              <item name="com.hona.sellingfruit" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="HonaGreenHouse_Spring" type="58d84e3e:PackageViewProjectNode" />
+              <item name="sellingfruit" type="616d4139:PackageViewModuleNode" />
+              <item name="com.hona.sellingfruit" type="1f31426a:PackageElementNode" />
+              <item name="controller" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="HonaGreenHouse_Spring" type="58d84e3e:PackageViewProjectNode" />
+              <item name="sellingfruit" type="616d4139:PackageViewModuleNode" />
+              <item name="com.hona.sellingfruit" type="1f31426a:PackageElementNode" />
+              <item name="repository" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="HonaGreenHouse_Spring" type="58d84e3e:PackageViewProjectNode" />
+              <item name="sellingfruit" type="616d4139:PackageViewModuleNode" />
+              <item name="com.hona.sellingfruit" type="1f31426a:PackageElementNode" />
+              <item name="restcontroller" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="HonaGreenHouse_Spring" type="58d84e3e:PackageViewProjectNode" />
+              <item name="sellingfruit" type="616d4139:PackageViewModuleNode" />
+              <item name="com.hona.sellingfruit" type="1f31426a:PackageElementNode" />
+              <item name="service" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="HonaGreenHouse_Spring" type="58d84e3e:PackageViewProjectNode" />
+              <item name="sellingfruit" type="616d4139:PackageViewModuleNode" />
+              <item name="templates" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -187,23 +261,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="sellingfruit" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="HonaGreenHouse_Spring" type="58d84e3e:PackageViewProjectNode" />
-              <item name="sellingfruit" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="HonaGreenHouse_Spring" type="58d84e3e:PackageViewProjectNode" />
-              <item name="sellingfruit" type="616d4139:PackageViewModuleNode" />
-              <item name="templates" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -268,17 +325,19 @@
       <updated>1560022383347</updated>
       <workItem from="1560022384838" duration="39000" />
       <workItem from="1560022460710" duration="2471000" />
+      <workItem from="1560060208938" duration="2027000" />
+      <workItem from="1560062588293" duration="1841000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2510000" />
+    <option name="totallyTimeSpent" value="6378000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24939272" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2574899" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -286,7 +345,6 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.3285968" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -301,6 +359,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.3285968" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -338,29 +397,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/controller/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="65" column="36" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="36" />
-          <folding>
-            <element signature="e#1728#1729#0" expanded="true" />
-            <element signature="e#1766#1767#0" expanded="true" />
-            <element signature="e#1849#1850#0" expanded="true" />
-            <element signature="e#1887#1888#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/restcontroller/DonHangController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="43" column="26" lean-forward="true" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/traicay.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3961">
@@ -370,7 +406,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/chitiettraicay.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="1445">
           <caret line="85" column="67" selection-start-line="85" selection-start-column="67" selection-end-line="85" selection-end-column="67" />
         </state>
       </provider>
@@ -380,37 +416,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/loaitraicay.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="94" column="16" lean-forward="true" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/chitiettraicay-home.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/danhmuc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1632" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/thongkenhap.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
-          <caret line="89" column="67" selection-start-line="89" selection-start-column="67" selection-end-line="89" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/donhangmoi.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/donhangdaxuli.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        <state relative-caret-position="1598">
+          <caret line="94" column="16" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -421,10 +428,193 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/chitiettraicay-home.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/danhmuc.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/chitietdonhang.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="-357">
           <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/entity/DonHang.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/entity/ChiTietDonHang.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/entity/ThongKeNhap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/restcontroller/ChiTietDonHangController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="19" column="38" selection-start-line="19" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/restcontroller/LoaiTraiCayController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/LoaiTraiCayService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/ChiTietDonHangService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/ThongKeNhapServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="23" column="58" selection-start-line="23" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/ChiTietDonHangServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/restcontroller/ThongKeNhapController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="27" column="42" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/LoaiTraiCayServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/DonHangService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/thongkenhap.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="384" column="10" selection-start-line="376" selection-start-column="6" selection-end-line="384" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/ThongKeNhapRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="24" selection-start-line="14" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/AdminRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/controller/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+          <folding>
+            <element signature="e#1728#1729#0" expanded="true" />
+            <element signature="e#1766#1767#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/thongkexuat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1181">
+          <caret line="152" column="44" selection-start-line="152" selection-start-column="44" selection-end-line="152" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/donhangmoi.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-697">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/donhangdaxuli.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3213">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/ChiTietDonHangRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/repository/DonHangRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="94" selection-start-line="20" selection-start-column="94" selection-end-line="20" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/restcontroller/DonHangController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="25" selection-start-line="25" selection-end-line="28" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#826#827#0" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hona/sellingfruit/service/DonHangServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="68" column="56" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="56" />
+          <folding>
+            <element signature="e#635#636#0" expanded="true" />
+            <element signature="e#683#684#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -4,7 +4,7 @@
 
 <html lang="en">
 <head>
-    <title>Thống kê nhập</title>
+    <title>Thống kê xuất</title>
 
     <!-- Custom fonts for this template-->
     <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -111,122 +111,69 @@
 
     <div id="content-wrapper">
         <!-- /.container-fluid -->
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="#">Thống kê xuất</a>
-            </li>
-            <li class="breadcrumb-item active">Overview</li>
-        </ol>
+        <div class="container-fluid">
 
-        <!-- Button thống kê filter-->
-        <div class="d-flex m-3 flex-row">
-            <input id="dpkFrom" width="180" />
-            <div>&#160</div>
-            <div class="d-flex justify-content-center align-items-center m-2">
-                <i class="fas fa-arrow-alt-circle-right fa-lg"></i>
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Thống kê xuất</a>
+                </li>
+                <li class="breadcrumb-item active">Overview</li>
+            </ol>
+
+            <!-- Button thống kê filter-->
+            <div class="d-flex m-3 flex-row">
+                <input id="dpkFrom" width="180" />
+                <div>&#160</div>
+                <div class="d-flex justify-content-center align-items-center m-2">
+                    <i class="fas fa-arrow-alt-circle-right fa-lg"></i>
+                </div>
+                <input id="dpkTo" width="180" />
+                <div>&#160</div>
+                <button type="button" id="btnThongKeTheoNgay" class="btn btn-danger">Lọc</button>
+                <div>&#160</div>
+                <button type="button" id="btnRefresh" class="btn btn-danger">Tải lại</button>
+
             </div>
-            <input id="dpkTo" width="180" />
-            <div>&#160</div>
-            <button type="button" id="btnThongKeTheoNgay" class="btn btn-danger">Lọc</button>
-            <div>&#160</div>
-            <button type="button" id="btnRefresh" class="btn btn-danger">Tải lại</button>
+
+            <div id="alert"></div>
+
+            <!-- DataTables -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    <label id="tableHeader">Bảng thống kê </label>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable">
+                            <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Ngày đặt</th>
+                                <th>#</th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Ngày đặt</th>
+                                <th>#</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex row m-4 justify-content-end">
+                        <div  id="txtTotal">Tổng cộng : </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
 
-        <div id="alert"></div>
-
-        <!-- DataTables -->
-        <div class="card mb-3">
-            <div class="card-header">
-                <i class="fas fa-table"></i>
-                <label id="tableHeader">Bảng thống kê </label>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable">
-                        <thead>
-                        <tr>
-                            <th>Mã đơn hàng</th>
-                            <th>Tên trái cây</th>
-                            <th>Thời gian</th>
-                            <th>Xuất xứ</th>
-                            <th>#</th>
-                        </tr>
-                        </thead>
-                        <tfoot>
-                        <tr>
-                            <th>Mã đơn hàng</th>
-                            <th>Tên trái cây</th>
-                            <th>Thời gian</th>
-                            <th>Xuất xứ</th>
-                            <th>#</th>
-                        </tr>
-                        </tfoot>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="d-flex row m-4 justify-content-end">
-                    <div  id="txtTotal">Tổng cộng : </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- The Modal Xem chi tiet trai cay -->
-        <div class="modal fade" id="modalXemChiTiet">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Xem chi tiết trái cây</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <div id="alertXemChiTiet"></div>
-                        <div class="d-flex">
-                            <div class="p-1 flex-fill">
-                                <div class="form-group">
-                                    <label for="txtTenTraiCay">Tên trái cây:</label>
-                                    <input class="form-control" id="txtTenTraiCay" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="txtDonViTinh">Đơn vị tính:</label>
-                                    <input class="form-control" id="txtDonViTinh" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="txtXuatXu">Xuất xứ:</label>
-                                    <input class="form-control" id="txtXuatXu" readonly>
-                                </div>
-                            </div>
-                            <div class="p-1 flex-fill">
-                                <div class="form-group">
-                                    <label for="txtDonGiaXuat">Đơn giá xuất:</label>
-                                    <input class="form-control" id="txtDonGiaXuat" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="txtSoLuong">Số lượng xuất:</label>
-                                    <input class="form-control" id="txtSoLuong" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="txtTongTien">Tổng tiền:</label>
-                                    <input class="form-control" id="txtTongTien" readonly>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button class="btn btn-dark" id="btnCloseXemChiTiet">Đóng</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
@@ -282,61 +229,29 @@
             paging: true,
             searching: true,
             ajax: {
-                url: '/Api/GetListThongKeNhap',
+                url: '/Api/GetAllListDonHang',
                 dataSrc: ''
             },
             columns: [
-                { data: 'traiCay.maTraiCay' },
-                { data: 'traiCay.tenTraiCay' },
+                { data: 'maDonHang' },
                 {
-                    data: 'thoiGian',
+                    data: 'ngayDat',
                     render :function (data, type, row){
                         let date = new Date(data)
                         return date.toLocaleDateString()
-                    }
-
-                },
-                { data: 'traiCay.xuatXu' },
+                    }},
                 {
                     "data": null,
-                    "defaultContent": `<div align="center"><button type="button" id="btnXemChiTiet" class="btn btn-secondary" data-toggle="modal" data-target="#modalXemChiTiet">Xem chi tiết</button></div>`
+                    "defaultContent": `<div align="center"><button type="button" id="btnChiTiet" class="btn btn-secondary" >Xem chi tiết</button></div>`
                 },
             ]
         });
     }
 
-
-
     //Button XemChiTiet
-    $('#dataTable tbody').on('click', '#btnXemChiTiet', function () {
+    $('#dataTable tbody').on('click', '#btnChiTiet', function () {
         let data = table.row($(this).parents('tr')).data();
-
-        $('#modalXemChiTiet').on('show.bs.modal', function (event) {
-            var modal = $(this)
-            modal.find('.modal-body #txtTenTraiCay').val(data.traiCay.tenTraiCay)
-            modal.find('.modal-body #txtDonViTinh').val(data.traiCay.donViTinh)
-            modal.find('.modal-body #txtDonGiaNhap').val(data.donGiaNhap)
-            modal.find('.modal-body #txtXuatXu').val(data.traiCay.xuatXu)
-            modal.find('.modal-body #txtSoLuong').val(data.soLuongNhap)
-            modal.find('.modal-body #txtTongTien').val(data.tongTienNhap)
-
-            modal.find('.modal-title').text('Chi tiết trái cây mã ' + data.traiCay.maTraiCay)
-        })
-
-        // Gan su kien cho btn Dong xem chi tiet
-        $("#btnCloseXemChiTiet").click(function (e) {
-            e.preventDefault();
-
-            $("#modalXemChiTiet").modal('hide')
-
-            $("#txtTenTraiCay").val("")
-            $("#txtDonViTinh").val("")
-            $("#txtDonGiaNhap").val("")
-            $("#txtXuatXu").val("")
-            $("#txtSoLuongNhap").val("")
-            $("#txtTongTien").val("")
-
-        })
+        window.open('/Admin/ChiTietDonHang?Id=' + data.maDonHang, '_blank');
     });
 
     function btnThongKeTheoNgay_OnClick(e) {
@@ -346,30 +261,8 @@
 
     function btnRefresh_OnClick(e) {
         e.preventDefault();
-        table.ajax.url("/Api/GetListThongKeNhap").load();
+        table.ajax.url("/Api/GetAllListDonHang").load();
     }
-
-    $(document).ready(function () {
-        loadTable()
-
-        $("#btnThongKeTheoNgay").click(function (e) {
-            btnThongKeTheoNgay_OnClick(e)
-        })
-
-        $("#btnRefresh").click(function (e) {
-            btnRefresh_OnClick(e)
-        })
-
-        $('#dpkFrom').datepicker({
-            uiLibrary: 'bootstrap4',
-            format: 'yyyy-mm-dd'
-        })
-
-        $('#dpkTo').datepicker({
-            uiLibrary: 'bootstrap4',
-            format: 'yyyy-mm-dd'
-        })
-    });
 
     function refreshTable() {
         let From_Date = new Date($("#dpkFrom").val())
@@ -403,11 +296,34 @@
                 "From_Date": $("#dpkFrom").val() ? $("#dpkFrom").val() : "",
                 "To_Date": $("#dpkTo").val() ? $("#dpkTo").val() : "",
             }
-            let thongkeUrl = "/Api/GetListThongKeNhapByDate?From_Date=" + thoiGianThongKe.From_Date + "&To_Date=" + thoiGianThongKe.To_Date;
+            let thongkeUrl = "/Api/GetListDonHangByDate?fromDate=" + thoiGianThongKe.From_Date + "&toDate=" + thoiGianThongKe.To_Date;
             table.ajax.url(thongkeUrl).load();
         }
 
     }
+
+    $(document).ready(function () {
+        loadTable()
+
+
+        $("#btnThongKeTheoNgay").click(function (e) {
+            btnThongKeTheoNgay_OnClick(e)
+        })
+
+        $("#btnRefresh").click(function (e) {
+            btnRefresh_OnClick(e)
+        })
+
+        $('#dpkFrom').datepicker({
+            uiLibrary: 'bootstrap4',
+            format: 'yyyy-mm-dd'
+        })
+
+        $('#dpkTo').datepicker({
+            uiLibrary: 'bootstrap4',
+            format: 'yyyy-mm-dd'
+        })
+    });
 </script>
 
 </body>

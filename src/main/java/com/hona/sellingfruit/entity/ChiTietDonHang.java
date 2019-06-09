@@ -5,8 +5,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "chi_tiet_don_hang")
 public class ChiTietDonHang {
-    @Id
 
+    @Id
     @Column(name = "Ma_Chi_Tiet_DH")
     private String maChiTietDH;
 

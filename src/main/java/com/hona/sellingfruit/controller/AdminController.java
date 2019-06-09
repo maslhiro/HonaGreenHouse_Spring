@@ -53,6 +53,12 @@ public class AdminController {
         return "thongkenhap";
     }
 
+    @RequestMapping("/ThongKeXuat")
+    public  String thongKeXuat(){
+        return "thongkexuat";
+    }
+
+
     @RequestMapping("/DonHangMoi")
     public  String donHangMoi(){
         return "donhangmoi";
