@@ -2,7 +2,6 @@ package com.hona.sellingfruit.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-
 @Entity
 @Table(name = "voucher")
 public class Voucher {
@@ -28,13 +27,6 @@ public class Voucher {
 
     @Column(name = "Trang_Thai")
     private Integer trangThai;
-
-    @Column(name = "Ngay_Bat_Dau")
-    private Date ngayBatDau;
-
-    @Column(name = "Ngay_Ket_Thuc")
-    private Date ngayKetThuc;
-
 
     public Voucher() {
     }

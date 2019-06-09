@@ -40,4 +40,9 @@ public class HomeController {
     public String lienHe(){
         return "lienhe";
     }
+
+    @RequestMapping(path="/GioHang")
+    public String gioHang(){
+        return "giohang";
+    }
 }

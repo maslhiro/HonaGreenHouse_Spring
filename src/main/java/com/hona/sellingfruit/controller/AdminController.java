@@ -2,6 +2,8 @@ package com.hona.sellingfruit.controller;
 
 import com.hona.sellingfruit.entity.TraiCay;
 import com.hona.sellingfruit.service.TraiCayService;
+import com.hona.sellingfruit.entity.Voucher;
+import com.hona.sellingfruit.service.VoucherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,14 @@ import java.util.List;
 @Controller
 @RequestMapping("/Admin")
 public class AdminController {
+
+    @Autowired
+    VoucherService voucherService;
+
+    @RequestMapping("/voucher")
+    public String voucher() {
+        return "voucher";
+    }
     @Autowired
     TraiCayService traiCayService;
 

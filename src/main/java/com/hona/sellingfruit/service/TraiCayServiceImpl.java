@@ -4,6 +4,8 @@ import com.hona.sellingfruit.entity.LoaiTraiCay;
 import com.hona.sellingfruit.entity.TraiCay;
 import com.hona.sellingfruit.repository.TraiCayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -77,5 +79,11 @@ public class TraiCayServiceImpl implements TraiCayService {
     @Override
     public List<TraiCay> getTraiCayByLoaiList(LoaiTraiCay loaiTraiCay){
         return traiCayRepository.findAllByIsDeletedAndLoaiTraiCay(0, loaiTraiCay);
-    };
+    }
+    //HaiTho upcode Map và session bean
+    @Override
+    public Page<TraiCay> findAllTraiCayPageable(Pageable pageable) {
+        return traiCayRepository.findAll(pageable);
+    }
+
 }
