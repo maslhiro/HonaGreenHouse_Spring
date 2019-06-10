@@ -1,29 +1,20 @@
 package com.hona.sellingfruit.controller;
 
 import com.hona.sellingfruit.entity.TraiCay;
+import com.hona.sellingfruit.service.DonHangService;
 import com.hona.sellingfruit.service.TraiCayService;
-import com.hona.sellingfruit.entity.Voucher;
 import com.hona.sellingfruit.service.VoucherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/Admin")
 public class AdminController {
 
     @Autowired
-    VoucherService voucherService;
+    DonHangService donHangService;
 
     @RequestMapping("/voucher")
     public String voucher() {
@@ -54,8 +45,25 @@ public class AdminController {
     }
 
     @RequestMapping("/Voucher")
-    public String voucher() {
+    public String voucherPage() {
         return "voucher";
+    }
+
+    @RequestMapping("/Dashboard")
+    public ModelAndView dashboard(){
+        ModelAndView mav = new ModelAndView("dashboard");
+
+        String countTC = (traiCayService.getAllTraiCayList().size()) + " Loại Trái Cây!";
+        String countDHH = (donHangService.getListDonHangByTinhTrang(1).size())+ " ĐH Đã Hủy!";
+        String countDHM = (donHangService.getListDonHangByTinhTrang(0).size())+" ĐH Mới!";
+        String countDHTC = (donHangService.getListDonHangByTinhTrang(2).size())+ " ĐH Thành Công!";
+
+        mav.addObject("countTC",countTC);
+        mav.addObject("countDHH",countDHH);
+        mav.addObject("countDHM",countDHM);
+        mav.addObject("countDHTC",countDHTC);
+
+        return mav;
     }
 
     @RequestMapping("/ThongKeNhap")
