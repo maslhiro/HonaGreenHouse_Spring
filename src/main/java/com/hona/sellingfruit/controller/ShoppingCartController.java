@@ -120,8 +120,8 @@ public class ShoppingCartController {
         thongTinNguoiMua.put("SDT", (String) jsonObject.get( "SDT"));
         thongTinNguoiMua.put("diaChiNhanHang", (String) jsonObject.get( "diaChiNhanHang"));
         thongTinNguoiMua.put("ghiChu", (String) jsonObject.get( "ghiChu"));
-        checkout();
         String maDonHang = shoppingCartService.insertDonHang(thongTinNguoiMua);
+        checkout();
         return maDonHang;
     }
 }

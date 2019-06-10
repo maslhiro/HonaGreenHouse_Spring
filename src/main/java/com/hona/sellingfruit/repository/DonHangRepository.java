@@ -22,5 +22,4 @@ public interface DonHangRepository extends JpaRepository<DonHang, String> {
 
     List<DonHang> getAllByNgayDatBetweenAndTinhTrang(Date fromDate, Date toDate, int tinhTrang);
 
-
 }

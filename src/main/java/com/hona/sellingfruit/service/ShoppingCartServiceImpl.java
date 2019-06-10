@@ -194,6 +194,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             chiTietDonHang.setDonGiaXuat(tc.getDonGiaXuat());
             chiTietDonHang.setMaDonHang("DH"+countDonHang);
             chiTietDonHang.setMaTraiCay(tc.getMaTraiCay());
+//            chiTietDonHang.setTraiCay(traiCayRepositorys.findById(tc.getMaTraiCay()).get());
 
             try {
                 chiTietDonHangRepository.saveAndFlush(chiTietDonHang);
@@ -201,7 +202,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 System.out.println(e);
             }
         }
-
         return "DH"+countDonHang;
     }
 }
