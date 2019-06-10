@@ -9,10 +9,7 @@ import com.hona.sellingfruit.service.VoucherService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.lang.reflect.Array;
@@ -110,5 +107,21 @@ public class ShoppingCartController {
             }
         }
         return shoppingCart(null, null);
+    }
+
+    @PostMapping(path="/shoppingCart/checkOut")
+    public String checkOut(@RequestBody String stringJSON){
+        JSONObject jsonObject = new JSONObject(stringJSON);
+
+        Map<String,String> thongTinNguoiMua = new HashMap<>();
+        thongTinNguoiMua.put("voucher", (String) jsonObject.get( "voucher"));
+        thongTinNguoiMua.put("tongTien", (String) jsonObject.get( "tongTien"));
+        thongTinNguoiMua.put("tenNguoiNhan", (String) jsonObject.get( "tenNguoiNhan"));
+        thongTinNguoiMua.put("SDT", (String) jsonObject.get( "SDT"));
+        thongTinNguoiMua.put("diaChiNhanHang", (String) jsonObject.get( "diaChiNhanHang"));
+        thongTinNguoiMua.put("ghiChu", (String) jsonObject.get( "ghiChu"));
+        checkout();
+        String maDonHang = shoppingCartService.insertDonHang(thongTinNguoiMua);
+        return maDonHang;
     }
 }

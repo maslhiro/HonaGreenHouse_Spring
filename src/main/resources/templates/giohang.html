@@ -218,7 +218,7 @@
 
             <div class="" style="margin: auto auto;">
                 <span>Voucher: <input type="text" id="txtVoucher"/></span>
-                <input type="submit" name="action" class="voucher" value="Xác nhận" />
+                <input type="submit" class="voucher" value="Xác nhận" />
                 <div id="alertVoucher"></div>
             </div>
 
@@ -231,7 +231,7 @@
                 </div>
                 <div class="col-md-12 ">
                     <input type="text" ID="txbTenNguoiNhan" required="required" placeholder="Tên người nhận"
-                           class="w-100"></input>
+                           class="w-100"/>
                 </div>
 
                 <div class="col-md-12 font-weight-bold mt-2">
@@ -240,24 +240,24 @@
 
                 <div class="col-md-12 w-100 ">
                     <input type="text" ID="txbSDT" required="required" placeholder="Số điện thoại"
-                           class="w-100"></input>
+                           class="w-100"/>
                 </div>
                 <div class="col-md-12  font-weight-bold mt-2">
                     <label ID="lbDiaChiNhanHang" class="margin-bottom-label">Địa chỉ nhận hàng</label>
                 </div>
                 <div class="col-md-12">
                     <input type="text" ID="txbDiaChiNhanHang" required="required" placeholder="Địa chỉ nhận hàng"
-                           class="w-100"></input>
+                           class="w-100"/>
                 </div>
                 <div class="col-md-12  font-weight-bold mt-2">
                     <label ID="lbGhiChu" class="margin-bottom-label">Ghi chú</label>
                 </div>
                 <div class="col-md-12 ">
-                    <input type="text" ID="txbGhiChu" placeholder="Ghi chú" class="w-100"></input>
+                    <input type="text" ID="txbGhiChu" placeholder="Ghi chú" class="w-100"/>
                 </div>
             </div>
             <div class="col-md-12 col-md-offset-5 button-cart">
-                <button ID="btnCheckOut" class="btn-check-out" OnClick="btnCheckOut()">ĐẶT HÀNG</button>
+                <input type="submit" name="action" class="btnCheckOut" value="ĐẶT HÀNG" />
             </div>
         </div>
     </div>
@@ -275,17 +275,14 @@
                 <div class="modal-body">
                     <div>
                         <span> Vui lòng chuyển khoản đúng số tiền: </span>
+
                         <span style="color:red">
-                           //<%= txtTongCong.InnerText %>
+                           <label th:text="${tongTien}"></label>
                            <br>
                        </span>
                         <span> Đến STK: 0381000587738 <br> Ngân hàng thương mại cổ phần Ngoại thương Việt Nam (Vietcombank) <br/>
-                                Chủ tài khoản: Dương Phước Hải Thọ <br/> Chi nhánh Thủ Đức <br/> Với nội dung:
+                                Chủ tài khoản: Dương Phước Hải Thọ <br/> Chi nhánh Thủ Đức
                          </span>
-                        <span style="color:red">
-                          <%= MaDonHangThanhToan %>
-                           <br>
-                       </span>
                     </div>
 
 
@@ -325,12 +322,14 @@
 </body>
 <script>
     $( document ).ready(function() {
+        var isDatHangSuccess = false;
+
         $(".delete").click(function() {
             var row = $(this).closest(".cart-header-container");
             var maTraiCay = row.find("#lblMaTraiCay").text();
-            var soLuong = row.find("#txbSoLuong").val();
-            console.log(maTraiCay);
-            console.log(soLuong);
+            // var soLuong = row.find("#txbSoLuong").val();
+            // console.log(maTraiCay);
+            // console.log(soLuong);
             $.ajax({
                 type: "GET",
                 url: "/shoppingCart/removeProduct/"+maTraiCay,
@@ -344,8 +343,8 @@
             var row = $(this).closest(".cart-header-container");
             var maTraiCay = row.find("#lblMaTraiCay").text();
             var soLuong = row.find("#txbSoLuong").val();
-            console.log(maTraiCay);
-            console.log(soLuong);
+            // console.log(maTraiCay);
+            // console.log(soLuong);
             $.ajax({
                 type: "GET",
                 url: "/shoppingCart/updateProduct/"+maTraiCay+"/"+soLuong,
@@ -357,7 +356,7 @@
 
         $(".voucher").click(function() {
             var voucher = document.getElementById("txtVoucher").value;
-            console.log(voucher);
+            // console.log(voucher);
 
             $.ajax({
                 type: "GET",
@@ -371,8 +370,44 @@
                     }, 2000);
                 }
             })
-
         });
+
+        $(".btnCheckOut").click(function(e) {
+            e.preventDefault();
+            var voucher = document.getElementById("txtVoucher").value;
+            var tongTien = "[[${tongTien}]]";
+            var tenNguoiNhan = document.getElementById("txbTenNguoiNhan").value;
+            var SDT = document.getElementById("txbSDT").value;
+            var diaChiNhanHang = document.getElementById("txbDiaChiNhanHang").value;
+            var ghiChu = document.getElementById("txbGhiChu").value;
+
+            let datHang = {
+                "voucher": voucher,
+                "tongTien": tongTien,
+                "tenNguoiNhan": tenNguoiNhan,
+                "SDT": SDT,
+                "diaChiNhanHang": diaChiNhanHang,
+                "ghiChu": ghiChu
+            }
+
+            //console.log("JSON", datHang)
+
+            $('#modalDatHang').modal();
+
+            $.ajax({
+                type:"POST",
+                url: "/shoppingCart/checkOut",
+                data: JSON.stringify(datHang),
+                contentType: 'application/json',
+                success: function(){
+                    isDatHangSuccess = true;
+                }
+            })
+        })
+
+        if(isDatHangSuccess) {
+            $('#modalDatHang').modal('show');
+        }
     });
 </script>
 </html>

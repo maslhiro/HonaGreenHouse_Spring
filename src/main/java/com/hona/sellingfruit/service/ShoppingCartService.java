@@ -19,4 +19,6 @@ public interface ShoppingCartService {
     BigDecimal getTotal(Integer phanTramGiam, Integer tienGiamToiDa);
 
     void updateTraiCay(TraiCay traiCay, String numberProduct);
+
+    String insertDonHang(Map<String, String> thongTinNguoiMua);
 }
