@@ -12,3 +12,4 @@ public interface ChiTietDonHangRepository extends JpaRepository<ChiTietDonHang, 
     List<ChiTietDonHang> getAllByMaDonHang(String maDonHang);
     long countAllByMaChiTietDHIsNot(String maChiTietDonHang);
 }
+

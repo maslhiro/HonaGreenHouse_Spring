@@ -20,9 +20,9 @@ public interface TraiCayService {
 
      Integer deleteTraiCayById(String maTraiCay);
 
-    public List<TraiCay> getTraiCayBanChayList();
+     List<TraiCay> getTraiCayBanChayList();
 
-    public List<TraiCay> getTraiCayByLoaiList(LoaiTraiCay loaiTraiCay);
+     List<TraiCay> getTraiCayByLoaiList(LoaiTraiCay loaiTraiCay);
 
     //HaiTho upcode hỗ trợ Map và session bean
     Page<TraiCay> findAllTraiCayPageable(Pageable pageable);

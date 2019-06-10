@@ -19,22 +19,19 @@ public class ChiTietDonHang {
     @Column(name = "Ma_Don_Hang")
     private String maDonHang;
 
-    @Column(name = "Ma_Trai_Cay")
-    private String maTraiCay;
-
     @JoinColumn(name = "Ma_Trai_Cay", referencedColumnName = "Ma_Trai_Cay", insertable = false, updatable = false)
     @ManyToOne(targetEntity = TraiCay.class)
     private TraiCay traiCay;
 
     public ChiTietDonHang(){}
 
-    public ChiTietDonHang(String maChiTietDH, Integer soLuongXuat, Integer donGiaXuat, String maDonHang, TraiCay traiCay, String maTraiCay) {
+
+    public ChiTietDonHang(String maChiTietDH, Integer soLuongXuat, Integer donGiaXuat, String maDonHang, TraiCay traiCay) {
         this.maChiTietDH = maChiTietDH;
         this.soLuongXuat = soLuongXuat;
         this.donGiaXuat = donGiaXuat;
         this.maDonHang = maDonHang;
         this.traiCay = traiCay;
-        this.maTraiCay = maTraiCay;
     }
 
     public String getMaChiTietDH() {
@@ -75,13 +72,5 @@ public class ChiTietDonHang {
 
     public void setTraiCay(TraiCay traiCay) {
         this.traiCay = traiCay;
-    }
-
-    public String getMaTraiCay() {
-        return maTraiCay;
-    }
-
-    public void setMaTraiCay(String maTraiCay) {
-        this.maTraiCay = maTraiCay;
     }
 }

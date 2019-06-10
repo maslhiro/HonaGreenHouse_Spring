@@ -6,7 +6,9 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -19,6 +21,13 @@ public class DonHangController {
     public List<DonHang> getListDonHangMoi(){
         return donHangService.getListDonHangByTinhTrang(0);
     }
+
+
+    @GetMapping(path = "/GetAllListDonHang")
+    public List<DonHang> getAllListDonHang(){
+        return donHangService.getListDonHangByTinhTrang(2);
+    }
+
 
     @GetMapping(path="/GetListDonHangDaXacNhan")
     public List<DonHang> getListDonHangDaXacNhan(){
@@ -43,8 +52,22 @@ public class DonHangController {
 
         String maDonHang = (String) jsonObject.get("maDonHang");
         String bangChungThanhToan = (String) jsonObject.get("bangChungThanhToan");
-
-
         return donHangService.xacNhanDonHangById(maDonHang, bangChungThanhToan);
+    }
+
+    @GetMapping(path = "/GetListDonHangByDate")
+    public List<DonHang> getListDonHangByDate(@RequestParam(value = "fromDate") String fromDate, @RequestParam(value = "toDate") String toDate){
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date from = dateFormat.parse(fromDate);
+            Date to = dateFormat.parse(toDate);
+            return donHangService.getListDonHangByNgayDatBetween(from,to);
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex);
+            return  null;
+        }
+
     }
 }

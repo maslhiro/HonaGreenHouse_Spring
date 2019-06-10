@@ -47,11 +47,13 @@ public class VoucherController {
         Integer ma = Math.toIntExact(voucherService.countAllVoucher());
         String autoID = "VC" + String.format("%03d",ma+1);
         voucher.setAutoID(autoID);
+        voucher.setTrangThai(0);
         // Tạo mã voucher và check xem nó có tồn tại dưới db chưa
         String codeVoucher="";
         do{
-                codeVoucher=CreateVoucher(6);
-        }while(voucherService.getVoucherByMaGiamGia(codeVoucher)!=null);
+            codeVoucher=CreateVoucher(6);
+        }
+        while(voucherService.getVoucherByMaGiamGia(codeVoucher)!=null);
         voucher.setMaGiamGia(codeVoucher);
         Integer result = voucherService.insertVoucher(voucher);
         if(result == 1 )return  "Lỗi kết nối cơ sở dữ liệu";
@@ -79,15 +81,18 @@ public class VoucherController {
         return  "";
     }
 
+    @GetMapping(path = "/HuyVoucher")
+    public String huyVoucher(@RequestParam(value = "Id") String autoID){
+        int check = voucherService.huyVoucher(autoID);
+        if( check == 0) return "";
+        return "Có lỗi trong quá trình kết nối !";
+    }
 
     String checkInput(JSONObject voucher){
         String result ="";
-        String maGiamGia = (String) voucher.get("maGiamGia");
         Integer phanTramGiam = (Integer) voucher.get("phanTramGiam");
-        Integer soLanSuDung = (Integer) voucher.get("soLanSuDung");
         Integer soLanSuDungToiDa = (Integer) voucher.get("soLanSuDungToiDa");
         Integer tienGiamToiDa = (Integer) voucher.get("tienGiamToiDa");
-        Integer trangThai = (Integer) voucher.get("trangThai");
 
         if(phanTramGiam==0||phanTramGiam>100)
         {
@@ -101,12 +106,8 @@ public class VoucherController {
         {
             result += " Tiền giảm tối đa,";
         }
-        if(trangThai!=0 && trangThai!=1)
-        {
-            result += " Trạng thái,";
-        }
 
-              if(!result.isEmpty()) result = result.substring(0,result.length()-1);
+        if(!result.isEmpty()) result = result.substring(0,result.length()-1);
 
         return result;
 
@@ -121,7 +122,6 @@ public class VoucherController {
         Integer soLanSuDung = (Integer) json.get("soLanSuDung");
         Integer soLanSuDungToiDa = (Integer) json.get("soLanSuDungToiDa");
         Integer tienGiamToiDa = (Integer) json.get("tienGiamToiDa");
-        Integer trangThai = (Integer) json.get("trangThai");
 
         Voucher voucher = new Voucher();
         voucher.setMaGiamGia(maGiamGia);
@@ -129,8 +129,7 @@ public class VoucherController {
         voucher.setSoLanSuDung(soLanSuDung);
         voucher.setSoLanSuDungToiDa(soLanSuDungToiDa);
         voucher.setTienGiamToiDa(tienGiamToiDa);
-        voucher.setTrangThai(trangThai);
-           return voucher;
+        return voucher;
     }
 
     String CreateVoucher( int len ){
