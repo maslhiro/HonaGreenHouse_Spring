@@ -210,7 +210,7 @@
 
                         <div class="total-box">
                             <strong>Tổng cộng: &nbsp</strong>
-                            <label id="lblTongCong" th:text="${tongTien}"></label>
+                            <label id="lblTongTien" th:text="${tongTien}"></label>
                         </div>
                     </div>
                 </div>
@@ -219,6 +219,7 @@
             <div class="" style="margin: auto auto;">
                 <span>Voucher: <input type="text" id="txtVoucher"/></span>
                 <input type="submit" name="action" class="voucher" value="Xác nhận" />
+                <div id="alertVoucher"></div>
             </div>
 
             <div class="row">
@@ -356,8 +357,20 @@
 
         $(".voucher").click(function() {
             var voucher = document.getElementById("txtVoucher").value;
-            var tongTien = document.getElementById("lblTongCong").value;
-            console.log(tongTien);
+            console.log(voucher);
+
+            $.ajax({
+                type: "GET",
+                url: "/shoppingCart/voucher/"+voucher,
+                success: function () {
+                    $('#alertVoucher').empty().append(`<div class='alert alert-danger'> <strong> Áp mã thành công!</strong ></div >`)
+                    $('#alertVoucher').show();
+                    var href = "/shoppingCart/voucher/"+voucher;
+                    window.setTimeout(function(){
+                        window.location.href = href;
+                    }, 2000);
+                }
+            })
 
         });
     });

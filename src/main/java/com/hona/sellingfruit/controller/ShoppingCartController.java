@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.lang.reflect.Array;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,18 +28,20 @@ public class ShoppingCartController {
 
     private final TraiCayService traiCayService;
 
-    private VoucherService voucherService;
+    private final VoucherService voucherService;
 
     @Autowired
-    public ShoppingCartController(ShoppingCartService shoppingCartService, TraiCayService traiCayService) {
+    public ShoppingCartController(ShoppingCartService shoppingCartService, TraiCayService traiCayService, VoucherService voucherService) {
         this.shoppingCartService = shoppingCartService;
         this.traiCayService = traiCayService;
+        this.voucherService = voucherService;
     }
 
     @RequestMapping("/shoppingCart")
     @ResponseBody
-    public ModelAndView shoppingCart() {
+    public ModelAndView shoppingCart(Integer phanTramGiam, Integer tienGiamToiDa) {
         ModelAndView modelAndView = new ModelAndView("/giohang");
+
         Map<TraiCay, Integer> sanPham = shoppingCartService.getTraiCaysInCart();
         Map<String,Map<String,String>> list =  new HashMap<>();
         Map<String,String> sp;
@@ -53,7 +56,8 @@ public class ShoppingCartController {
             list.put(tc.getMaTraiCay(),sp);
         }
 
-        String tongTien = shoppingCartService.getTotal().toString();
+        String tongTien = shoppingCartService.getTotal(phanTramGiam, tienGiamToiDa).toString();
+
         modelAndView.addObject("sanPham", list);
         modelAndView.addObject("tongTien", tongTien);
         return modelAndView;
@@ -65,7 +69,7 @@ public class ShoppingCartController {
         if(traiCay!=null){
             shoppingCartService.addTraiCay(traiCay, numberProduct);
         }
-        return shoppingCart();
+        return shoppingCart(null, null);
     }
 
     @RequestMapping("/shoppingCart/removeProduct/{productId}")
@@ -74,7 +78,7 @@ public class ShoppingCartController {
         if(traiCay!=null){
             shoppingCartService.removeTraiCay(traiCay);
         }
-        return shoppingCart();
+        return shoppingCart(null, null);
     }
 
     @RequestMapping("/shoppingCart/updateProduct/{productId}/{numberProduct}")
@@ -83,7 +87,7 @@ public class ShoppingCartController {
         if(traiCay!=null){
             shoppingCartService.updateTraiCay(traiCay, numberProduct);
         }
-        return shoppingCart();
+        return shoppingCart(null, null);
     }
 
     @RequestMapping("/shoppingCart/checkout")
@@ -91,8 +95,20 @@ public class ShoppingCartController {
         try {
             shoppingCartService.checkout();
         } catch (NotEnoughProductsInStockException e) {
-            return shoppingCart().addObject("outOfStockMessage", e.getMessage());
+            return shoppingCart(null, null).addObject("outOfStockMessage", e.getMessage());
         }
-        return shoppingCart();
+        return shoppingCart(null, null);
+    }
+
+    @RequestMapping("/shoppingCart/voucher/{voucherId}")
+    public ModelAndView voucher(@PathVariable("voucherId") String voucherId) {
+        Voucher vc =voucherService.getVoucherByMaGiamGia(voucherId);
+        if(vc!=null){
+            if(vc.getTrangThai() == 1 && vc.getSoLanSuDung() < vc.getSoLanSuDungToiDa()) {
+                vc.setSoLanSuDung(vc.getSoLanSuDung() + 1);
+                return shoppingCart(vc.getPhanTramGiam(), vc.getTienGiamToiDa());
+            }
+        }
+        return shoppingCart(null, null);
     }
 }

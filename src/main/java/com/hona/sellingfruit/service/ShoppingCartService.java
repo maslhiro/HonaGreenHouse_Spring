@@ -16,7 +16,7 @@ public interface ShoppingCartService {
 
     void checkout() throws NotEnoughProductsInStockException;
 
-    BigDecimal getTotal();
+    BigDecimal getTotal(Integer phanTramGiam, Integer tienGiamToiDa);
 
     void updateTraiCay(TraiCay traiCay, String numberProduct);
 }
