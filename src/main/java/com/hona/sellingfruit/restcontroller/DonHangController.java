@@ -6,7 +6,6 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,6 +21,7 @@ public class DonHangController {
     public List<DonHang> getListDonHangMoi(){
         return donHangService.getListDonHangByTinhTrang(0);
     }
+
 
     @GetMapping(path = "/GetAllListDonHang")
     public List<DonHang> getAllListDonHang(){
@@ -52,7 +52,6 @@ public class DonHangController {
 
         String maDonHang = (String) jsonObject.get("maDonHang");
         String bangChungThanhToan = (String) jsonObject.get("bangChungThanhToan");
-
         return donHangService.xacNhanDonHangById(maDonHang, bangChungThanhToan);
     }
 

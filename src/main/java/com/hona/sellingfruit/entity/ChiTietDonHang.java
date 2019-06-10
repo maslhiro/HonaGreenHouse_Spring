@@ -25,6 +25,7 @@ public class ChiTietDonHang {
 
     public ChiTietDonHang(){}
 
+
     public ChiTietDonHang(String maChiTietDH, Integer soLuongXuat, Integer donGiaXuat, String maDonHang, TraiCay traiCay) {
         this.maChiTietDH = maChiTietDH;
         this.soLuongXuat = soLuongXuat;

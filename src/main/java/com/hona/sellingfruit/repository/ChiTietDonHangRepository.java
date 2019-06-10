@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface ChiTietDonHangRepository extends JpaRepository<ChiTietDonHang, String> {
     List<ChiTietDonHang> getAllByMaDonHang(String maDonHang);
-
+    long countAllByMaChiTietDHIsNot(String maChiTietDonHang);
 }
+
