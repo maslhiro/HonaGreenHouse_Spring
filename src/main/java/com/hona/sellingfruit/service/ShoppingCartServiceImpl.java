@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -67,6 +68,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         }
     }
 
+    @Override
     public void updateTraiCay(TraiCay traiCay, String numberProduct){
         if (traiCays != null) {
             for (Map.Entry<TraiCay, Integer> entry : traiCays.entrySet()) {
@@ -111,10 +113,30 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public BigDecimal getTotal() {
-        return traiCays.entrySet().stream()
-                .map(entry -> BigDecimal.valueOf(entry.getKey().getDonGiaXuat()).multiply(BigDecimal.valueOf(entry.getValue())))
-                .reduce(BigDecimal::add)
-                .orElse(BigDecimal.ZERO);
+    public BigDecimal getTotal(Integer phanTramGiam, Integer tienGiamToiDa) {
+        if (phanTramGiam != null && tienGiamToiDa != null){
+            BigDecimal tongTien = traiCays.entrySet().stream()
+                    .map(entry -> BigDecimal.valueOf(entry.getKey().getDonGiaXuat()).multiply(BigDecimal.valueOf(entry.getValue())))
+                    .reduce(BigDecimal::add)
+                    .orElse(BigDecimal.ZERO);
+
+        double tong = tongTien.doubleValue();
+        Double tienGiam = (tong * phanTramGiam)/100;
+        if (tienGiam > tienGiamToiDa){
+            tienGiam = (double)tienGiamToiDa;
+        }
+
+        tong -= tienGiam;
+
+        BigDecimal tienSauGiamGia = new BigDecimal(tong, MathContext.DECIMAL64);
+
+        return tienSauGiamGia;
+
+        } else {
+            return traiCays.entrySet().stream()
+                    .map(entry -> BigDecimal.valueOf(entry.getKey().getDonGiaXuat()).multiply(BigDecimal.valueOf(entry.getValue())))
+                    .reduce(BigDecimal::add)
+                    .orElse(BigDecimal.ZERO);
+        }
     }
 }
